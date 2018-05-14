@@ -16,7 +16,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CodeU Chat App - Team 11!!!</title>
+  <title>CodeU Chat App</title>
   <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
@@ -36,7 +36,8 @@
     <div
       style="width:75%; margin-left:auto; margin-right:auto; margin-top: 50px;">
 
-      <h1>CodeU Chat App</h1>
+      <h1>CodeU Chat App by Team: "//TODO: Team Name"</h1>
+      <p> Members: Leonardo Lopez, Jessica Zhu, Levi Villarreal</p>
       <h2>Welcome!</h2>
 
       <ul>
