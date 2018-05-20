@@ -44,9 +44,7 @@ public class ProfileServlet extends HttpServlet {
   }
 
   /**
-   * This function fires when a user navigates to the chat page. It gets the conversation title from
-   * the URL, finds the corresponding Conversation, and fetches the messages in that Conversation.
-   * It then forwards to chat.jsp for rendering.
+   * This function fires when a user navigates to the profile page.
    */
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response)
