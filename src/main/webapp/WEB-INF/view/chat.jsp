@@ -36,6 +36,12 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
     }
   </style>
 
+  <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
+  <script>
+  tinymce.init({
+    selector: '#mytextarea'
+  });
+  </script>
   <script>
     // scroll the chat div to the bottom
     function scrollChat() {
@@ -82,7 +88,8 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
 
     <% if (request.getSession().getAttribute("user") != null) { %>
     <form action="/chat/<%= conversation.getTitle() %>" method="POST">
-        <input type="text" name="message">
+        <textarea type="text" name="message" id="mytextarea">
+        </textarea>
         <br/>
         <button type="submit">Send</button>
     </form>
