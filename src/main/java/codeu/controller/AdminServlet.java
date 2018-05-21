@@ -59,6 +59,7 @@ public class AdminServlet extends HttpServlet {
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
     // TODO ¯\_(ツ)_/¯ not sure if needs to send data anywhere
   }
 }
