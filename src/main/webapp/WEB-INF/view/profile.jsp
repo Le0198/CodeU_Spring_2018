@@ -42,15 +42,12 @@ String profile = (String) request.getAttribute("profile");
       style="width:75%; margin-left:auto; margin-right:auto; margin-top: 50px;">
 
       <h1><%=profile%>'s Profile Page</h1>
-      <% if (request.getSession().getAttribute("user") == null) { %>
-        <p>This is <%=profile%>'s page.</p>
-      <% } else { %>
+      <% if (request.getSession().getAttribute("user") != null) { %>
         <% if (request.getSession().getAttribute("user").equals(profile)) { %>
           <p>This is your profile page.</p>
-        <% } else { %>
-          <p>This is <%=profile%>'s page.</p> <%-- this is the same as the if null case, condense it later --%>
         <% } %>
       <% } %>
+        <p>This is <%=profile%>'s page.</p>
 
     </div>
   </div>
