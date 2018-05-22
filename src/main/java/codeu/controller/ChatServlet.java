@@ -29,7 +29,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.jsoup.Jsoup;
+import org.jsoup.safety.Cleaner;
 import org.jsoup.safety.Whitelist;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.parser.Parser;
 
 /** Servlet class responsible for the chat page. */
 public class ChatServlet extends HttpServlet {
@@ -82,22 +86,22 @@ public class ChatServlet extends HttpServlet {
    * It then forwards to chat.jsp for rendering.
    */
   @Override
-  public void doGet(HttpServletRequest request, HttpServletResponse response)
-      throws IOException, ServletException {
-    String requestUrl = request.getRequestURI();
-    String conversationTitle = requestUrl.substring("/chat/".length());
+  public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+      String requestUrl = request.getRequestURI();
+      String conversationTitle = requestUrl.substring("/chat/".length());
 
-    Conversation conversation = conversationStore.getConversationWithTitle(conversationTitle);
-    if (conversation == null) {
-      // couldn't find conversation, redirect to conversation list
-      System.out.println("Conversation was null: " + conversationTitle);
-      response.sendRedirect("/conversations");
-      return;
-    }
+      Conversation conversation = conversationStore.getConversationWithTitle(conversationTitle);
+      
+        if (conversation == null) {
+          // couldn't find conversation, redirect to conversation list
+          System.out.println("Conversation was null: " + conversationTitle);
+          response.sendRedirect("/conversations");
+          return;
+        }
 
-    UUID conversationId = conversation.getId();
+      UUID conversationId = conversation.getId();
 
-    List<Message> messages = messageStore.getMessagesInConversation(conversationId);
+      List<Message> messages = messageStore.getMessagesInConversation(conversationId);
 
     request.setAttribute("conversation", conversation);
     request.setAttribute("messages", messages);
@@ -138,10 +142,11 @@ public class ChatServlet extends HttpServlet {
       return;
     }
 
+    // The original message with no changes
     String messageContent = request.getParameter("message");
 
     // this removes any HTML from the message content
-    String cleanedMessageContent = Jsoup.clean(messageContent, Whitelist.none());
+    String cleanedMessageContent = clean(messageContent, Whitelist.simpleText());
 
     Message message =
         new Message(
@@ -156,4 +161,16 @@ public class ChatServlet extends HttpServlet {
     // redirect to a GET request
     response.sendRedirect("/chat/" + conversationTitle);
   }
+    
+    /**
+     * Override the JSoup Clean method to avoid the newline character
+     * Thanks to Chineye for the advice
+     */
+    public static String clean(String messageToClean, Whitelist whitelist) {
+        Document dirty = Parser.parseBodyFragment(messageToClean, "");
+        Cleaner cleaner = new Cleaner(Whitelist.simpleText());
+        Document clean = cleaner.clean(dirty);
+        clean.outputSettings().prettyPrint(false);
+        return clean.body().html();
+    }  
 }

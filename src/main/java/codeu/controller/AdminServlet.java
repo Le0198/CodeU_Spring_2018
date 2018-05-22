@@ -1,5 +1,4 @@
 // Copyright 2017 Google Inc.
-//
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
@@ -22,13 +21,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/** Servlet class responsible for the profile page. */
-public class ProfileServlet extends HttpServlet {
+import org.mindrot.jbcrypt.BCrypt;
+
+/** Servlet class responsible for the admin page. */
+public class AdminServlet extends HttpServlet {
 
   /** Store class that gives access to Users. */
   private UserStore userStore;
 
-  /** Set up state for handling profile requests. */
+  /**
+   * Set up state for handling login-related requests. This method is only called when running in a
+   * server, not when running in a test.
+   */
   @Override
   public void init() throws ServletException {
     super.init();
@@ -44,30 +48,18 @@ public class ProfileServlet extends HttpServlet {
   }
 
   /**
-   * This function fires when a user navigates to the profile page.
+   * This function fires when a user requests the /admin URL. It simply forwards the request to
+   * admin.jsp.
    */
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
-    String requestUrl = request.getRequestURI();
-    String username = requestUrl.substring("/users/".length());
-
-    User user = userStore.getUser(username);
-    if (user == null) {
-      // user not found, no profile page exsts for them
-      System.out.println("User not found: " + username);
-      response.sendRedirect("/about.jsp");
-      // there's probably a better link to redirect them to, but placeholder for now
-      return;
-    }
-
-    request.setAttribute("profile", username);
-    request.getRequestDispatcher("/WEB-INF/view/profile.jsp").forward(request, response);
+    request.getRequestDispatcher("/WEB-INF/view/admin.jsp").forward(request, response);
   }
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response)
-      throws IOException, ServletException {
-        //  TODO: should allow user to edit About Me?
+            throws IOException, ServletException {
+    // TODO ¯\_(ツ)_/¯ not sure if needs to send data anywhere
   }
 }
