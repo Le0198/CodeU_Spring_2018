@@ -47,7 +47,7 @@ String profile = (String) request.getAttribute("profile");
           <p>This is your profile page.</p>
         <% } %>
       <% } %>
-        <p>This is <%=profile%>'s page.</p>
+      <p>This is <%=profile%>'s page.</p>
 
     </div>
   </div>
