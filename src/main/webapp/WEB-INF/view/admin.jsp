@@ -26,6 +26,7 @@
     <a href="/conversations">Conversations</a>
     <% if(request.getSession().getAttribute("user") != null){ %>
       <a>Hello <%= request.getSession().getAttribute("user") %>!</a>
+      <a href="/users/<%= request.getSession().getAttribute("user") %>">Your Page</a>
     <% } else{ %>
       <a href="/login">Login</a>
     <% } %>
@@ -38,15 +39,15 @@
     <% if(request.getSession().getAttribute("user") != null &&
          request.getSession().getAttribute("user").equals("leviv")){ %>
       <p>Welcome to the admin page!</p>
-      
+
     <% }  else {%>
-    
+
        <p>You do not have administrator privileges to access the page</p>
         <p>Log in to an admin page <a href="/login">here</a>.</p>
-    
+
     <% } %>
 
-    
+
   </div>
 </body>
 </html>

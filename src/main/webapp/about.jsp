@@ -26,6 +26,7 @@
     <a href="/conversations">Conversations</a>
     <% if(request.getSession().getAttribute("user") != null){ %>
       <a>Hello <%= request.getSession().getAttribute("user") %>!</a>
+      <a href="/users/<%= request.getSession().getAttribute("user") %>">Your Page</a>
     <% } else{ %>
       <a href="/login">Login</a>
     <% } %>
@@ -63,7 +64,7 @@
 		<li><strong>Levi Villarreal:</strong> A UTAustin student who likes ultimate frisbee and Breath of the Wild (BOTW is best).</li>
 		<li><strong>Jessica Zhu:</strong> A UMN student who likes Game of Thrones and Fire Emblem.</li>
 	  </ul>
-	  
+
 	  <h1>New Features and Improvements</h1>
 	  <p>
         This is your code now. Get familiar with it and get comfortable
