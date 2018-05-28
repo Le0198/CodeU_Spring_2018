@@ -69,7 +69,8 @@ public class AdminServlet extends HttpServlet {
     request.setAttribute("numConvos", conversationStore.getNumConvos());
     request.setAttribute("numMessages", messageStore.numMessages());
     request.setAttribute("newestUser", userStore.newestUser());
-    request.setAttribute("mostActive", getUser());
+    request.setAttribute("mostActive", getUser(messageStore.getMostActive()));
+    request.setAttribute("mostWordy", getUser(messageStore.getWordiest()));
     request.getRequestDispatcher("/WEB-INF/view/admin.jsp").forward(request, response);
 
   }
@@ -78,8 +79,7 @@ public class AdminServlet extends HttpServlet {
    * Get's the highest user (if there is one)
    * @return the username of the highest user
    */
-  private String getUser() {
-	  UUID u = messageStore.getMostActive();
+  private String getUser(UUID u) {
 	  
 	  // Null if there are no users
 	  if (u == null) {
