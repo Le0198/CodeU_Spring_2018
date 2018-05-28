@@ -36,9 +36,16 @@
   <div id="container">
     <h1>Admin Dashboard</h1>
 
-    <% if(request.getSession().getAttribute("user") != null &&
-         request.getSession().getAttribute("user").equals("leviv")){ %>
+    <%
+    Object curUserName = request.getSession().getAttribute("user");
+    
+    if(curUserName != null && curUserName.equals("leviv")) { %>
+     
       <p>Welcome to the admin page!</p>
+      
+      <h2>Current number of users</h2>
+      
+      <p><%= request.getAttribute("numUsers") %></p>
 
     <% }  else {%>
 

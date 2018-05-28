@@ -126,5 +126,14 @@ public class UserStore {
   public void setUsers(List<User> users) {
     this.users = users;
   }
+  
+  /**
+   * Return the number of users that have registered for the app
+   * pre: none
+   * post: the list is not altered
+   */
+  public int numUsers() { 
+	  return users.size();
+  }
 }
 
