@@ -135,5 +135,21 @@ public class UserStore {
   public int numUsers() { 
 	  return users.size();
   }
+  
+  /**
+   * Get the last registered user, at the end of the container
+   * pre: none
+   * @return
+   */
+  public String newestUser() {
+	  int conSize = users.size();
+	  
+	  // Check if there are no users
+	  if (conSize == 0) {
+		  return "No User's Yet";
+	  }
+	  
+	  return users.get(conSize - 1).getName();
+  }
 }
 

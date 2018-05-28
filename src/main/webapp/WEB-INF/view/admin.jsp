@@ -46,6 +46,18 @@
       <h2>Current number of users</h2>
       
       <p><%= request.getAttribute("numUsers") %></p>
+      
+      <h2>Current number of Conversations</h2>
+      
+      <p><%= request.getAttribute("numConvos") %></p>
+      
+      <h2>Current number of Messages</h2>
+      
+      <p><%= request.getAttribute("numMessages") %></p>
+      
+      <h2>Newest User</h2>
+      
+      <p><%= request.getAttribute("newestUser") %></p>
 
     <% }  else {%>
 

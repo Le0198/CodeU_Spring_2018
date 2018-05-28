@@ -16,6 +16,7 @@ package codeu.controller;
 import codeu.model.data.User;
 import codeu.model.store.basic.UserStore;
 import codeu.model.store.basic.ConversationStore;
+import codeu.model.store.basic.MessageStore;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -30,6 +31,8 @@ public class AdminServlet extends HttpServlet {
   /** Store class that gives access to Users. */
   private UserStore userStore;
   private ConversationStore conversationStore;
+  private MessageStore messageStore;
+
 
   /**
    * Set up state for handling login-related requests. This method is only called when running in a
@@ -38,24 +41,25 @@ public class AdminServlet extends HttpServlet {
   @Override
   public void init() throws ServletException {
     super.init();
-    setUserStore(UserStore.getInstance());
-    setConversationStore(ConversationStore.getInstance());
+    setStores(UserStore.getInstance(), ConversationStore.getInstance(), MessageStore.getInstance());
   }
 
   /**
    * Sets the UserStore used by this servlet. This function provides a common setup method for use
    * by the test framework or the servlet's init() function.
    */
-  void setUserStore(UserStore userStore) {
+  void setStores(UserStore userStore, ConversationStore conversationStore, MessageStore messageStore) {
     this.userStore = userStore;
+    this.conversationStore = conversationStore;
+    this.messageStore = messageStore;
   }
   
   /**
    * Sets the UserStore used by this servlet. This function provides a common setup method for use
    * by the test framework or the servlet's init() function.
    */
-  void setConversationStore(ConversationStore conversationStore) {
-    this.conversationStore = conversationStore;
+  void setConversationStore() {
+    
   }
 
   /**
@@ -68,6 +72,9 @@ public class AdminServlet extends HttpServlet {
     
     
     request.setAttribute("numUsers", userStore.numUsers());
+    request.setAttribute("numConvos", conversationStore.getNumConvos());
+    request.setAttribute("numMessages", messageStore.numMessages());
+    request.setAttribute("newestUser", userStore.newestUser());
     request.getRequestDispatcher("/WEB-INF/view/admin.jsp").forward(request, response);
 
   }

@@ -89,4 +89,12 @@ public class MessageStore {
   public void setMessages(List<Message> messages) {
     this.messages = messages;
   }
+  
+  /**
+   * Return the number of messsages that have been sent using the webapp
+   * @return
+   */
+  public int numMessages() {
+	  return messages.size();
+  }
 }
