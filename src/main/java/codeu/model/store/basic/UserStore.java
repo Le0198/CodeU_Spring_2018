@@ -85,6 +85,10 @@ public class UserStore {
    * @return null if the UUID does not match any existing User.
    */
   public User getUser(UUID id) {
+	if (id == null) {
+		return null;
+	}
+	  
     for (User user : users) {
       if (user.getId().equals(id)) {
         return user;
@@ -150,6 +154,7 @@ public class UserStore {
 	  }
 	  
 	  return users.get(conSize - 1).getName();
-  }
+  }  
+	  
 }
 
