@@ -18,6 +18,8 @@ import codeu.model.store.basic.UserStore;
 import codeu.model.store.basic.ConversationStore;
 import codeu.model.store.basic.MessageStore;
 import java.io.IOException;
+import java.util.UUID;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -53,15 +55,7 @@ public class AdminServlet extends HttpServlet {
     this.conversationStore = conversationStore;
     this.messageStore = messageStore;
   }
-  
-  /**
-   * Sets the UserStore used by this servlet. This function provides a common setup method for use
-   * by the test framework or the servlet's init() function.
-   */
-  void setConversationStore() {
-    
-  }
-
+ 
   /**
    * This function fires when a user requests the /admin URL. It simply forwards the request to
    * admin.jsp.
@@ -75,8 +69,31 @@ public class AdminServlet extends HttpServlet {
     request.setAttribute("numConvos", conversationStore.getNumConvos());
     request.setAttribute("numMessages", messageStore.numMessages());
     request.setAttribute("newestUser", userStore.newestUser());
+    request.setAttribute("mostActive", getUser());
     request.getRequestDispatcher("/WEB-INF/view/admin.jsp").forward(request, response);
 
+  }
+  
+  /**
+   * Get's the highest user (if there is one)
+   * @return the username of the highest user
+   */
+  private String getUser() {
+	  UUID u = messageStore.getMostActive();
+	  
+	  // Null if there are no users
+	  if (u == null) {
+		  return "No users yet";
+	  }
+	  
+	  User highestUser = userStore.getUser(u);
+	  
+	  // This should never be null
+	  if (highestUser == null) {
+		  return "User not found";
+	  }
+	  
+	  return highestUser.getName();
   }
 
   @Override

@@ -58,6 +58,10 @@
       <h2>Newest User</h2>
       
       <p><%= request.getAttribute("newestUser") %></p>
+      
+      <h2>Most Active User</h2>
+      
+      <p><%= request.getAttribute("mostActive") %></p>
 
     <% }  else {%>
 
