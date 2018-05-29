@@ -21,6 +21,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.jsoup.Jsoup;
+import org.jsoup.safety.Cleaner;
+import org.jsoup.safety.Whitelist;
 
 /** Servlet class responsible for the profile page. */
 public class ProfileServlet extends HttpServlet {
@@ -54,7 +57,7 @@ public class ProfileServlet extends HttpServlet {
 
     User user = userStore.getUser(username);
     if (user == null) {
-      // user not found, no profile page exsts for them
+      // user not found, no profile page exists for them
       System.out.println("User not found: " + username);
       response.sendRedirect("/about.jsp");
       // there's probably a better link to redirect them to, but placeholder for now
@@ -65,9 +68,36 @@ public class ProfileServlet extends HttpServlet {
     request.getRequestDispatcher("/WEB-INF/view/profile.jsp").forward(request, response);
   }
 
+  /**
+   * If a user is logged in, this function allows them to edit their About Me section.
+   */
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
-        //  TODO: should allow user to edit About Me?
+
+        String username = (String) request.getSession().getAttribute("user");
+        if (username == null) {
+          // user is not logged in
+          response.sendRedirect("/login");
+          return;
+        }
+
+        User user = userStore.getUser(username);
+        if (user == null) {
+          // user was not found
+          response.sendRedirect("/login");
+          return;
+        }
+
+        String requestUrl = request.getRequestURI();
+        String userUrl = requestUrl.substring("/users/".length());
+
+        String aboutMeDescrip = request.getParameter("aboutme");
+        // removes HTML from the message content
+        String cleanAboutMeDescrip = Jsoup.clean(aboutMeDescrip, Whitelist.none());
+
+        user.setAboutMe(aboutMeDescrip);
+        userStore.updateUser(user);
+        response.sendRedirect("/users/" + username);
   }
 }

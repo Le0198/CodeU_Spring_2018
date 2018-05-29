@@ -91,7 +91,7 @@ public class ChatServlet extends HttpServlet {
       String conversationTitle = requestUrl.substring("/chat/".length());
 
       Conversation conversation = conversationStore.getConversationWithTitle(conversationTitle);
-      
+
         if (conversation == null) {
           // couldn't find conversation, redirect to conversation list
           System.out.println("Conversation was null: " + conversationTitle);
@@ -161,7 +161,7 @@ public class ChatServlet extends HttpServlet {
     // redirect to a GET request
     response.sendRedirect("/chat/" + conversationTitle);
   }
-    
+
     /**
      * Override the JSoup Clean method to avoid the newline character
      * Thanks to Chineye for the advice
@@ -172,5 +172,5 @@ public class ChatServlet extends HttpServlet {
         Document clean = cleaner.clean(dirty);
         clean.outputSettings().prettyPrint(false);
         return clean.body().html();
-    }  
+    }
 }

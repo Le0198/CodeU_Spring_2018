@@ -13,9 +13,11 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 --%>
-
+<%@ page import="codeu.model.data.User" %>
+<%@ page import="codeu.model.store.basic.UserStore" %>
 <%
 String profile = (String) request.getAttribute("profile");
+User username = UserStore.getInstance().getUser(profile);
 %>
 
 <!DOCTYPE html>
@@ -23,17 +25,23 @@ String profile = (String) request.getAttribute("profile");
 <head>
   <title><%=profile%></title>
   <link rel="stylesheet" href="/css/main.css">
+  <style>
+    textarea {
+      width: 750px;
+      height: 100px;
+    }
+  </style>
 </head>
 <body>
 
   <nav>
     <a id="navTitle" href="/">CodeU Chat App</a>
     <a href="/conversations">Conversations</a>
-
     <% if(request.getSession().getAttribute("user") != null){ %>
-    <a>Hello <%= request.getSession().getAttribute("user") %>!</a>
+      <a>Hello <%= request.getSession().getAttribute("user") %>!</a>
+      <a href="/users/<%= request.getSession().getAttribute("user") %>">Your Page</a>
     <% } else{ %>
-    <a href="/login">Login</a>
+      <a href="/login">Login</a>
     <% } %>
 
     <a href="/about.jsp">About</a>
@@ -46,13 +54,16 @@ String profile = (String) request.getAttribute("profile");
       style="width:75%; margin-left:auto; margin-right:auto; margin-top: 50px;">
 
       <h1><%=profile%>'s Profile Page</h1>
-      <% if (request.getSession().getAttribute("user") == null) { %>
-        <p>This is <%=profile%>'s page.</p>
-      <% } else { %>
+      <h2>About <%=profile%></h2>
+      <p><%=username.getAboutMe() %></p>
+      <% if (request.getSession().getAttribute("user") != null) { %>
         <% if (request.getSession().getAttribute("user").equals(profile)) { %>
-          <p>This is your profile page.</p>
-        <% } else { %>
-          <p>This is <%=profile%>'s page.</p> <%-- this is the same as the if null case, condense it later --%>
+          <h3>Edit your About Me</h3>
+            <form action="/users/<%= profile %>" method="POST">
+              <textarea type="text" name="aboutme" id="aboutme"></textarea>
+              <br/>
+              <button type="submit">Submit</button>
+            </form>
         <% } %>
       <% } %>
 

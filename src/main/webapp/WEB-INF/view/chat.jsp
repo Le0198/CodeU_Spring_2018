@@ -66,7 +66,7 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
 
     <a href="/activity">Activity Feed</a>
   </nav>
-
+  
   <div id="container">
 
     <h1><%= conversation.getTitle() %>
