@@ -98,7 +98,7 @@
       <artifactId>appengine-tools-sdk</artifactId>
       <version>1.9.60</version>
       <scope>test</scope>
-    </dependency>
+    </dependency>   
 
   </dependencies>
 
