@@ -23,7 +23,6 @@ public class ServerStartupListener implements ServletContextListener {
   public void contextInitialized(ServletContextEvent sce) {
     try {
       List<User> users = PersistentStorageAgent.getInstance().loadUsers();
-      //List<String> aboutMes = PersistentStorageAgent.getInstance().loadAboutMes();
       UserStore.getInstance().setUsers(users);
 
       List<Conversation> conversations = PersistentStorageAgent.getInstance().loadConversations();
