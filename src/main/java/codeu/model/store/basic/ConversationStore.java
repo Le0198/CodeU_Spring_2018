@@ -16,8 +16,11 @@ package codeu.model.store.basic;
 
 import codeu.model.data.Conversation;
 import codeu.model.store.persistence.PersistentStorageAgent;
+
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * Store class that uses in-memory data structures to hold values and automatically loads from and
@@ -100,4 +103,15 @@ public class ConversationStore {
   public void setConversations(List<Conversation> conversations) {
     this.conversations = conversations;
   }
+  
+  /**
+   * Return the number of total conversations
+   * pre: none
+   * post: the list is not altered
+   * @return the numver of conversations
+   */
+  public int getNumConvos() {
+	  return conversations.size();
+  }
+  
 }
