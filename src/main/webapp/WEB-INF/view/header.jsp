@@ -13,9 +13,12 @@
       <a href="/login">Login</a>
     <% } %>
     <a href="/about.jsp">About</a>
+    <a href="/activity">Activity Feed</a>
+
     <% 
        if(curUserName != null && curUserName.equals("leviv")) { %>
         <a href="/admin">Admin</a>
     <% } %>
+    
     
   </nav>
