@@ -150,6 +150,38 @@ public class PersistentDataStore {
     return messages;
   }
 
+  /**
+   * Loads all Message objects from the Datastore service and returns them in a List, sorted in
+   * ascending order by creation time.
+   *
+   * @throws PersistentDataStoreException if an error was detected during the load from the
+   *     Datastore service
+   */
+  public List<Activity> loadActivities() throws PersistentDataStoreException {
+    List<Activity> activities = new ArrayList<>();
+
+    // Retrieve all messages from the datastore.
+    Query query = new Query("chat-activities").addSort("creation_time", SortDirection.ASCENDING);
+    PreparedQuery results = datastore.prepare(query);
+
+    for (Entity entity : results.asIterable()) {
+      try {
+        UUID uuid = UUID.fromString((String) entity.getProperty("uuid"));
+        String content = (String) entity.getProperty("content");
+        Instant creationTime = Instant.parse((String) entity.getProperty("creation_time"));
+        Activity activity = new Activity(uuid, content, creationTime);
+        activities.add(activity);
+      } catch (Exception e) {
+        // In a production environment, errors should be very rare. Errors which may
+        // occur include network errors, Datastore service errors, authorization errors,
+        // database entity definition mismatches, or service mismatches.
+        throw new PersistentDataStoreException(e);
+      }
+    }
+
+    return activities;
+  }
+
   /** Write a User object to the Datastore service. */
   public void writeThrough(User user) {
     Entity userEntity = new Entity("chat-users", user.getId().toString());
@@ -185,7 +217,6 @@ public class PersistentDataStore {
   public void writeThrough(Activity activity) {
     Entity activityEntity = new Entity("chat-activities", activity.getId().toString());
     activityEntity.setProperty("uuid", activity.getId().toString());
-    activityEntity.setProperty("owner_uuid", activity.getOwnerId().toString());
     activityEntity.setProperty("content", activity.getContent());
     activityEntity.setProperty("creation_time", activity.getCreationTime().toString());
     datastore.put(activityEntity);
