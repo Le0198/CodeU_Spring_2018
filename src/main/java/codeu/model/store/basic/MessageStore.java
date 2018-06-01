@@ -17,6 +17,7 @@ package codeu.model.store.basic;
 import codeu.model.data.Message;
 import codeu.model.store.persistence.PersistentStorageAgent;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
@@ -89,4 +90,95 @@ public class MessageStore {
   public void setMessages(List<Message> messages) {
     this.messages = messages;
   }
+  
+  /**
+   * Return the number of messsages that have been sent using the webapp
+   * @return
+   */
+  public int numMessages() {
+	  return messages.size();
+  }
+  
+  /**
+   * Get the UUID of the user with the most messages
+   * @return the UUID
+   */
+  public UUID getMostActive() {
+	  
+	  HashMap<UUID, int[]> messageFreq = new HashMap<>();
+	  
+	  // Loop through every message
+	  for (Message m : messages) {
+		  UUID temp = m.getAuthorId();
+		  		  
+		  // Assign message to a user
+		  if (messageFreq.get(temp) == null) {
+			  messageFreq.put(temp, new int[]{0});
+		  }
+		  
+		  messageFreq.get(temp)[0]++;
+	  }
+	  
+	  UUID highestUser = null;
+	  int highestNumMessages = 0;
+	  
+	  // Loop through the map to get the highest number
+	  for (UUID u : messageFreq.keySet()) {
+		  int cur = messageFreq.get(u)[0];
+		  
+		  if (cur > highestNumMessages) {
+			  highestUser = u;
+			  highestNumMessages = cur;
+		  }
+	  }
+	  
+	  return highestUser;
+  }
+  
+  /**
+   * Get the UUID of the user who has typed the most word
+   * @return the UUID
+   */
+  public UUID getWordiest() {
+	  
+	  HashMap<UUID, int[]> messageFreq = new HashMap<>();
+	  
+	  // Loop through every message
+	  for (Message m : messages) {
+		  
+		  String content = m.getContent();
+		  int numSpaces = 0;
+		  
+		  for (int i = 0; i < content.length(); i++) {
+			  if (content.charAt(i) == ' ') {
+				  numSpaces++;
+			  }
+		  }
+		  
+		  UUID temp = m.getAuthorId();
+		  		  
+		  // Assign message to a user
+		  if (messageFreq.get(temp) == null) {
+			  messageFreq.put(temp, new int[]{0});
+		  }
+		  
+		  messageFreq.get(temp)[0]+= (numSpaces + 1);
+	  }
+	  
+	  UUID highestUser = null;
+	  int highestNumMessages = 0;
+	  
+	  // Loop through the map to get the highest number
+	  for (UUID u : messageFreq.keySet()) {
+		  int cur = messageFreq.get(u)[0];
+		  
+		  if (cur > highestNumMessages) {
+			  highestUser = u;
+			  highestNumMessages = cur;
+		  }
+	  }
+	  
+	  return highestUser;
+  }
+  
 }

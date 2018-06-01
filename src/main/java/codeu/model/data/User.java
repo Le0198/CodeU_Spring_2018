@@ -63,7 +63,8 @@ public class User {
 
   /** Returns the about me of the User. */
   public String getAboutMe() {
-    return aboutMe;
+    if (aboutMe == null) return "";
+    else return aboutMe;
   }
 
   /** Changes the about me content of the User. */

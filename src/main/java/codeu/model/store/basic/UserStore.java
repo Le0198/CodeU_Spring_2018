@@ -85,6 +85,10 @@ public class UserStore {
    * @return null if the UUID does not match any existing User.
    */
   public User getUser(UUID id) {
+	if (id == null) {
+		return null;
+	}
+	  
     for (User user : users) {
       if (user.getId().equals(id)) {
         return user;
@@ -126,5 +130,30 @@ public class UserStore {
   public void setUsers(List<User> users) {
     this.users = users;
   }
+  
+  /**
+   * Return the number of users that have registered for the app
+   * pre: none
+   * post: the list is not altered
+   */
+  public int numUsers() { 
+	  return users.size();
+  }
+  
+  /**
+   * Get the last registered user, at the end of the container
+   * pre: none
+   * @return
+   */
+  public String newestUser() {
+	  int conSize = users.size();
+	  
+	  // Check if there are no users
+	  if (conSize == 0) {
+		  return "No User's Yet";
+	  }
+	  
+	  return users.get(conSize - 1).getName();
+  }  
+	  
 }
-
