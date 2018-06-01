@@ -14,6 +14,7 @@
 
 package codeu.model.store.persistence;
 
+import codeu.model.data.Activity;
 import codeu.model.data.Conversation;
 import codeu.model.data.Message;
 import codeu.model.data.User;
@@ -178,6 +179,16 @@ public class PersistentDataStore {
     conversationEntity.setProperty("title", conversation.getTitle());
     conversationEntity.setProperty("creation_time", conversation.getCreationTime().toString());
     datastore.put(conversationEntity);
+  }
+
+  /** Write an Activity object to the Datastore service. */
+  public void writeThrough(Activity activity) {
+    Entity activityEntity = new Entity("chat-activities", activity.getId().toString());
+    activityEntity.setProperty("uuid", activity.getId().toString());
+    activityEntity.setProperty("owner_uuid", activity.getOwnerId().toString());
+    activityEntity.setProperty("content", activity.getContent());
+    activityEntity.setProperty("creation_time", activity.getCreationTime().toString());
+    datastore.put(activityEntity);
   }
 }
 
