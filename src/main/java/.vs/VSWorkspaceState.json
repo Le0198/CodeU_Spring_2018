@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\codeu",
+    "\\codeu\\controller",
+    "\\codeu\\model",
+    "\\codeu\\model\\data",
+    "\\codeu\\model\\store",
+    "\\codeu\\model\\store\\basic",
+    "\\codeu\\model\\store\\persistence"
+  ],
+  "SelectedNode": "\\codeu\\controller\\ChatServlet.java",
+  "PreviewInSolutionExplorer": false
+}

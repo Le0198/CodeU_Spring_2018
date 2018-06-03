@@ -1,4 +1,5 @@
-<%--
+<%@ page import="codeu.model.data.Activity" %>
+<%@ page import="java.util.List" %><%--
   Copyright 2017 Google Inc.
 
   Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,6 +27,29 @@
   <div id="container">
 
       <p>This is the activity feed.</p>
+      <br>
+      <%
+        List<Activity> activities =
+                (List<Activity>) request.getAttribute("activities");
+        if(activities == null || activities.isEmpty()){
+      %>
+      <p>Nothing has happened.</p>
+      <%
+      }
+      else{
+      %>
+      <ul class="mdl-list">
+        <%
+          for(Activity activity : activities){
+        %>
+        <li> <%= activity.getContent()%></li>
+        <%
+          }
+        %>
+      </ul>
+      <%
+        }
+      %>
 
     </div>
   </div>

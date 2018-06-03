@@ -26,7 +26,6 @@
 
 <%@ include file="header.jsp" %>  
 
-
   <div class="container">
 
     <% if(request.getAttribute("error") != null){ %>

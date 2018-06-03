@@ -23,7 +23,7 @@
 <body id="admin">
 
 <%@ include file="header.jsp" %>  
-
+  
   <div class="container">
     <h1><span>Admin Dashboard</span></h1>
 
