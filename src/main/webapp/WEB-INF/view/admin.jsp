@@ -20,61 +20,70 @@
   <%@ include file="meta.jsp" %>  
 
 </head>
-<body>
+<body id="admin">
 
 <%@ include file="header.jsp" %>  
- 
-  <div id="container">
-    <h1>Admin Dashboard</h1>
+  
+  <div class="container">
+    <h1><span>Admin Dashboard</span></h1>
 
     <%
     
     if(curUserName != null && curUserName.equals("leviv")) { %>
-     
-      <h2>Welcome to the admin page!</h2>
       
-      <hr>
+      <h2><span>Site Stats</span></h2>
+      <br/>
+      <div class="row stat-row">
+          <div class="col-sm-4">
+              <h3>Current number of users</h3>
+              <p><%= request.getAttribute("numUsers") %></p>
+          </div>
+          
+          <div class="col-sm-4">
+              <h3>Current number of Conversations</h3>
+              <p><%= request.getAttribute("numConvos") %></p>
+          </div>
+          
+          <div class="col-sm-4">
+              <h3>Current number of Messages</h3>
+              <p><%= request.getAttribute("numMessages") %></p>
+          </div>
+      </div>
       
-      <h2>Site Stats</h2>
+      <div class="row stat-row">
+          <div class="col-sm-4">
+              <h3>Newest User</h3>
+              <p><%= request.getAttribute("newestUser") %></p>
+          </div>
+          
+          <div class="col-sm-4">
+              <h3>Most Active User</h3>
+              <p><%= request.getAttribute("mostActive") %></p>
+          </div>
+          
+          <div class="col-sm-4">
+              <h3>Most Wordy User</h3>
+              <p><%= request.getAttribute("mostWordy") %></p>
+          </div>
+      </div>
+        
       
-      <h3>Current number of users</h3>
+      <hr><br/>
       
-      <p><%= request.getAttribute("numUsers") %></p>
-      
-      <h3>Current number of Conversations</h3>
-      
-      <p><%= request.getAttribute("numConvos") %></p>
-      
-      <h3>Current number of Messages</h3>
-      
-      <p><%= request.getAttribute("numMessages") %></p>
-      
-      <h3>Newest User</h3>
-      
-      <p><%= request.getAttribute("newestUser") %></p>
-      
-      <h3>Most Active User</h3>
-      
-      <p><%= request.getAttribute("mostActive") %></p>
-      
-      <h3>Most Wordy User</h3>
-      
-      <p><%= request.getAttribute("mostWordy") %></p>
-      
-      <hr>
-      
-      <h2>Import Data</h2>
-      
+      <h2><span>Import Data</span></h2>
+      <br/><br/>
     <% if(request.getAttribute("error") != null){ %>
         <h2 style="color:red"><%= request.getAttribute("error") %></h2>
     <% } %>
 
-    <form action="/admin" method="POST" enctype = "multipart/form-data">
-        <label for="username">File: </label>
-        <br/>
-        <input name="myFile" type="file" id="myFile" enctype="multipart/form-data" accept=".txt">
-        <button type="submit">Submit</button>
-    </form>
+    <div class="new-convo">
+        <form action="/admin" method="POST" enctype = "multipart/form-data">
+            <label for="username">File: </label>
+            <input name="myFile" type="file" id="myFile" enctype="multipart/form-data" accept=".txt" class="file-button">
+            <br/><br/>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 
     <% }  else {%>
 
@@ -82,8 +91,12 @@
         <p>Log in to an admin page <a href="/login">here</a>.</p>
 
     <% } %>
+            <br/>
+            <br/>
 
 
   </div>
+  <%@ include file="footer.jsp" %>  
+
 </body>
 </html>

@@ -26,52 +26,76 @@
 
 <%@ include file="header.jsp" %>  
 
-  <div id="container">
+  <div class="container">
 
     <% if(request.getAttribute("error") != null){ %>
         <h2 style="color:red"><%= request.getAttribute("error") %></h2>
     <% } %>
 
     <% if(request.getSession().getAttribute("user") != null){ %>
-      <h1>New Conversation</h1>
-      <form action="/conversations" method="POST">
-          <div class="form-group">
-            <label class="form-control-label">Title:</label>
-          <input type="text" name="conversationTitle">
+      <h1><span>New Conversation</span></h1>
+      
+    <div class="new-convo">
+        <form action="/conversations" method="POST">
+        <span class="input input--hoshi">
+        <input class="input__field input__field--hoshi" type="text" id="input-4" name="conversationTitle" />
+        <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
+            <span class="input__label-content input__label-content--hoshi">Title</span>
+        </label>
+        </span>
+       
+        <div class="button-con">
+            <button type="submit">Create</button>
         </div>
-
-        <button type="submit">Create</button>
       </form>
+    </div>
 
       <hr/>
     <% } %>
 
-    <h1>Conversations</h1>
+    <h1><span>Conversations</span></h1>
 
-    <%
-    List<Conversation> conversations =
-      (List<Conversation>) request.getAttribute("conversations");
+    <% List<Conversation> conversations = (List<Conversation>) request.getAttribute("conversations");
+    
     if(conversations == null || conversations.isEmpty()){
     %>
       <p>Create a conversation to get started.</p>
-    <%
-    }
-    else{
-    %>
-      <ul class="mdl-list">
-    <%
-      for(Conversation conversation : conversations){
-    %>
-      <li><a href="/chat/<%= conversation.getTitle() %>">
-        <%= conversation.getTitle() %></a></li>
-    <%
-      }
-    %>
-      </ul>
-    <%
-    }
-    %>
-    <hr/>
+      
+    <% } else { %>
+        
+        
+         <%
+            int numOfCols = 3;
+            int rowCount = 0;
+            int bootstrapColWidth = 12 / numOfCols;
+            int fieldCount = -1;
+            
+            for(Conversation conversation : conversations){
+                fieldCount++;
+            }
+            
+            %>
+            <div class="row">
+                <% for(Conversation conversation2 : conversations){ %>
+                    <div class="col-sm-<%= bootstrapColWidth %> organization">
+                        <div class="convo">
+                            <a href="/chat/<%= conversation2.getTitle() %>" class="hover">
+                        <%= conversation2.getTitle() %></a>
+                        </div>
+                    </div>
+
+                    <% rowCount++;
+                    if(rowCount % numOfCols == 0) {  %>
+                        </div><div class="row">
+                    <% } %>
+                <% } %>
+            </div>        
+        
+    <% }%>
+    <br/><br/>
   </div>
+
+<%@ include file="footer.jsp" %>  
+
 </body>
 </html>

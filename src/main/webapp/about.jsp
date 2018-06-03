@@ -23,11 +23,9 @@
 
 <%@ include file="WEB-INF/view/header.jsp" %>  
 
-  <div id="container">
-    <div
-      style="width:75%; margin-left:auto; margin-right:auto; margin-top: 50px;">
+  <div class="container">
 
-      <h1>About the CodeU Chat App</h1>
+      <h1><span>About the CodeU Chat App</span></h1>
       <p>
         This is an example chat application designed to be a starting point
         for your CodeU project team work. Here's some stuff to think about:
@@ -48,14 +46,24 @@
           internationalization.</li>
       </ul>
 
-      <h1>About Team 11</h1>
-	  <ul>
-		<li><strong>Leonardo Lopez:</strong> A UIUC student who likes volleyball and League of Legends.</li>
-		<li><strong>Levi Villarreal:</strong> A UTAustin student who likes ultimate frisbee and Breath of the Wild (BOTW is best).</li>
-		<li><strong>Jessica Zhu:</strong> A UMN student who likes Game of Thrones and Fire Emblem.</li>
-	  </ul>
+      <h1><span>About Team 11</span></h1>
+      
+      <div class="row team">
+          <div class="col-sm-4">
+              <h3>Leonardo Lopez</h3>
+              <p>A UIUC student who likes volleyball and League of Legends.</p>
+          </div>
+          <div class="col-sm-4">
+              <h3>Levi Villarreal</h3>
+              <p>A UIUC student who likes volleyball and League of Legends.</p>
+          </div>
+          <div class="col-sm-4">
+              <h3>Jessica Zhu</h3>
+              <p>A UMN student who likes Game of Thrones and Fire Emblem.</p>
+          </div>
+      </div>
 
-	  <h1>New Features and Improvements</h1>
+	  <h1><span>New Features and Improvements</span></h1>
 	  <p>
         This is your code now. Get familiar with it and get comfortable
         working with your team to plan and make changes. Start by updating the
@@ -65,5 +73,8 @@
 	  </p>
     </div>
   </div>
+
+<%@ include file="WEB-INF/view/footer.jsp" %>  
+
 </body>
 </html>

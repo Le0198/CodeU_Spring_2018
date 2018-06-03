@@ -24,11 +24,9 @@
 
 <%@ include file="header.jsp" %>  
 
-  <div id="container">
-    <div
-      style="width:75%; margin-left:auto; margin-right:auto; margin-top: 50px;">
+  <div class="container">
 
-      <p>This is the activity feed.</p>
+      <h1><span>Activity Feed</span></h1>
       <br>
       <%
         List<Activity> activities =
@@ -40,20 +38,21 @@
       }
       else{
       %>
-      <ul class="mdl-list">
         <%
           for(Activity activity : activities){
         %>
-        <li> <%= activity.getContent()%></li>
+        <p class="convo"> <%= activity.getContent()%></p>
         <%
           }
         %>
-      </ul>
       <%
         }
       %>
 
     </div>
   </div>
+  
+<%@ include file="footer.jsp" %>  
+
 </body>
 </html>
