@@ -278,7 +278,7 @@ footer {
 button-con {
   width: 100%; }
 
-button {
+button, .file-button {
   background: #fff;
   color: #7277A8;
   border: 2px solid #7277A8;
@@ -288,7 +288,7 @@ button {
   -ms-transition: all 1s;
   -moz-transition: all 1s;
   -o-transition: all 1s; }
-  button:hover {
+  button:hover, .file-button:hover {
     color: #fff;
     background: #7277A8;
     transition: all 1s;
@@ -648,5 +648,15 @@ footer {
 .new-convo {
   text-align: center;
   margin: 0 auto; }
+
+#admin h2 {
+  text-align: center; }
+  #admin h2 span {
+    border-bottom: 2px solid #7277A8; }
+#admin .stat-row {
+  margin: 15px; }
+  #admin .stat-row p {
+    padding: 15px;
+    background: #eee; }
 
 /*# sourceMappingURL=styles.css.map */
