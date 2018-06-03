@@ -26,7 +26,7 @@
 
   <div class="container">
 
-      <p>This is the activity feed.</p>
+      <h1><span>Activity Feed</span></h1>
       <br>
       <%
         List<Activity> activities =

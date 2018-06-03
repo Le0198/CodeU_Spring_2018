@@ -81,7 +81,7 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
         </textarea>
         <br/>
         <div class="button-con">
-            <button type="submit" class="text-center">Create</button>
+            <button type="submit" class="text-center">Send</button>
         </div>
         <br/>
     </form>

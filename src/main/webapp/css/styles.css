@@ -621,8 +621,7 @@ footer {
 
 .convo-con {
   max-width: 500px;
-  padding-top: 25px;
-  margin: 0 auto;
+  margin: 25px auto;
   background: #fff;
   border-radius: 9px;
   -webkit-border-radius: 9px;
