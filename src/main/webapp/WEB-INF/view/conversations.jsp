@@ -36,17 +36,20 @@
     <% if(request.getSession().getAttribute("user") != null){ %>
       <h1><span>New Conversation</span></h1>
       
-    <span class="input input--hoshi">
+    <div class="new-convo">
+        <form action="/conversations" method="POST">
+        <span class="input input--hoshi">
         <input class="input__field input__field--hoshi" type="text" id="input-4" name="conversationTitle" />
         <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
             <span class="input__label-content input__label-content--hoshi">Title</span>
         </label>
-    </span>
+        </span>
        
         <div class="button-con">
             <button type="submit">Create</button>
         </div>
       </form>
+    </div>
 
       <hr/>
     <% } %>
@@ -60,15 +63,37 @@
       <p>Create a conversation to get started.</p>
       
     <% } else { %>
-    
-        <ul class="mdl-list">
-            <% for(Conversation conversation : conversations){ %>
+        
+        
+         <%
+            int numOfCols = 3;
+            int rowCount = 0;
+            int bootstrapColWidth = 12 / numOfCols;
+            int fieldCount = -1;
+            
+            for(Conversation conversation : conversations){
+                fieldCount++;
+            }
+            
+            %>
+            <div class="row">
+                <% for(Conversation conversation2 : conversations){ %>
+                    <div class="col-sm-<%= bootstrapColWidth %> organization">
+                        <div class="convo">
+                            <a href="/chat/<%= conversation2.getTitle() %>" class="hover">
+                        <%= conversation2.getTitle() %></a>
+                        </div>
+                    </div>
 
-                <li><a href="/chat/<%= conversation.getTitle() %>" class="hover">
-                <%= conversation.getTitle() %></a></li>
-            <% } %>
-        </ul>
+                    <% rowCount++;
+                    if(rowCount % numOfCols == 0) {  %>
+                        </div><div class="row">
+                    <% } %>
+                <% } %>
+            </div>        
+        
     <% }%>
+    <br/><br/>
   </div>
 
 <%@ include file="footer.jsp" %>  
