@@ -32,17 +32,15 @@ User username = UserStore.getInstance().getUser(profile);
     }
   </style>
 </head>
-<body>
+<body id="convo-body">
 
 <%@ include file="header.jsp" %>  
-
-  <div id="container">
-    <div
-      style="width:75%; margin-left:auto; margin-right:auto; margin-top: 50px;">
+  <div class="convo-con">
+  <div class="container">
 
       <h1><%=profile%>'s Profile Page</h1>
       <h2>About <%=profile%></h2>
-      <p><%=username.getAboutMe() %></p>
+      <p class="about-me"><%=username.getAboutMe() %></p>
       <% if (request.getSession().getAttribute("user") != null) { %>
         <% if (request.getSession().getAttribute("user").equals(profile)) { %>
           <h3>Edit your About Me</h3>
@@ -50,9 +48,11 @@ User username = UserStore.getInstance().getUser(profile);
               <textarea type="text" name="aboutme" id="aboutme"></textarea>
               <br/>
               <button type="submit">Submit</button>
+
             </form>
         <% } %>
       <% } %>
+              <br/>
 
     </div>
   </div>

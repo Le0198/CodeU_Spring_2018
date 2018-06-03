@@ -49,10 +49,11 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
     };
   </script>
 </head>
-<body onload="scrollChat()">
+<body onload="scrollChat()" id="convo-body">
 
 <%@ include file="header.jsp" %>  
   
+  <div class="convo-con">
   <div class="container">
 
     <h1><%= conversation.getTitle() %>
@@ -74,21 +75,22 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
       </ul>
     </div>
 
-    <hr/>
-
     <% if (request.getSession().getAttribute("user") != null) { %>
     <form action="/chat/<%= conversation.getTitle() %>" method="POST">
         <textarea type="text" name="message" id="mytextarea">
         </textarea>
         <br/>
-        <button type="submit">Send</button>
+        <div class="button-con">
+            <button type="submit" class="text-center">Create</button>
+        </div>
+        <br/>
     </form>
     <% } else { %>
-      <p><a href="/login">Login</a> to send a message.</p>
+      <p class="text-center"><br><br><a href="/login" class="hover">Login</a> to send a message.<br><br></p>
     <% } %>
 
-    <hr/>
 
+  </div>
   </div>
   <%@ include file="footer.jsp" %>  
 
