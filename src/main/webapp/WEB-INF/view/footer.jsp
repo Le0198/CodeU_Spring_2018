@@ -9,7 +9,7 @@
                 <p>Coded w/ <i class="fas fa-heart"></i> by Team: "//TODO: Team Name"</p>
             </div>
             <div class="col-sm-6 right-footer">
-                <p>View the <a href="/about.jsp">about</a> page to learn more about the project.</p>
+                <p>View the <a href="/about.jsp" class="footer" class="hover">about</a> page to learn more about the project.</p>
             </div>
         </div>
     </div>

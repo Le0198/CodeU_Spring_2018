@@ -23,26 +23,44 @@
 
 <%@ include file="header.jsp" %>  
 
-  <div id="container">
-    <h1>Register</h1>
+
+<div class="log-con">
+  <div class="container">
+    <h1><span>Register</span></h1>
 
     <% if(request.getAttribute("error") != null){ %>
         <h2 style="color:red"><%= request.getAttribute("error") %></h2>
     <% } %>
 
-    <form action="/register" method="POST">
-      <label for="username">Username: </label>
-      <br/>
-      <input type="text" name="username" id="username">
-      <br/>
-      <label for="password">Password: </label>
-      <br/>
-      <input type="password" name="password" id="password">
-      <br/><br/>
-      <button type="submit">Submit</button>
-    </form>
-  </div>
+    <div class="contact-con">
+        <form action="/register" method="POST">
+             <div class="row">
+                 <div class="col-sm-12">
+                <span class="input input--hoshi">
+                    <input class="input__field input__field--hoshi" type="text" id="input-4" name="username" />
+                    <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
+                        <span class="input__label-content input__label-content--hoshi">Username</span>
+                    </label>
+                </span>
 
+                <span class="input input--hoshi">
+                    <input class="input__field input__field--hoshi" type="password" id="input-4" name="password" />
+                    <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
+                        <span class="input__label-content input__label-content--hoshi">Password</span>
+                    </label>
+                </span>
+
+                <div class="button-con">
+                    <button type="submit">Login</button>
+                </div>
+                </div>
+            </div>
+        </form>
+    </div>
+   
+  </div>
+  </div>
+  
 <%@ include file="footer.jsp" %>  
 
 </body>

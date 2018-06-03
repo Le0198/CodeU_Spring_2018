@@ -44,10 +44,10 @@ h1, h1 span {
   overflow: hidden;
   color: #00171F; }
   .hover:hover {
-    color: #00A8E8;
+    color: #878cbc;
     background-position: 0% -195%;
     text-decoration: none;
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 50%, #00A8E8 50%); }
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 50%, #878cbc 50%); }
 
 .btn-empty {
   background: rgba(250, 250, 250, 0);
@@ -59,6 +59,12 @@ h1, h1 span {
   -o-transition: all 0.5s; }
   .btn-empty:hover {
     background: rgba(0, 0, 0, 0.2) !important; }
+
+.container h1 {
+  text-align: center;
+  padding: 75px 0; }
+  .container h1 span {
+    border-bottom: 2px solid #878cbc; }
 
 /* ===============================
  * Navbar
@@ -81,7 +87,7 @@ h1, h1 span {
   text-align: left;
   position: fixed;
   display: block;
-  top: 50%;
+  top: 40%;
   left: -100%;
   transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
@@ -112,18 +118,18 @@ h1, h1 span {
     font-size: 25px;
     margin-bottom: 20px;
     text-transform: none;
-    border-bottom: 2px solid #00A8E8; }
+    border-bottom: 2px solid #878cbc; }
     .nav-item p span {
       font-weight: 100;
-      color: #00A8E8;
+      color: #878cbc;
       font-size: 45px; }
   .nav-item h2 {
-    color: #00A8E8; }
+    color: #878cbc; }
     .nav-item h2 span {
       font-weight: 100;
       margin-right: 20px;
-      color: #00A8E8;
-      border-bottom: 2px solid #00A8E8; }
+      color: #878cbc;
+      border-bottom: 2px solid #878cbc; }
 
 #nav-expand {
   background: #001219;
@@ -131,7 +137,7 @@ h1, h1 span {
   background-attachment: fixed;
   background-size: cover;
   height: 100%;
-  color: #00A8E8;
+  color: #878cbc;
   display: inherit;
   z-index: 99999999;
   transition: background 0.5s;
@@ -180,7 +186,7 @@ h1, h1 span {
     left: 9px;
     right: 9px;
     height: 3px;
-    background: #00A8E8; }
+    background: #878cbc; }
     .c-hamburger span::before, .c-hamburger span::after {
       content: "";
       position: absolute;
@@ -188,7 +194,7 @@ h1, h1 span {
       left: 0;
       width: 100%;
       height: 3px;
-      background-color: #00A8E8; }
+      background-color: #878cbc; }
     .c-hamburger span::before {
       top: -10px; }
     .c-hamburger span::after {
@@ -209,7 +215,7 @@ h1, h1 span {
   .c-hamburger--htx:hover {
     background-color: #00090c; }
     .c-hamburger--htx:hover span {
-      background: #00A8E8; }
+      background: #878cbc; }
   .c-hamburger--htx.is-active span {
     background: none;
     transition-delay: 0s, 0.3s; }
@@ -248,7 +254,7 @@ h1, h1 span {
     -moz-transition: all 0.2s;
     -o-transition: all 0.2s; }
 .c-hamburger--htra:hover span {
-  background: #00A8E8; }
+  background: #878cbc; }
   .c-hamburger--htra:hover span::before {
     transform-origin: top left !important;
     top: 0 !important;
@@ -266,8 +272,30 @@ h1, h1 span {
     -o-transition: all 0.3s; }
 
 footer {
-  background: #00A8E8;
+  background: #878cbc;
   padding: 50px; }
+
+button-con {
+  width: 100%; }
+
+button {
+  background: #fff;
+  color: #878cbc;
+  border: 2px solid #878cbc;
+  cursor: pointer;
+  transition: all 1s;
+  -webkit-transition: all 1s;
+  -ms-transition: all 1s;
+  -moz-transition: all 1s;
+  -o-transition: all 1s; }
+  button:hover {
+    color: #fff;
+    background: #878cbc;
+    transition: all 1s;
+    -webkit-transition: all 1s;
+    -ms-transition: all 1s;
+    -moz-transition: all 1s;
+    -o-transition: all 1s; }
 
 /* ===============================
  * Home Page
@@ -279,47 +307,11 @@ html {
   padding: 0px !important;
   margin: 0px !important; }
 
-.dumb-bar {
-  width: 100%;
-  height: 36px;
-  padding: 5px 0;
-  background: #00171F;
-  position: absolute;
-  top: 0; }
-  .dumb-bar img {
-    height: 100%;
-    position: relative;
-    float: right;
-    padding-right: 20px; }
-
 /* ===============================
  * Hero
  * =============================== */
-.dmn {
-  position: absolute;
-  display: block;
-  top: 0;
-  left: 175px;
-  z-index: 999999;
-  height: 300px; }
-
-div.switcher {
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 100px 100px 0 0;
-  border-color: #00A8E8 transparent transparent transparent;
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: inline-block;
-  z-index: 0;
-  transition: all 0.5s;
-  -webkit-transition: all 0.5s;
-  -ms-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  -o-transition: all 0.5s;
-  cursor: pointer; }
+#home {
+  height: 100vh; }
 
 .container-hero {
   position: absolute;
@@ -329,43 +321,26 @@ div.switcher {
   display: flex;
   justify-content: center;
   overflow: hidden;
-  background: linear-gradient(to top, #00A8E8, rgba(255, 255, 255, 0));
+  background: url("../img/bg.png");
+  background-position: center center;
+  background-size: cover;
   align-items: center; }
 
-#hero-img {
-  height: 100%;
-  width: 100%;
-  background: url("https://news.utexas.edu/sites/default/files/styles/news_article_main_image/public/photos/belo_center_for_new_media_official_pic.jpeg?itok=PhkKJOE8");
-  background-size: cover; }
-
-svg {
-  position: absolute;
+.log-con {
+  background: url("../img/bg.png");
+  background-position: center center;
+  background-size: cover;
   height: 100%; }
-
-.lines {
-  opacity: 0.05; }
-
-.line {
-  fill-rule: evenodd;
-  clip-rule: evenodd;
-  fill: #fff; }
-
-.lights {
-  opacity: 0.9; }
-
-.light {
-  fill-rule: evenodd;
-  clip-rule: evenodd;
-  fill: #3d4860; }
 
 .container-hero h1 {
   position: absolute;
   bottom: 45px;
-  font-size: 12vw;
+  font-size: 10vw;
   display: block;
   z-index: 999;
   font-style: italic;
   color: #fff;
+  text-shadow: -4px 0 #878cbc, 0px 0 #878cbc, -2px 2px 0 #878cbc, 2px 2px 0 #878cbc;
   padding: 0px 15px; }
 
 @-moz-keyframes bounce {
@@ -425,49 +400,21 @@ i {
   -webkit-animation: bounce 2s infinite;
   animation: bounce 2s infinite; }
 
-@media (max-width: 768px) {
-  .container-details {
-    width: 95% !important; }
-
-  .dmn {
-    display: none; } }
 .container-details {
-  position: absolute;
-  top: 100px;
   padding: 20px;
-  text-align: center;
-  background: #fff;
-  width: 40%;
-  z-index: 999999;
-  border-radius: 9px;
-  -webkit-border-radius: 9px;
-  -ms-border-radius: 9px;
-  -moz-border-radius: 9px;
-  -o-border-radius: 9px;
-  box-shadow: 10px 10px 100px #868686; }
-  .container-details img {
-    padding: 5px;
-    width: 200px; }
+  z-index: 999999; }
+  .container-details p {
+    font-size: 14px;
+    z-index: 2;
+    margin-left: -50%;
+    color: #fff; }
+    .container-details p span {
+      background: #878cbc;
+      padding: 3px 8px; }
 
-button.submit {
-  background: #fff;
-  color: #00A8E8;
-  border: 2px solid #00A8E8;
-  cursor: pointer;
-  transition: all 1s;
-  -webkit-transition: all 1s;
-  -ms-transition: all 1s;
-  -moz-transition: all 1s;
-  -o-transition: all 1s; }
-  button.submit:hover {
-    color: #fff;
-    background: #00A8E8;
-    transition: all 1s;
-    -webkit-transition: all 1s;
-    -ms-transition: all 1s;
-    -moz-transition: all 1s;
-    -o-transition: all 1s; }
-
+@media (max-width: 768px) {
+  .container-details p {
+    margin-left: 0%; } }
 /* ===============================
  * Input
  * =============================== */
@@ -566,7 +513,7 @@ button.submit {
   transform: translate3d(-100%, 0, 0);
   -webkit-transition: -webkit-transform 0.3s;
   transition: transform 0.3s;
-  border-color: #00A8E8; }
+  border-color: #878cbc; }
 
 .input__field--hoshi:focus + .input__label--hoshi::after, .input--filled .input__label--hoshi::after {
   -webkit-transform: translate3d(0, 0, 0);
@@ -615,7 +562,7 @@ button.submit {
     padding-bottom: 5px;
     font-size: 40px;
     max-width: 50px;
-    border-bottom: 2px solid #00A8E8;
+    border-bottom: 2px solid #878cbc;
     margin-bottom: 30px; }
 
 #faq, #video {
@@ -627,7 +574,7 @@ button.submit {
   #faq .row .col-sm-6, #faq .row .col-sm-4, #faq .row .col-sm-3 {
     padding: 0 25px; }
   #faq .row h2 {
-    color: #4fceff !important;
+    color: #c8cbe1 !important;
     font-size: 23px; }
 
 .contact-con {
@@ -661,15 +608,11 @@ button.submit {
 /* ===============================
  * Sections
  * =============================== */
-.bottom-footer {
+footer {
   background: #00171F;
   padding: 25px 0;
   color: #fff; }
-  .bottom-footer .footer-right {
+  footer .footer-right {
     text-align: right; }
-
-footer img {
-  width: 100%;
-  padding: 0px 20px; }
 
 /*# sourceMappingURL=styles.css.map */

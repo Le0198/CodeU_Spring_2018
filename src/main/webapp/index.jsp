@@ -23,20 +23,16 @@
 
         <%@ include file="WEB-INF/view/header.jsp" %>  
 
-        <div class="container-fluid">
+        <div class="container-fluid" id="home">
             
-            <section id="home-hero">
-               <div class="row">
-                   <div class="col-sm-6 picture-bg">
-                       <p>Go to the <a href="/conversations">conversations</a> page to create or join a conversation.</p>
-                   </div>
-                   <div class="col-sm-6 login-bg">
-                       <div class="login-block">
-                            <p><a href="/login">Login</a> to get started.</p>
-                        </div><!-- login-block -->
-                   </div>
+            <section id="home-hero" class="container-hero">
+               
+               <h1 class="home-text">CodeU Chat App</h1>
+                <div class="container-details">
+                    <p><span>Go to the<a href="/conversations" class="hover"> conversations</a> page to create or join a conversation.</span></p>
+                    <p><span><a href="/login" class="hover">Login</a> to get started.</span></p>
+                            
                </div><!-- row -->
-                                
             </section>
             
         </div><!-- container -->
