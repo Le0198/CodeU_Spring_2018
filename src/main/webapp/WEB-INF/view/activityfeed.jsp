@@ -24,7 +24,7 @@
 
 <%@ include file="header.jsp" %>  
 
-  <div id="container">
+  <div class="container">
 
       <p>This is the activity feed.</p>
       <br>
@@ -38,15 +38,13 @@
       }
       else{
       %>
-      <ul class="mdl-list">
         <%
           for(Activity activity : activities){
         %>
-        <li> <%= activity.getContent()%></li>
+        <p class="convo"> <%= activity.getContent()%></p>
         <%
           }
         %>
-      </ul>
       <%
         }
       %>
