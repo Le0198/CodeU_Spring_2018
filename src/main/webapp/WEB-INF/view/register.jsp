@@ -42,5 +42,8 @@
       <button type="submit">Submit</button>
     </form>
   </div>
+
+<%@ include file="footer.jsp" %>  
+
 </body>
 </html>

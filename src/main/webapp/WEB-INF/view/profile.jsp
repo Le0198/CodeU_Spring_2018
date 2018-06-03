@@ -56,5 +56,8 @@ User username = UserStore.getInstance().getUser(profile);
 
     </div>
   </div>
+  
+<%@ include file="footer.jsp" %>  
+
 </body>
 </html>

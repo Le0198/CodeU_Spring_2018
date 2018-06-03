@@ -1,0 +1,414 @@
+/* ===============================
+    Home Page
+    =============================== */
+figure
+    height: 100vh
+
+html
+    padding: 0px !important
+    margin: 0px !important
+
+.dumb-bar
+    width: 100%
+    height: 36px
+    padding: 5px 0
+    background: $secondary-color
+    position: absolute
+    top: 0
+    img
+        height: 100%
+        position: relative
+        float: right
+        padding-right: 20px
+    
+/* ===============================
+    Hero
+    =============================== */
+
+.dmn
+    position: absolute
+    display: block
+    top: 0
+    left: 175px
+    z-index: 999999
+    height: 300px
+
+div.switcher
+    width: 0
+    height: 0
+    border-style: solid
+    border-width: 100px 100px 0 0
+    border-color: $primary-color transparent transparent transparent
+    position: fixed
+    top: 0
+    left: 0
+    display: inline-block
+    z-index: 0
+    +transition(all, .5s)
+    cursor: pointer
+
+
+.container-hero
+    position: absolute
+    height: 100%
+    display: block
+    width: 100%
+    display: flex
+    justify-content: center
+    overflow: hidden
+    background: linear-gradient(to top, $primary-color, rgba(255, 255, 255, 0))
+    align-items: center
+
+#hero-img
+    height: 100%
+    width: 100%
+    background: url('https://news.utexas.edu/sites/default/files/styles/news_article_main_image/public/photos/belo_center_for_new_media_official_pic.jpeg?itok=PhkKJOE8') 
+    background-size: cover
+
+svg
+    position: absolute
+    height: 100%
+
+.lines 
+    opacity: 0.05
+
+
+.line 
+    fill-rule: evenodd
+    clip-rule: evenodd
+    fill: #fff
+
+.lights 
+    opacity: 0.9
+
+.light
+    fill-rule: evenodd
+    clip-rule: evenodd
+    fill: #3d4860
+    
+.container-hero h1
+    position: absolute
+    bottom: 45px
+    font-size: 12vw
+    display: block
+    z-index: 999
+    font-style: italic
+    color: #fff
+    padding: 0px 15px
+
+@-moz-keyframes bounce
+    0%, 20%, 50%, 80%, 100%
+        -moz-transform: translateY(0)
+        transform: translateY(0)
+
+    40%
+        -moz-transform: translateY(-30px)
+        transform: translateY(-30px)
+
+    60%
+        -moz-transform: translateY(-15px)
+        transform: translateY(-15px)
+
+
+@-webkit-keyframes bounce
+    0%, 20%, 50%, 80%, 100%
+        -webkit-transform: translateY(0)
+        transform: translateY(0)
+
+    40%
+        -webkit-transform: translateY(-30px)
+        transform: translateY(-30px)
+
+    60%
+        -webkit-transform: translateY(-15px)
+        transform: translateY(-15px)
+
+
+@keyframes bounce
+    0%, 20%, 50%, 80%, 100%
+        -moz-transform: translateY(0)
+        -ms-transform: translateY(0)
+        -webkit-transform: translateY(0)
+        transform: translateY(0)
+
+    40%
+        -moz-transform: translateY(-30px)
+        -ms-transform: translateY(-30px)
+        -webkit-transform: translateY(-30px)
+        transform: translateY(-30px)
+
+    60%
+        -moz-transform: translateY(-15px)
+        -ms-transform: translateY(-15px)
+        -webkit-transform: translateY(-15px)
+        transform: translateY(-15px)
+
+i
+    display: block
+    color: #fff
+
+.arrow
+    color: $secondary-color
+    position: absolute
+    bottom: 5px
+    left: 50%
+    margin-left: -20px
+    width: 40px
+    height: 60px
+    /*change with size of arrow to make sit on bottom
+    /*   background-image: url();
+    /*   background-size: contain;
+
+.bounce
+    -moz-animation: bounce 2s infinite
+    -webkit-animation: bounce 2s infinite
+    animation: bounce 2s infinite
+    
+@media (max-width: 768px) 
+    .container-details 
+        width: 95% !important
+        
+    .dmn
+        display: none
+    
+.container-details 
+    position: absolute
+    top: 100px
+    padding: 20px
+    text-align: center
+    background: #fff
+    width: 40%
+    z-index: 999999
+    +border-radius(9px)
+    box-shadow: 10px 10px 100px #868686
+    img
+        padding: 5px
+        width: 200px
+        
+button.submit
+    background: #fff
+    color: $primary-color
+    border: 2px solid $primary-color
+    cursor: pointer
+    +transition(all, 1s)
+    &:hover
+        color: #fff
+        background: $primary-color
+        +transition(all, 1s)
+    
+
+
+/* ===============================
+    Input
+    =============================== */
+.input
+    position: relative
+    z-index: 1
+    display: inline-block
+    margin: 1em
+    max-width: 350px
+    width: calc(100% - 2em)
+    vertical-align: top
+
+.input__field
+    position: relative
+    display: block
+    float: right
+    padding: 0.8em
+    width: 60%
+    border: none
+    border-radius: 0
+    background: #fff
+    color: #aaa
+    font-weight: bold
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+    -webkit-appearance: none
+    /* for box shadows to show on iOS
+    &:focus
+        outline: none
+
+.input__label
+    display: inline-block
+    float: right
+    padding: 0 1em
+    width: 40%
+    color: #000
+    font-weight: bold
+    font-size: 70.25%
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+    -webkit-touch-callout: none
+    -webkit-user-select: none
+    -khtml-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    user-select: none
+
+.input__label-content
+    position: relative
+    display: block
+    padding: 1.6em 0
+    width: 100%
+
+/* Hoshi
+
+.input--hoshi
+    overflow: hidden
+
+.input__field--hoshi
+    margin-top: 1em
+    padding: 25px 5px
+    width: 100%
+    background: transparent
+    color: #000
+
+.input__label--hoshi
+    position: absolute
+    bottom: 0
+    left: 0
+    padding: 0 5px
+    width: 100%
+    height: calc(100% - 1em)
+    text-align: left
+    pointer-events: none
+
+.input__label-content--hoshi
+    position: absolute
+
+.input__label--hoshi
+    &::before
+        content: ''
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: calc(100% - 10px)
+        border-bottom: 1px solid #000
+    &::after
+        content: ''
+        position: absolute
+        top: 0
+        left: 0
+        width: 100%
+        height: calc(100% - 10px)
+        border-bottom: 1px solid #000
+        margin-top: 2px
+        border-bottom: 4px solid red
+        -webkit-transform: translate3d(-100%, 0, 0)
+        transform: translate3d(-100%, 0, 0)
+        -webkit-transition: -webkit-transform 0.3s
+        transition: transform 0.3s
+        border-color: $primary-color   
+
+.input__field--hoshi:focus + .input__label--hoshi::after, .input--filled .input__label--hoshi::after
+    -webkit-transform: translate3d(0, 0, 0)
+    transform: translate3d(0, 0, 0)
+
+.input__field--hoshi:focus + .input__label--hoshi .input__label-content--hoshi, .input--filled .input__label-content--hoshi
+    -webkit-animation: anim-1 0.3s forwards
+    animation: anim-1 0.3s forwards
+
+@-webkit-keyframes anim-1
+    50%
+        opacity: 0
+        -webkit-transform: translate3d(1em, 0, 0)
+        transform: translate3d(1em, 0, 0)
+
+    51%
+        opacity: 0
+        -webkit-transform: translate3d(-1em, -40%, 0)
+        transform: translate3d(-1em, -40%, 0)
+
+    100%
+        opacity: 1
+        -webkit-transform: translate3d(0, -40%, 0)
+        transform: translate3d(0, -40%, 0)
+
+
+@keyframes anim-1
+    50%
+        opacity: 0
+        -webkit-transform: translate3d(1em, 0, 0)
+        transform: translate3d(1em, 0, 0)
+
+    51%
+        opacity: 0
+        -webkit-transform: translate3d(-1em, -40%, 0)
+        transform: translate3d(-1em, -40%, 0)
+
+    100%
+        opacity: 1
+        -webkit-transform: translate3d(0, -40%, 0)
+        transform: translate3d(0, -40%, 0)
+    
+/* ===============================
+    Sections
+    =============================== */
+
+.nav-item, .nav-item a, .nav-item a h2, .nav-item a
+    color: #fff !important
+    
+
+.section-info
+    padding: 30px 0 !important
+    h2.section-lead
+        text-transform: uppercase
+        padding-bottom: 5px
+        font-size: 40px
+        max-width: 50px
+        border-bottom: 2px solid $primary-color
+        margin-bottom: 30px
+        
+#faq, #video
+    background: $secondary-color
+    color: #fff
+    
+#faq
+    .row
+        padding: 20px 0
+        .col-sm-6, .col-sm-4, .col-sm-3
+            padding: 0 25px
+        h2
+            color: lighten($primary-color, 20%) !important
+            font-size: 23px
+        
+    
+.contact-con
+    position: relative
+    padding: 20px
+    text-align: center
+    background: #fff
+    width: 50%
+    z-index: 999999
+    +border-radius(9px)
+    box-shadow: 10px 10px 100px #868686
+    margin: 20px auto
+    iframe
+        width: 100%
+        
+@media (max-width: 768px) 
+    .contact-con
+        width: 95% !important
+    #video iframe
+        height: 350px
+    .bottom-footer
+        text-align: center !important
+        .footer-right   
+            text-align: center !important
+    
+/* ===============================
+    Sections
+    =============================== */
+    
+.bottom-footer
+    background: $secondary-color
+    padding: 25px 0
+    color: #fff
+    .footer-right
+        text-align: right
+    
+    
+footer img
+    width: 100%
+    padding: 0px 20px 
+    

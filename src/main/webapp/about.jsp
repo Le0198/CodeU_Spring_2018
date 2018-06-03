@@ -24,9 +24,7 @@
   <%@ include file="WEB-INF/view/header.jsp" %>  
 
 
-  <div id="container">
-    <div
-      style="width:75%; margin-left:auto; margin-right:auto; margin-top: 50px;">
+  <div class="container">
 
       <h1>About the CodeU Chat App</h1>
       <p>
@@ -66,5 +64,8 @@
 	  </p>
     </div>
   </div>
+
+<%@ include file="WEB-INF/view/footer.jsp" %>  
+
 </body>
 </html>

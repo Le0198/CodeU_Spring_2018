@@ -90,6 +90,7 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
     <hr/>
 
   </div>
+  <%@ include file="footer.jsp" %>  
 
 </body>
 </html>

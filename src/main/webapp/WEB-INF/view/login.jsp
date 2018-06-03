@@ -44,5 +44,8 @@
 
     <p>New users can register <a href="/register">here</a>.</p>
   </div>
+  
+<%@ include file="footer.jsp" %>  
+
 </body>
 </html>

@@ -15,30 +15,32 @@
 --%>
 <!DOCTYPE html>
 <html>
-<head>
-  <title>CodeU Chat App</title>
-  <%@ include file="WEB-INF/view/meta.jsp" %>  
-</head>
-<body>
+    <head>
+        <title>CodeU Chat App</title>
+        <%@ include file="WEB-INF/view/meta.jsp" %>  
+    </head>
+    <body>
 
-  <%@ include file="WEB-INF/view/header.jsp" %>  
+        <%@ include file="WEB-INF/view/header.jsp" %>  
 
-  <div id="container">
-    <div
-      style="width:75%; margin-left:auto; margin-right:auto; margin-top: 50px;">
+        <div class="container-fluid">
+            
+            <section id="home-hero">
+               <div class="row">
+                   <div class="col-sm-6 picture-bg">
+                       <p>Go to the <a href="/conversations">conversations</a> page to create or join a conversation.</p>
+                   </div>
+                   <div class="col-sm-6 login-bg">
+                       <div class="login-block">
+                            <p><a href="/login">Login</a> to get started.</p>
+                        </div><!-- login-block -->
+                   </div>
+               </div><!-- row -->
+                                
+            </section>
+            
+        </div><!-- container -->
 
-      <h1>CodeU Chat App by Team: "//TODO: Team Name"</h1>
-      <p> Members: Leonardo Lopez, Jessica Zhu, Levi Villarreal</p>
-      <h2>Welcome!</h2>
-
-      <ul>
-        <li><a href="/login">Login</a> to get started.</li>
-        <li>Go to the <a href="/conversations">conversations</a> page to
-            create or join a conversation.</li>
-        <li>View the <a href="/about.jsp">about</a> page to learn more about the
-            project.</li>
-      </ul>
-    </div>
-  </div>
-</body>
+        <%@ include file="WEB-INF/view/footer.jsp" %>  
+    </body>
 </html>
