@@ -19,7 +19,7 @@
         <title>CodeU Chat App</title>
         <%@ include file="WEB-INF/view/meta.jsp" %>  
     </head>
-    <body>
+    <body id="home">
 
         <%@ include file="WEB-INF/view/header.jsp" %>  
 

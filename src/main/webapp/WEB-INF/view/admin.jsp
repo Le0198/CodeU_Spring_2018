@@ -79,7 +79,7 @@
     <div class="new-convo">
         <form action="/admin" method="POST" enctype = "multipart/form-data">
             <label for="username">File: </label>
-            <input name="myFile" type="file" id="myFile" enctype="multipart/form-data" accept=".txt" class="file-buttom">
+            <input name="myFile" type="file" id="myFile" enctype="multipart/form-data" accept=".txt" class="file-button">
             <br/><br/>
             <button type="submit">Submit</button>
         </form>
