@@ -15,16 +15,24 @@
 --%>
 <%@ page import="codeu.model.data.User" %>
 <%@ page import="codeu.model.store.basic.UserStore" %>
+<%@ page import="codeu.model.data.Message" %>
+<%@ page import="codeu.model.store.basic.MessageStore" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.UUID" %>
+<%@ page import="java.util.Date" %>
+
 <%
-String profile = (String) request.getAttribute("profile");
+String profile = (String) request.getAttribute("profile"); // attribute is an object type, so we allocate it accordingly
 User username = UserStore.getInstance().getUser(profile);
+List<Message> messages = MessageStore.getInstance().getMessagesByUser( (UUID) request.getAttribute("id"));
 %>
 
 <!DOCTYPE html>
 <html>
 <head>
   <title><%=profile%></title>
-  <%@ include file="meta.jsp" %>  
+  <%@ include file="meta.jsp" %>
   <style>
     textarea {
       width: 750px;
@@ -34,7 +42,7 @@ User username = UserStore.getInstance().getUser(profile);
 </head>
 <body id="convo-body">
 
-<%@ include file="header.jsp" %>  
+<%@ include file="header.jsp" %>
   <div class="convo-con">
   <div class="container">
 
@@ -52,12 +60,25 @@ User username = UserStore.getInstance().getUser(profile);
             </form>
         <% } %>
       <% } %>
+      <hr>
+      <h2><%=profile%>'s Sent Messages</h2>
+      <p class="about-me">
+        <% if (messages.size() == 0) { %>
+          This user has not sent any messages yet.
+        <% } else { %>
+            <% for (Message message : messages) {
+                Date date = Date.from(message.getCreationTime()); %>
+                <b><%=date%>:</b> <%=message.getContent()%>
+                <br>
+            <% } %>
+        <% } %>
+      </p>
               <br/>
 
     </div>
   </div>
-  
-<%@ include file="footer.jsp" %>  
+
+<%@ include file="footer.jsp" %>
 
 </body>
 </html>

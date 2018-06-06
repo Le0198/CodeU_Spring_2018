@@ -26,7 +26,7 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
 <html>
 <head>
   <title><%= conversation.getTitle() %></title>
-  <%@ include file="meta.jsp" %>  
+  <%@ include file="meta.jsp" %>
   <style>
     #chat {
       background-color: white;
@@ -51,8 +51,8 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
 </head>
 <body onload="scrollChat()" id="convo-body">
 
-<%@ include file="header.jsp" %>  
-  
+<%@ include file="header.jsp" %>
+
   <div class="convo-con">
   <div class="container">
 
@@ -68,7 +68,7 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
         String author = UserStore.getInstance()
           .getUser(message.getAuthorId()).getName();
     %>
-      <li><strong><%= author %>:</strong> <%= message.getContent() %></li>
+      <li><strong><a href="/users/<%= author %>"><%= author %>:</a></strong> <%= message.getContent() %></li>
     <%
       }
     %>
@@ -92,7 +92,7 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
 
   </div>
   </div>
-  <%@ include file="footer.jsp" %>  
+  <%@ include file="footer.jsp" %>
 
 </body>
 </html>

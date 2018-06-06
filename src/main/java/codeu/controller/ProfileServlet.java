@@ -65,6 +65,7 @@ public class ProfileServlet extends HttpServlet {
     }
 
     request.setAttribute("profile", username);
+    request.setAttribute("id", user.getId());
     request.getRequestDispatcher("/WEB-INF/view/profile.jsp").forward(request, response);
   }
 

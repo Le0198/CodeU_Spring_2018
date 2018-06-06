@@ -17,11 +17,11 @@
 <html>
 <head>
   <title>CodeU Chat App</title>
-  <%@ include file="WEB-INF/view/meta.jsp" %>  
+  <%@ include file="WEB-INF/view/meta.jsp" %>
 </head>
 <body>
 
-<%@ include file="WEB-INF/view/header.jsp" %>  
+<%@ include file="WEB-INF/view/header.jsp" %>
 
   <div class="container">
 
@@ -47,7 +47,7 @@
       </ul>
 
       <h1><span>About Team 11</span></h1>
-      
+
       <div class="row team">
           <div class="col-sm-4">
               <h3>Leonardo Lopez</h3>
@@ -55,7 +55,7 @@
           </div>
           <div class="col-sm-4">
               <h3>Levi Villarreal</h3>
-              <p>A UIUC student who likes volleyball and League of Legends.</p>
+              <p>A UTAustin student who likes ultimate frisbee and Breath of the Wild (BOTW is best).</p>
           </div>
           <div class="col-sm-4">
               <h3>Jessica Zhu</h3>
@@ -74,7 +74,7 @@
     </div>
   </div>
 
-<%@ include file="WEB-INF/view/footer.jsp" %>  
+<%@ include file="WEB-INF/view/footer.jsp" %>
 
 </body>
 </html>
