@@ -91,11 +91,12 @@ public class MessageStore {
 
     List<Message> messagesByUser = new ArrayList<>();
 
-    for (Message message : messages) {
+    // start from the end to get most recent messages from the user
+    for (int i = messages.size() - 1; i >= 0; i--) {
       // avoid the problem of too much messages on the page. not sure if this # should be smaller or not
       if (messagesByUser.size() >= 100) break;
-      else if (message.getAuthorId().equals(userId))
-        messagesByUser.add(message);
+      else if (messages.get(i).getAuthorId().equals(userId))
+        messagesByUser.add(messages.get(i));
     }
 
     return messagesByUser;
