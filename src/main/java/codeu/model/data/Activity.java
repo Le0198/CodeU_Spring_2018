@@ -1,6 +1,10 @@
 package codeu.model.data;
 
 import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.util.Locale;
 import java.util.UUID;
 
 public class Activity {
@@ -21,18 +25,29 @@ public class Activity {
         this.content = content;
     }
 
-    /** Returns the ID of this Conversation. */
+    /** Returns the ID of this Activity. */
     public UUID getId() {
         return id;
     }
 
-    /** Returns the title of this Conversation. */
+    /** Returns the title of this Activity. */
     public String getContent() {
+
         return content;
     }
 
-    /** Returns the creation time of this Conversation. */
+    /** Returns the creation time of this Activity. */
     public Instant getCreationTime() {
         return creation;
+    }
+
+    /** Returns the creation time of this Activity as a formatted string. */
+    public String getCreationTimeAsString() {
+        DateTimeFormatter formatter =
+                DateTimeFormatter.ofLocalizedDateTime( FormatStyle.MEDIUM )
+                        .withLocale( Locale.US)
+                        .withZone( ZoneId.systemDefault() );
+        String output = formatter.format( creation );
+        return output;
     }
 }

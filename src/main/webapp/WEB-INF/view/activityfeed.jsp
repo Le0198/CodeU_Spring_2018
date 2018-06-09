@@ -41,7 +41,7 @@
         <%
           for(Activity activity : activities){
         %>
-        <p class="convo"> <%= activity.getContent()%></p>
+      <p class="convo"> <strong> <%= activity.getCreationTimeAsString()%>: </strong> <%=activity.getContent()%></p>
         <%
           }
         %>
