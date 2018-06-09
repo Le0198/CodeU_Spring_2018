@@ -80,10 +80,10 @@ public class RegisterServlet extends HttpServlet {
     String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
 
     User user = new User(UUID.randomUUID(), username, hashedPassword, Instant.now());
+    userStore.addUser(user);
 
     String activityMessage = user.getName() + " has registered. Say hi!";
     Activity activity = new Activity(UUID.randomUUID(), activityMessage, Instant.now());
-    userStore.addUser(user);
     if (activityStore != null) {
       activityStore.addActivity(activity);
     }
