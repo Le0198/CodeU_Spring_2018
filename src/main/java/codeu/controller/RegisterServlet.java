@@ -83,7 +83,7 @@ public class RegisterServlet extends HttpServlet {
     userStore.addUser(user);
 
     String activityMessage = user.getName() + " has registered. Say hi!";
-    Activity activity = new Activity(UUID.randomUUID(), activityMessage, Instant.now());
+    Activity activity = new Activity(UUID.randomUUID(), activityMessage, Instant.now(), null);
     if (activityStore != null) {
       activityStore.addActivity(activity);
     }

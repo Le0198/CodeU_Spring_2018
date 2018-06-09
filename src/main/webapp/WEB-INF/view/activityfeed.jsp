@@ -38,17 +38,16 @@
       }
       else{
       %>
-        <%
-          for(Activity activity : activities){
-        %>
-      <p class="convo"> <strong> <%= activity.getCreationTimeAsString()%>: </strong> <%=activity.getContent()%></p>
-        <%
-          }
-        %>
-      <%
-        }
-      %>
-
+        <% for(Activity activity : activities) { %>
+            <p class="convo"> <strong> <%= activity.getCreationTimeAsString()%>: </strong> <%=activity.getContent()%>
+            <% if (activity.getConversationTitle() != null) { %>
+                <a href="/chat/<%= activity.getConversationTitle() %>" class="hover">
+                    <strong> <%= activity.getConversationTitle() %> </strong>
+                </a>
+            <% } %>
+            </p>
+        <% } %>
+      <% } %>
     </div>
   </div>
   

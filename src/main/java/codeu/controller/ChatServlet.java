@@ -172,8 +172,8 @@ public class ChatServlet extends HttpServlet {
 
     messageStore.addMessage(message);
 
-      String activityMessage = user.getName() + " sent a message in \"" + conversation.getTitle() + "\"!";
-      Activity activity = new Activity(UUID.randomUUID(), activityMessage, Instant.now());
+      String activityMessage = user.getName() + " sent a message in ";
+      Activity activity = new Activity(UUID.randomUUID(), activityMessage, Instant.now(),conversation.getTitle());
       if (activityStore != null) {
           activityStore.addActivity(activity);
       }

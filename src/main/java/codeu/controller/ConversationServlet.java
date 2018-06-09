@@ -132,8 +132,8 @@ public class ConversationServlet extends HttpServlet {
 
     conversationStore.addConversation(conversation);
 
-    String activityMessage = user.getName() + " created a conversation called \"" + conversation.getTitle() + "\"";
-    Activity activity = new Activity(UUID.randomUUID(), activityMessage, Instant.now());
+    String activityMessage = user.getName() + " created a conversation called ";
+    Activity activity = new Activity(UUID.randomUUID(), activityMessage, Instant.now(), conversation.getTitle());
     if (activityStore != null) {
       activityStore.addActivity(activity);
     }
