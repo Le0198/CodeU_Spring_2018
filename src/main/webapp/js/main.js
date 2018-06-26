@@ -3,10 +3,22 @@ $(document).ready(function(){
         event.preventDefault();
         $("html, body").animate({ scrollTop: $($(this).attr("href")).offset().top }, 500);
     });
+    
+    $("#gif").click(function() {
+        $(".gif-section").toggle();
+        //$(".mce-tinymce").toggle();
+    });
+    
+    $(".captioned-gif").click(function() {
+        $(".captioned-gif").removeClass("selected");
+        $(this).addClass("selected");
+        
+        var url = $(this).find("img").attr("src");
+                
+        $("#mce-tinymce p").text(url);  
+
+    });
 });
-
-
-
 
 /*
     Hamburger transition tutorial
@@ -81,7 +93,6 @@ $("#nav").click(function () {
         $("body").css("overflow", "auto");
     }
 });
-
 
 $(".nav-item").click(function () {
     $(".c-hamburger").removeClass("is-active");

@@ -15,6 +15,7 @@
 package codeu.model.store.persistence;
 
 import codeu.model.data.Activity;
+import codeu.model.data.Gif;
 import codeu.model.data.Conversation;
 import codeu.model.data.Message;
 import codeu.model.data.User;
@@ -139,7 +140,11 @@ public class PersistentDataStore {
         UUID authorUuid = UUID.fromString((String) entity.getProperty("author_uuid"));
         Instant creationTime = Instant.parse((String) entity.getProperty("creation_time"));
         String content = (String) entity.getProperty("content");
-        Message message = new Message(uuid, conversationUuid, authorUuid, content, creationTime);
+        String type = (String) entity.getProperty("type");
+        if (type == null) {
+        		type = "text";
+        }
+        Message message = new Message(uuid, conversationUuid, authorUuid, type, content, creationTime);
         messages.add(message);
       } catch (Exception e) {
         // In a production environment, errors should be very rare. Errors which may
@@ -183,6 +188,39 @@ public class PersistentDataStore {
 
     return activities;
   }
+    
+/**
+   * Loads all gifs objects from the Datastore service and returns them in a List, sorted in
+   * ascending order by creation time.
+   *
+   * @throws PersistentDataStoreException if an error was detected during the load from the
+   *     Datastore service
+   */
+  public List<Gif> loadGifs() throws PersistentDataStoreException {
+    List<Gif> gifs = new ArrayList<>();
+
+    // Retrieve all messages from the datastore.
+    Query query = new Query("chat-gifs").addSort("creation_time", SortDirection.ASCENDING);
+    PreparedQuery results = datastore.prepare(query);
+
+    for (Entity entity : results.asIterable()) {
+      try {
+        UUID uuid = UUID.fromString((String) entity.getProperty("uuid"));
+        String url = (String) entity.getProperty("url");
+        String tag = (String) entity.getProperty("tag");
+        Instant creationTime = Instant.parse((String) entity.getProperty("creation_time"));
+        Gif gif = new Gif(uuid, url, tag, creationTime);
+        gifs.add(gif);
+      } catch (Exception e) {
+        // In a production environment, errors should be very rare. Errors which may
+        // occur include network errors, Datastore service errors, authorization errors,
+        // database entity definition mismatches, or service mismatches.
+        throw new PersistentDataStoreException(e);
+      }
+    }
+
+    return gifs;
+  }
 
   /** Write a User object to the Datastore service. */
   public void writeThrough(User user) {
@@ -223,5 +261,15 @@ public class PersistentDataStore {
     activityEntity.setProperty("content", activity.getContent());
     activityEntity.setProperty("creation_time", activity.getCreationTime().toString());
     datastore.put(activityEntity);
+  }
+    
+  /** Write a gif object to the Datastore service. */
+  public void writeThrough(Gif gif) {
+    Entity gifEntity = new Entity("chat-gifs", gif.getId().toString());
+    gifEntity.setProperty("uuid", gif.getId().toString());
+    gifEntity.setProperty("url", gif.getURL());
+    gifEntity.setProperty("tag", gif.getTag());
+    gifEntity.setProperty("creation_time", gif.getCreationTime().toString());
+    datastore.put(gifEntity);
   }
 }

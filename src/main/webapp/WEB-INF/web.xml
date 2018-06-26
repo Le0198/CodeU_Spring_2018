@@ -95,5 +95,14 @@
     <servlet-name>ActivityFeedServlet</servlet-name>
     <url-pattern>/activity</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>GifsServlet</servlet-name>
+    <servlet-class>codeu.controller.GifsServlet</servlet-class>
+  </servlet>
 
+  <servlet-mapping>
+    <servlet-name>GifsServlet</servlet-name>
+    <url-pattern>/gifs</url-pattern>
+  </servlet-mapping>
 </web-app>

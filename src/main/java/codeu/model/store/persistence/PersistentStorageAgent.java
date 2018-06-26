@@ -15,6 +15,7 @@
 package codeu.model.store.persistence;
 
 import codeu.model.data.Activity;
+import codeu.model.data.Gif;
 import codeu.model.data.Conversation;
 import codeu.model.data.Message;
 import codeu.model.data.User;
@@ -89,6 +90,16 @@ public class PersistentStorageAgent {
   public List<Message> loadMessages() throws PersistentDataStoreException {
     return persistentDataStore.loadMessages();
   }
+  
+  /**
+   * Retrieve all Gif objects from the Datastore service. The returned list may be empty.
+   *
+   * @throws PersistentDataStoreException if an error was detected during the load from the
+   *     Datastore service
+   */
+  public List<Gif> loadGifs() throws PersistentDataStoreException {
+	return persistentDataStore.loadGifs();
+  }
 
     /**
      * Retrieve all Activity objects from the Datastore service. The returned list may be empty.
@@ -118,5 +129,10 @@ public class PersistentStorageAgent {
   /** Write an Activity object to the Datastore service. */
   public void writeThrough(Activity activity) {
       persistentDataStore.writeThrough(activity);
+  }
+  
+  /** Write a gif object to the Datastore service. */
+  public void writeThrough(Gif gif) {
+      persistentDataStore.writeThrough(gif);
   }
 }

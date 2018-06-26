@@ -1,10 +1,12 @@
 package codeu.controller;
 
 import codeu.model.data.Activity;
+import codeu.model.data.Gif;
 import codeu.model.data.Conversation;
 import codeu.model.data.Message;
 import codeu.model.data.User;
 import codeu.model.store.basic.ActivityStore;
+import codeu.model.store.basic.GifStore;
 import codeu.model.store.basic.ConversationStore;
 import codeu.model.store.basic.MessageStore;
 import codeu.model.store.basic.UserStore;
@@ -35,6 +37,9 @@ public class ServerStartupListener implements ServletContextListener {
 
       List<Activity> activities = PersistentStorageAgent.getInstance().loadActivities();
       ActivityStore.getInstance().setActivities(activities);
+      
+      List<Gif> gifs = PersistentStorageAgent.getInstance().loadGifs();
+      GifStore.getInstance().setGifs(gifs);
 
     } catch (PersistentDataStoreException e) {
       System.err.println("Server didn't start correctly. An error occurred during Datastore load!");

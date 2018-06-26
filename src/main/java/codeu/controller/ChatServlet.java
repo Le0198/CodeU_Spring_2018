@@ -15,9 +15,11 @@
 package codeu.controller;
 
 import codeu.model.data.Conversation;
+import codeu.model.data.Gif;
 import codeu.model.data.Message;
 import codeu.model.data.User;
 import codeu.model.store.basic.ConversationStore;
+import codeu.model.store.basic.GifStore;
 import codeu.model.store.basic.MessageStore;
 import codeu.model.store.basic.UserStore;
 import java.io.IOException;
@@ -46,6 +48,10 @@ public class ChatServlet extends HttpServlet {
 
   /** Store class that gives access to Users. */
   private UserStore userStore;
+  
+  /** Store class that gives access to Gifs. */
+  private GifStore gifStore;
+
 
   /** Set up state for handling chat requests. */
   @Override
@@ -53,8 +59,17 @@ public class ChatServlet extends HttpServlet {
     super.init();
     setConversationStore(ConversationStore.getInstance());
     setMessageStore(MessageStore.getInstance());
-    setUserStore(UserStore.getInstance());
-  }
+    setGifStore(GifStore.getInstance());
+}
+
+	/**
+	 * Sets the GifStore used by this servlet. This function provides a common setup method for use
+	 * by the test framework or the servlet's init() function.
+	 */
+	void setGifStore(GifStore gifStore) {
+	    this.gifStore = gifStore;
+	}
+
 
   /**
    * Sets the ConversationStore used by this servlet. This function provides a common setup method
@@ -102,7 +117,10 @@ public class ChatServlet extends HttpServlet {
       UUID conversationId = conversation.getId();
 
       List<Message> messages = messageStore.getMessagesInConversation(conversationId);
-
+      
+      List<Gif> gifs = gifStore.getAllGifs();
+      
+    request.setAttribute("gifs", gifs);
     request.setAttribute("conversation", conversation);
     request.setAttribute("messages", messages);
     request.getRequestDispatcher("/WEB-INF/view/chat.jsp").forward(request, response);
@@ -144,6 +162,9 @@ public class ChatServlet extends HttpServlet {
 
     // The original message with no changes
     String messageContent = request.getParameter("message");
+    
+    // The type of the message
+    String type = request.getParameter("type");
 
     // this removes any HTML from the message content
     String cleanedMessageContent = clean(messageContent, Whitelist.simpleText());
@@ -153,6 +174,7 @@ public class ChatServlet extends HttpServlet {
             UUID.randomUUID(),
             conversation.getId(),
             user.getId(),
+            type,
             cleanedMessageContent,
             Instant.now());
 
