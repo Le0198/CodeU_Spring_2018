@@ -47,6 +47,7 @@ List<Message> messages = MessageStore.getInstance().getMessagesByUser( (UUID) re
   <div class="container">
 
       <h1><%=profile%>'s Profile Page</h1>
+      <center>profile pic placeholder</center>
       <h2>About <%=profile%></h2>
       <p class="about-me"><%=username.getAboutMe() %></p>
       <% if (request.getSession().getAttribute("user") != null) { %>
