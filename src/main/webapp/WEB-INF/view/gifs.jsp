@@ -28,69 +28,83 @@
 
     <div class="container">
     
-    <% List<Gif> gifs = (List<Gif>) request.getAttribute("gifs");
-    
-    if(gifs == null || gifs.isEmpty()){
-    %>
-      <p>Add some gifs to get started.</p>
-      
-    <% } else { %>
+        <h1><span>Available Gifs</span></h1>
         
-         <%
-            int numOfCols = 3;
-            int rowCount = 0;
-            int bootstrapColWidth = 12 / numOfCols;
-            int fieldCount = -1;
-            
-            for(Gif gif : gifs){
-                fieldCount++;
-            }
-            
-            %>
-            <div class="row">
-                <% for(Gif gif2 : gifs){ %>
-                    <div class="col-sm-<%= bootstrapColWidth %> organization">
-                        <div class="convo">
-                           <h3><%= gif2.getTag() %></h3>
-                            <img src="<%= gif2.getURL() %>" alt="" width="100%">
-                        </a>
+        <% if(curUserName != null && curUserName.equals("leviv")) { %>
+    
+        <% List<Gif> gifs = (List<Gif>) request.getAttribute("gifs");
+
+        if(gifs == null || gifs.isEmpty()){
+        %>
+          <p>Add some gifs to get started.</p>
+
+        <% } else { %>
+
+             <%
+                int numOfCols = 3;
+                int rowCount = 0;
+                int bootstrapColWidth = 12 / numOfCols;
+                int fieldCount = -1;
+
+                for(Gif gif : gifs){
+                    fieldCount++;
+                }
+
+                %>
+                <div class="row">
+                    <% for(Gif gif2 : gifs){ %>
+                        <div class="col-sm-<%= bootstrapColWidth %> organization">
+                            <div class="convo">
+                               <h3><%= gif2.getTag() %></h3>
+                                <img src="<%= gif2.getURL() %>" alt="" width="100%">
+                            </a>
+                            </div>
+                        </div>
+
+                        <% rowCount++;
+                        if(rowCount % numOfCols == 0) {  %>
+                            </div><div class="row">
+                        <% } %>
+                    <% } %>
+                </div>        
+
+        <% }%>
+        <br/><br/>
+
+        <div class="contact-con">
+            <form action="/gifs" method="POST" class="gif-form">
+                 <div class="row">
+                     <div class="col-sm-12">
+                        <span class="input input--hoshi">
+                            <input class="input__field input__field--hoshi" type="text" id="input-4" name="url" />
+                            <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
+                                <span class="input__label-content input__label-content--hoshi">Gif Link</span>
+                            </label>
+                        </span>
+
+                        <span class="input input--hoshi">
+                            <input class="input__field input__field--hoshi" type="text" id="input-4" name="tag" />
+                            <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
+                                <span class="input__label-content input__label-content--hoshi">Gif Tag</span>
+                            </label>
+                        </span>
+
+                        <div class="button-con">
+                            <button type="submit">Upload Gif</button>
                         </div>
                     </div>
-
-                    <% rowCount++;
-                    if(rowCount % numOfCols == 0) {  %>
-                        </div><div class="row">
-                    <% } %>
-                <% } %>
-            </div>        
-        
-    <% }%>
-    <br/><br/>
-  
-        <form action="/gifs" method="POST">
-             <div class="row">
-                 <div class="col-sm-12">
-                <span class="input input--hoshi">
-                    <input class="input__field input__field--hoshi" type="text" id="input-4" name="url" />
-                    <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
-                        <span class="input__label-content input__label-content--hoshi">Gif Link</span>
-                    </label>
-                </span>
-
-                <span class="input input--hoshi">
-                    <input class="input__field input__field--hoshi" type="text" id="input-4" name="tag" />
-                    <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
-                        <span class="input__label-content input__label-content--hoshi">Gif Tag</span>
-                    </label>
-                </span>
-
-                <div class="button-con">
-                    <button type="submit">Upload Gif</button>
                 </div>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
         
+        <% }  else {%>
+
+        <p>You do not have administrator privileges to access the page</p>
+        <p>Log in to an admin page <a href="/login">here</a>.</p>
+
+        <% } %>
+            <br/>
+            <br/>
     </div>
 
 <%@ include file="footer.jsp" %>  

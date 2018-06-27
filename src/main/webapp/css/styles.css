@@ -279,6 +279,8 @@ h1, h1 span {
 footer {
   background: #7277A8;
   padding: 50px; }
+  footer .right-footer {
+    text-align: right !important; }
 
 button-con {
   width: 100%; }
@@ -700,5 +702,11 @@ button.gif {
     margin: 15px 0 10px 0; }
   .gif-section img {
     max-height: 100px; }
+
+/* ===============================
+ * Gifs
+ * =============================== */
+.gif-form button {
+  text-align: center; }
 
 /*# sourceMappingURL=styles.css.map */

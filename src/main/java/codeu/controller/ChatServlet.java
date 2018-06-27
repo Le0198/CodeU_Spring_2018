@@ -60,7 +60,7 @@ public class ChatServlet extends HttpServlet {
     setConversationStore(ConversationStore.getInstance());
     setMessageStore(MessageStore.getInstance());
     setGifStore(GifStore.getInstance());
-}
+  }
 
 	/**
 	 * Sets the GifStore used by this servlet. This function provides a common setup method for use

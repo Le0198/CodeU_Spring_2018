@@ -93,7 +93,7 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
                      <% List<Gif> gifs = (List<Gif>) request.getAttribute("gifs");
                         if(gifs == null || gifs.isEmpty()){
                     %>
-                      <p>Add some gifs to get started.</p>
+                      <p>Add some <a href="/gifs">gifs</a> to get started.</p>
 
                     <% } else { %>
 
