@@ -47,7 +47,7 @@ List<Message> messages = MessageStore.getInstance().getMessagesByUser( (UUID) re
   <div class="container">
 
       <h1><%=profile%>'s Profile Page</h1>
-      <h2>About <%=profile%></h2>
+      <h2>About <%=profile%> <span class="friend-count">Friends: <%=username.getFriendCount()%></span></h2>
       <p class="about-me"><%=username.getAboutMe() %></p>
       <% if (request.getSession().getAttribute("user") != null) { %>
         <% if (request.getSession().getAttribute("user").equals(profile)) { %>

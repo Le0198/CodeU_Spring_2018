@@ -653,6 +653,9 @@ footer {
   text-align: center;
   margin: 0 auto; }
 
+.friend-count{
+  float: right;
+}
 #admin h2 {
   text-align: center; }
   #admin h2 span {

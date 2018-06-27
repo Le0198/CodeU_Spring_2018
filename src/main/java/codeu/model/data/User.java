@@ -15,6 +15,7 @@
 package codeu.model.data;
 
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.UUID;
 
 /** Class representing a registered user. */
@@ -23,6 +24,7 @@ public class User {
   private final String name;
   private final String passwordHash;
   private final Instant creation;
+  private ArrayList<String> friends;
   private String aboutMe;
 
   /**
@@ -39,6 +41,7 @@ public class User {
     this.passwordHash = passwordHash;
     this.creation = creation;
     this.aboutMe = "";
+    friends = new ArrayList<>();
   }
 
   /** Returns the ID of this User. */
@@ -70,5 +73,20 @@ public class User {
   /** Changes the about me content of the User. */
   public void setAboutMe(String aboutMe) {
     this.aboutMe = aboutMe;
+  }
+
+  /** Get the number of friends the User has */
+  public int getFriendCount() {
+    return friends.size();
+  }
+
+  /** Add a friend to the User's friends list */
+  public void addFriend(String name) {
+    friends.add(name);
+  }
+
+  /** Remove a friend from the User's friends list */
+  public void removeFriend(String name) {
+    friends.remove(name);
   }
 }
