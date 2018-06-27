@@ -26,6 +26,11 @@
 String profile = (String) request.getAttribute("profile"); // attribute is an object type, so we allocate it accordingly
 User username = UserStore.getInstance().getUser(profile);
 List<Message> messages = MessageStore.getInstance().getMessagesByUser( (UUID) request.getAttribute("id"));
+boolean loggedIn = false;
+if (request.getSession().getAttribute("user") != null) {
+   if (request.getSession().getAttribute("user").equals(profile))
+      loggedIn = true;
+}
 %>
 
 <!DOCTYPE html>
@@ -47,19 +52,35 @@ List<Message> messages = MessageStore.getInstance().getMessagesByUser( (UUID) re
   <div class="container">
 
       <h1><%=profile%>'s Profile Page</h1>
-      <center>profile pic placeholder</center>
+      <center><img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt="Profile picture" style="width:250px;">
+        <% if (loggedIn) { %>
+          <form action="/users/<%= profile %>" method="POST">
+            <div class="row">
+              <div class="col-sm-12">
+                <span class="input input--hoshi">
+                  <input class="input__field input__field--hoshi" type="text" id="input-4" name="url" />
+                  <label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
+                    <span class="input__label-content input__label-content--hoshi">Picture Link</span>
+                  </label>
+                </span>
+                <div class="button-con">
+                  <button type="submit">Change Profile Picture</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        <% } %>
+      </center>
+      <br>
       <h2>About <%=profile%></h2>
       <p class="about-me"><%=username.getAboutMe() %></p>
-      <% if (request.getSession().getAttribute("user") != null) { %>
-        <% if (request.getSession().getAttribute("user").equals(profile)) { %>
-          <h3>Edit your About Me</h3>
-            <form action="/users/<%= profile %>" method="POST">
-              <textarea type="text" name="aboutme" id="aboutme"></textarea>
-              <br/>
-              <button type="submit">Submit</button>
-
-            </form>
-        <% } %>
+      <% if (loggedIn) { %>
+        <h3>Edit your About Me</h3>
+          <form action="/users/<%= profile %>" method="POST">
+            <textarea type="text" name="aboutme" id="aboutme"></textarea>
+            <br/>
+            <button type="submit">Submit</button>
+          </form>
       <% } %>
       <hr>
       <h2><%=profile%>'s Sent Messages</h2>
