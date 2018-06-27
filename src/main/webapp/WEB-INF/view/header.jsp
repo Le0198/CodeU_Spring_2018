@@ -50,7 +50,7 @@
                 </li><!-- nav-item -->
                 <li class="nav-item">
                     <div class="nav-four scrollLink">
-                        <h2 class="hover"><span class="">04.</span>   <a href="/activity">Activity Feed</a></h2>
+                        <h2 class="hover"><span class="">04.</span><a href="/activity">Activity Feed</a></h2>
                     </div>
                 </li><!-- nav-item -->
 

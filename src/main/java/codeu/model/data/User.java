@@ -75,18 +75,8 @@ public class User {
     this.aboutMe = aboutMe;
   }
 
-  /** Get the number of friends the User has */
-  public int getFriendCount() {
-    return friends.size();
-  }
-
-  /** Add a friend to the User's friends list */
-  public void addFriend(String name) {
-    friends.add(name);
-  }
-
-  /** Remove a friend from the User's friends list */
-  public void removeFriend(String name) {
-    friends.remove(name);
+  /** Get the list of friends the User has */
+  public ArrayList<String> getFriends() {
+    return friends;
   }
 }

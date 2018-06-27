@@ -291,15 +291,18 @@ button, .file-button {
   -webkit-transition: all 1s;
   -ms-transition: all 1s;
   -moz-transition: all 1s;
-  -o-transition: all 1s; }
-  button:hover, .file-button:hover {
-    color: #fff;
-    background: #7277A8;
-    transition: all 1s;
-    -webkit-transition: all 1s;
-    -ms-transition: all 1s;
-    -moz-transition: all 1s;
-    -o-transition: all 1s; }
+  -o-transition: all 1s;
+}
+
+button:hover, .file-button:hover {
+   color: #fff;
+   background: #7277A8;
+   transition: all 1s;
+   -webkit-transition: all 1s;
+   -ms-transition: all 1s;
+   -moz-transition: all 1s;
+   -o-transition: all 1s;
+}
 
 /* ===============================
  * Home Page
@@ -653,9 +656,40 @@ footer {
   text-align: center;
   margin: 0 auto; }
 
-.friend-count{
+.friend-count {
   float: right;
 }
+
+.friend {
+  text-align: center;
+}
+
+button, #removefriend {
+  background: #fff;
+  color: #a56f75;
+  border: 2px solid #a56f75;
+  cursor: pointer;
+  transition: all 1s;
+  -webkit-transition: all 1s;
+  -ms-transition: all 1s;
+  -moz-transition: all 1s;
+  -o-transition: all 1s;
+}
+
+button:hover, #removefriend:hover {
+  color: #fff;
+  background: #a56f75;
+  transition: all 1s;
+  -webkit-transition: all 1s;
+  -ms-transition: all 1s;
+  -moz-transition: all 1s;
+  -o-transition: all 1s;
+}
+
+#addfriend {
+  margin: 0 auto;
+}
+
 #admin h2 {
   text-align: center; }
   #admin h2 span {

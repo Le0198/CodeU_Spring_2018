@@ -92,7 +92,6 @@ public class ProfileServlet extends HttpServlet {
 
         String requestUrl = request.getRequestURI();
         String userUrl = requestUrl.substring("/users/".length());
-
         String aboutMeDescrip = request.getParameter("aboutme");
         // removes HTML from the message content
         String cleanAboutMeDescrip = Jsoup.clean(aboutMeDescrip, Whitelist.none());

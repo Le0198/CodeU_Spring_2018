@@ -4,6 +4,7 @@ import java.time.Instant;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.Date;
 import java.util.Locale;
 import java.util.UUID;
 
@@ -50,11 +51,7 @@ public class Activity {
 
     /** Returns the creation time of this Activity as a formatted string. */
     public String getCreationTimeAsString() {
-        DateTimeFormatter formatter =
-                DateTimeFormatter.ofLocalizedDateTime( FormatStyle.MEDIUM )
-                        .withLocale( Locale.US)
-                        .withZone( ZoneId.systemDefault() );
-        String output = formatter.format( creation );
-        return output;
+        Date date = Date.from(this.getCreationTime());
+        return date.toString();
     }
 }

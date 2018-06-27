@@ -23,60 +23,78 @@
 <%@ page import="java.util.Date" %>
 
 <%
-String profile = (String) request.getAttribute("profile"); // attribute is an object type, so we allocate it accordingly
-User username = UserStore.getInstance().getUser(profile);
-List<Message> messages = MessageStore.getInstance().getMessagesByUser( (UUID) request.getAttribute("id"));
+    String currentUsername = (String) request.getSession().getAttribute("user"); // attribute is an object type, so we allocate it accordingly
+    User currentUser = UserStore.getInstance().getUser(currentUsername);
+    String profile = (String) request.getAttribute("profile"); // attribute is an object type, so we allocate it accordingly
+    User username = UserStore.getInstance().getUser(profile);
+    List<Message> messages = MessageStore.getInstance().getMessagesByUser( (UUID) request.getAttribute("id"));
 %>
 
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%=profile%></title>
-  <%@ include file="meta.jsp" %>
-  <style>
-    textarea {
-      width: 750px;
-      height: 100px;
-    }
-  </style>
+    <title><%=profile%></title>
+    <%@ include file="meta.jsp" %>
+    <style>
+        textarea {
+            width: 750px;
+            height: 100px;
+        }
+    </style>
 </head>
 <body id="convo-body">
 
 <%@ include file="header.jsp" %>
-  <div class="convo-con">
-  <div class="container">
+<div class="convo-con">
+    <div class="container">
 
-      <h1><%=profile%>'s Profile Page</h1>
-      <h2>About <%=profile%> <span class="friend-count">Friends: <%=username.getFriendCount()%></span></h2>
-      <p class="about-me"><%=username.getAboutMe() %></p>
-      <% if (request.getSession().getAttribute("user") != null) { %>
-        <% if (request.getSession().getAttribute("user").equals(profile)) { %>
-          <h3>Edit your About Me</h3>
-            <form action="/users/<%= profile %>" method="POST">
-              <textarea type="text" name="aboutme" id="aboutme"></textarea>
-              <br/>
-              <button type="submit">Submit</button>
+        <h1><%=profile%>'s Profile Page</h1>
 
-            </form>
+        <%--Friend Button--%>
+        <div class="friend">
+            <% if (currentUser != null) { %>
+            <% if (!currentUsername.equals(profile) && !currentUser.getFriends().contains(profile)) { %>
+            <button type="submit" id="addfriend">Add Friend</button>
+            <% } else if (currentUser.getFriends().contains(profile)) { %>
+            <button type="submit" id="removefriend">Remove Friend</button>
+            <% } %>
+            <% } %>
+        </div>
+
+
+        <%--About Me--%>
+        <% if (currentUser != null) { %>
+        <h2>About <%=profile%> <span class="friend-count">Friends: <%=currentUser.getFriends().size()%></span></h2>
         <% } %>
-      <% } %>
-      <hr>
-      <h2><%=profile%>'s Sent Messages</h2>
-      <p class="about-me">
-        <% if (messages.size() == 0) { %>
-          This user has not sent any messages yet.
-        <% } else { %>
+        <p class="about-me"><%=username.getAboutMe() %></p>
+        <% if (currentUser != null) { %>
+        <% if (currentUsername.equals(profile)) { %>
+        <h3>Edit your About Me</h3>
+        <form action="/users/<%= profile %>" method="POST">
+            <textarea type="text" name="aboutme" id="aboutme"></textarea>
+            <br/>
+            <button type="submit">Submit</button>
+
+        </form>
+        <% } %>
+        <% } %>
+        <hr>
+        <h2><%=profile%>'s Sent Messages</h2>
+        <p class="about-me">
+            <% if (messages.size() == 0) { %>
+            This user has not sent any messages yet.
+            <% } else { %>
             <% for (Message message : messages) {
                 Date date = Date.from(message.getCreationTime()); %>
-                <b><%=date%>:</b> <%=message.getContent()%>
-                <br>
+            <b><%=date%>:</b> <%=message.getContent()%>
+            <br>
             <% } %>
-        <% } %>
-      </p>
-              <br/>
+            <% } %>
+        </p>
+        <br/>
 
     </div>
-  </div>
+</div>
 
 <%@ include file="footer.jsp" %>
 
