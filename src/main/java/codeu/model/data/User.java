@@ -24,6 +24,7 @@ public class User {
   private final String passwordHash;
   private final Instant creation;
   private String aboutMe;
+  private String pictureUrl;
 
   /**
    * Constructs a new User.
@@ -39,6 +40,7 @@ public class User {
     this.passwordHash = passwordHash;
     this.creation = creation;
     this.aboutMe = "";
+    this.pictureUrl="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png";
   }
 
   /** Returns the ID of this User. */
@@ -67,8 +69,18 @@ public class User {
     else return aboutMe;
   }
 
+  /** Returns the profile picture of the User. */
+  public String getPicture() {
+    return pictureUrl;
+  }
+
   /** Changes the about me content of the User. */
   public void setAboutMe(String aboutMe) {
     this.aboutMe = aboutMe;
+  }
+
+  /** Changes the profile picture of the User. */
+  public void setProfilePic(String url) {
+    this.pictureUrl = url;
   }
 }
