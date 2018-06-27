@@ -93,16 +93,15 @@ public class ProfileServlet extends HttpServlet {
         String requestUrl = request.getRequestURI();
         String userUrl = requestUrl.substring("/users/".length());
 
-        String action = (String) request.getSession().getAttribute("action");
-        if (action.equals("about-me")) {
+        if (request.getParameter("url") == null) {
           String aboutMeDescrip = request.getParameter("aboutme");
           // removes HTML from the message content
           String cleanAboutMeDescrip = Jsoup.clean(aboutMeDescrip, Whitelist.none());
 
           user.setAboutMe(aboutMeDescrip);
-        } else if (action.equals("picture")) { // an else could work instead since this is the only other action atm
+        } else {
           String url = request.getParameter("url");
-          user.setProfilePic(url);
+          user.setPicture(url);
         }
         userStore.updateUser(user);
         response.sendRedirect("/users/" + username);

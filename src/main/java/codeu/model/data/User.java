@@ -80,7 +80,7 @@ public class User {
   }
 
   /** Changes the profile picture of the User. */
-  public void setProfilePic(String url) {
+  public void setPicture(String url) {
     this.pictureUrl = url;
   }
 }

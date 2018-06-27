@@ -52,7 +52,7 @@ if (request.getSession().getAttribute("user") != null) {
   <div class="container">
 
       <h1><%=profile%>'s Profile Page</h1>
-      <center><img src="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" alt="Profile picture" style="width:250px;">
+      <center><img src="<%=username.getPicture() %>" alt="Profile picture" style="width:250px;">
         <% if (loggedIn) { %>
           <form action="/users/<%= profile %>" method="POST">
             <div class="row">
@@ -63,7 +63,6 @@ if (request.getSession().getAttribute("user") != null) {
                     <span class="input__label-content input__label-content--hoshi">Picture Link</span>
                   </label>
                 </span>
-                <% request.getSession().setAttribute("action", "picture"); %>
                 <div class="button-con">
                   <button type="submit">Change Picture</button>
                 </div>
@@ -81,7 +80,6 @@ if (request.getSession().getAttribute("user") != null) {
             <textarea type="text" name="aboutme" id="aboutme"></textarea>
             <br/>
             <button type="submit">Submit</button>
-            <% request.getSession().setAttribute("action", "about-me"); %>
           </form>
       <% } %>
       <hr>
