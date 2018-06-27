@@ -70,6 +70,7 @@ public class PersistentDataStore {
         Instant creationTime = Instant.parse((String) entity.getProperty("creation_time"));
         User user = new User(uuid, userName, passwordHash, creationTime);
         user.setAboutMe((String) entity.getProperty("content"));
+        user.setPicture((String) entity.getProperty("picture"));
         users.add(user);
       } catch (Exception e) {
         // In a production environment, errors should be very rare. Errors which may
@@ -193,6 +194,7 @@ public class PersistentDataStore {
     userEntity.setProperty("password_hash", user.getPasswordHash());
     userEntity.setProperty("creation_time", user.getCreationTime().toString());
     userEntity.setProperty("content", user.getAboutMe());
+    userEntity.setProperty("picture", user.getPicture());
     datastore.put(userEntity);
   }
 

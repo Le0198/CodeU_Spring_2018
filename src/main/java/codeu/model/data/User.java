@@ -71,7 +71,8 @@ public class User {
 
   /** Returns the profile picture of the User. */
   public String getPicture() {
-    return pictureUrl;
+    if (pictureUrl == null) return "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png";
+    else return pictureUrl;
   }
 
   /** Changes the about me content of the User. */
