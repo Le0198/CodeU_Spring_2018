@@ -101,6 +101,18 @@ public class ProfileServlet extends HttpServlet {
           user.setAboutMe(aboutMeDescrip);
         } else {
           String url = request.getParameter("url");
+          if (url.length() < 4) {
+            request.setAttribute("error", "Not a valid url.");
+            response.sendRedirect("/users/" + username);
+            return;
+          } else {
+            String fileType = url.substring(url.length() - 4);
+            if ( !fileType.equals(".png") && !fileType.equals(".jpg") && !fileType.equals(".gif") ) {
+              request.setAttribute("error", "Not a valid url.");
+              response.sendRedirect("/users/" + username);
+              return;
+            }
+          }
           user.setPicture(url);
         }
         userStore.updateUser(user);
