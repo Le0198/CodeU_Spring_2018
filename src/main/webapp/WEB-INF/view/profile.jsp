@@ -52,6 +52,13 @@ if (request.getSession().getAttribute("user") != null) {
   <div class="container">
 
       <h1><%=profile%>'s Profile Page</h1>
+
+      <% if(request.getSession().getAttribute("error") != null) { %>
+          <h2 style="color:red"><%= request.getSession().getAttribute("error") %></h2>
+          <% /* reset so the user won't see it again since it is a session attribute, unless they try to input another bad URL */
+          request.getSession().setAttribute("error", null); %>
+      <% } %>
+
       <center><img src="<%=username.getPicture() %>" alt="Profile picture" style="width:250px;">
         <% if (loggedIn) { %>
           <form action="/users/<%= profile %>" method="POST">
