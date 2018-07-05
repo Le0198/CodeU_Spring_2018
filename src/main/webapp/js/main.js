@@ -3,20 +3,20 @@ $(document).ready(function(){
         event.preventDefault();
         $("html, body").animate({ scrollTop: $($(this).attr("href")).offset().top }, 500);
     });
-    
+
     $("#gif").click(function() {
         $(".gif-section").toggle();
-        //$(".mce-tinymce").toggle();
+        $("#textarea").toggle();
     });
-    
+
     $(".captioned-gif").click(function() {
         $(".captioned-gif").removeClass("selected");
         $(this).addClass("selected");
-        
-        var url = $(this).find("img").attr("src");
-                
-        $("#mce-tinymce p").text(url);  
 
+        var url = $(this).find("img").attr("src");
+
+        $("#textarea").val(url);
+        $("#type").val("image");
     });
 });
 
@@ -28,10 +28,10 @@ $(document).ready(function(){
 $(document).ready(function () {
 	"use strict";
     (function () {
-		
+
 		var toggles = document.querySelectorAll(".c-hamburger");
 		var i = toggles.length - 1;
-		        
+
         for (i; i >= 0; i--) {
             var toggle = toggles[i];
             toggleHandler(toggle);
@@ -51,11 +51,11 @@ $(document).ready(function () {
 var inProgress = false;
 
 $("#nav").click(function () {
-    
+
 	"use strict";
-	
+
 	var width = $(window).width() - 68;
-	
+
     if ($(".c-hamburger").hasClass("is-active")) {
 		inProgress = true;
 		$('#dim-screen').fadeTo(500, 1);

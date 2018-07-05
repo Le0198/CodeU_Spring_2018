@@ -27,14 +27,7 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
 <html>
 <head>
   <title><%= conversation.getTitle() %></title>
-  <%@ include file="meta.jsp" %>  
-  <style>
-    #chat {
-      background-color: white;
-      overflow-y: scroll
-    }
-  </style>
-
+  <%@ include file="meta.jsp" %>
   <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
   <script>
   tinymce.init({
@@ -51,8 +44,8 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
 </head>
 <body onload="scrollChat()" id="convo-body">
 
-<%@ include file="header.jsp" %>  
-  
+<%@ include file="header.jsp" %>
+
   <div class="convo-con">
       <div class="container">
 
@@ -63,69 +56,65 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
 
         <div id="chat">
           <ul>
-        <%
-          for (Message message : messages) {
-            String author = UserStore.getInstance()
-              .getUser(message.getAuthorId()).getName();
-        %>
-            <% if (message.getType().equals("image")) { %>
-         
-                <li><strong><%= author %>:</strong> <img src="<%= message.getContent() %>" alt=""></li>
-            <% } else { %>
-         
-                <li><strong><%= author %>:</strong> <%= message.getContent() %></li>
-          
+            <% for (Message message : messages) {
+              String author = UserStore.getInstance().getUser(message.getAuthorId()).getName();
+            %>
+              <% if (message.getType().equals("image")) { %>
+                  <li><strong><%= author %>:</strong> <img src="<%= message.getContent() %>" alt="Reaction gif" class="chat-image"></li>
+              <% } else { %>
+                  <li><strong><%= author %>:</strong> <%= message.getContent() %></li>
+              <% } %>
             <% } %>
-        <% } %>
-         
           </ul>
         </div>
 
         <% if (request.getSession().getAttribute("user") != null) { %>
-        <form action="/chat/<%= conversation.getTitle() %>" method="POST">
-            <textarea type="text" name="message" id="mytextarea">
-            </textarea>
-            <br/>
-            <div class="gif-section">
-                <div class="container-fluid">
-                     <input type="text" placeholder="Search for a gif...">
-                     
-                     <% List<Gif> gifs = (List<Gif>) request.getAttribute("gifs");
-                        if(gifs == null || gifs.isEmpty()){
-                    %>
-                      <p>Add some <a href="/gifs">gifs</a> to get started.</p>
 
-                    <% } else { %>
+        <div class="gif-section">
+            <div class="container-fluid">
+                 <input type="text" placeholder="Search for a gif...">
 
-                         <%
-                            int numOfCols = 3;
-                            int rowCount = 0;
-                            int bootstrapColWidth = 12 / numOfCols;
-                            int fieldCount = -1;
+                 <% List<Gif> gifs = (List<Gif>) request.getAttribute("gifs");
+                    if(gifs == null || gifs.isEmpty()){
+                %>
+                  <p>Add some <a href="/gifs">gifs</a> to get started.</p>
 
-                            for(Gif gif : gifs){
-                                fieldCount++;
-                            }
+                <% } else { %>
 
-                            %>
-                            <div class="row">
-                                <% for(Gif gif2 : gifs){ %>
-                                    <div class="col-sm-<%= bootstrapColWidth %> organization">
-                                        <div class="captioned-gif">
-                                           <h5><%= gif2.getTag() %></h5>
-                                            <img src="<%= gif2.getURL() %>" alt="" width="100%">
-                                        </div>
+                     <%
+                        int numOfCols = 3;
+                        int rowCount = 0;
+                        int bootstrapColWidth = 12 / numOfCols;
+                        int fieldCount = -1;
+
+                        for(Gif gif : gifs){
+                            fieldCount++;
+                        }
+
+                        %>
+                        <div class="row">
+                            <% for(Gif gif2 : gifs){ %>
+                                <div class="col-sm-<%= bootstrapColWidth %> organization">
+                                    <div class="captioned-gif">
+                                       <h5><%= gif2.getTag() %></h5>
+                                        <img src="<%= gif2.getURL() %>" alt="<%= gif2.getTag() %>" width="100%">
                                     </div>
+                                </div>
 
-                                    <% rowCount++;
-                                    if(rowCount % numOfCols == 0) {  %>
-                                        </div><div class="row">
-                                    <% } %>
+                                <% rowCount++;
+                                if(rowCount % numOfCols == 0) {  %>
+                                    </div><div class="row">
                                 <% } %>
-                            </div>        
-                    <% }%>
-                </div>
+                            <% } %>
+                        </div>
+                <% }%>
             </div>
+        </div>
+
+        <form action="/chat/<%= conversation.getTitle() %>" method="POST">
+            <textarea type="text" name="message" id="textarea"></textarea>
+            <br/>
+            <input type="text" name="type" id="type">
             <div class="button-con">
                 <button type="submit" class="text-center" id="send">Send</button>
                 <button class="text-center gif" id="gif"  type="button">Gif</button>
@@ -138,7 +127,7 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
 
       </div>
   </div>
-  <%@ include file="footer.jsp" %>  
+  <%@ include file="footer.jsp" %>
 
 </body>
 </html>

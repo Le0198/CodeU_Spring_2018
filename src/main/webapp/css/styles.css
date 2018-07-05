@@ -709,4 +709,8 @@ button.gif {
 .gif-form button {
   text-align: center; }
 
+.chat-image {
+  max-width: 90%;
+  padding: 5px; }
+
 /*# sourceMappingURL=styles.css.map */

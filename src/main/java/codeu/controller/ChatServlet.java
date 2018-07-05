@@ -59,6 +59,7 @@ public class ChatServlet extends HttpServlet {
     super.init();
     setConversationStore(ConversationStore.getInstance());
     setMessageStore(MessageStore.getInstance());
+    setUserStore(UserStore.getInstance());
     setGifStore(GifStore.getInstance());
   }
 

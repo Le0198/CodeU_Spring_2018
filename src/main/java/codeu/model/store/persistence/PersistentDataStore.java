@@ -142,7 +142,7 @@ public class PersistentDataStore {
         String content = (String) entity.getProperty("content");
         String type = (String) entity.getProperty("type");
         if (type == null) {
-        		type = "text";
+        	type = "text";
         }
         Message message = new Message(uuid, conversationUuid, authorUuid, type, content, creationTime);
         messages.add(message);
@@ -240,6 +240,7 @@ public class PersistentDataStore {
     messageEntity.setProperty("conv_uuid", message.getConversationId().toString());
     messageEntity.setProperty("author_uuid", message.getAuthorId().toString());
     messageEntity.setProperty("content", message.getContent());
+    messageEntity.setProperty("type", message.getType());
     messageEntity.setProperty("creation_time", message.getCreationTime().toString());
     datastore.put(messageEntity);
   }
