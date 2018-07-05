@@ -64,13 +64,11 @@
       </div>
 
 	  <h1><span>New Features and Improvements</span></h1>
-	  <p>
-        This is your code now. Get familiar with it and get comfortable
-        working with your team to plan and make changes. Start by updating the
-        homepage and this about page to tell your users more about your team.
-        This page should also be used to describe the features and improvements
-        you've added.
-	  </p>
+    <ul>
+      <li><strong>(In Progress)</strong> The ability to add friends and have a friend list featured on your page.</li>
+      <li><strong>(In Progress)</strong> Access to a gif library in the chat system - think twitter or discord's gifs (uploaded by admins)</li>
+      <li><strong>(In Progress)</strong> The ability to upload a profile picture, featured on your page.</li>
+    </ul>
     </div>
   </div>
 

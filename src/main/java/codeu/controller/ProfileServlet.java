@@ -93,11 +93,28 @@ public class ProfileServlet extends HttpServlet {
         String requestUrl = request.getRequestURI();
         String userUrl = requestUrl.substring("/users/".length());
 
-        String aboutMeDescrip = request.getParameter("aboutme");
-        // removes HTML from the message content
-        String cleanAboutMeDescrip = Jsoup.clean(aboutMeDescrip, Whitelist.none());
+        if (request.getParameter("url") == null) {
+          String aboutMeDescrip = request.getParameter("aboutme");
+          // removes HTML from the message content
+          String cleanAboutMeDescrip = Jsoup.clean(aboutMeDescrip, Whitelist.none());
 
-        user.setAboutMe(aboutMeDescrip);
+          user.setAboutMe(aboutMeDescrip);
+        } else {
+          String url = request.getParameter("url");
+          if (url.length() < 4) {
+            request.getSession().setAttribute("error", "Not a valid url.");
+            response.sendRedirect("/users/" + username);
+            return;
+          } else {
+            String fileType = url.substring(url.length() - 4);
+            if ( !fileType.equals(".png") && !fileType.equals(".jpg") && !fileType.equals(".gif") ) {
+              request.getSession().setAttribute("error", "Not a valid url.");
+              response.sendRedirect("/users/" + username);
+              return;
+            }
+          }
+          user.setPicture(url);
+        }
         userStore.updateUser(user);
         response.sendRedirect("/users/" + username);
   }
