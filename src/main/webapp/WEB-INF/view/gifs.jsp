@@ -20,18 +20,18 @@
 <html>
 <head>
   <title>Gifs</title>
-  <%@ include file="meta.jsp" %>  
+  <%@ include file="meta.jsp" %>
 </head>
 <body>
 
-<%@ include file="header.jsp" %>  
+<%@ include file="header.jsp" %>
 
     <div class="container">
-    
+
         <h1><span>Available Gifs</span></h1>
-        
+
         <% if(curUserName != null && curUserName.equals("leviv")) { %>
-    
+
         <% List<Gif> gifs = (List<Gif>) request.getAttribute("gifs");
 
         if(gifs == null || gifs.isEmpty()){
@@ -66,10 +66,12 @@
                             </div><div class="row">
                         <% } %>
                     <% } %>
-                </div>        
+                </div>
 
         <% }%>
         <br/><br/>
+
+        <h1><span>Add Gifs</span></h1>
 
         <div class="contact-con">
             <form action="/gifs" method="POST" class="gif-form">
@@ -96,7 +98,7 @@
                 </div>
             </form>
         </div>
-        
+
         <% }  else {%>
 
         <p>You do not have administrator privileges to access the page</p>
@@ -107,7 +109,7 @@
             <br/>
     </div>
 
-<%@ include file="footer.jsp" %>  
+<%@ include file="footer.jsp" %>
 
 </body>
 </html>

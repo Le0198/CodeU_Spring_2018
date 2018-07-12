@@ -70,57 +70,57 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
 
         <% if (request.getSession().getAttribute("user") != null) { %>
 
-        <div class="gif-section">
-            <div class="container-fluid">
-                 <input type="text" placeholder="Search for a gif...">
+          <div class="gif-section">
+              <div class="container-fluid">
+                   <input type="text" placeholder="Search for a gif...">
 
-                 <% List<Gif> gifs = (List<Gif>) request.getAttribute("gifs");
-                    if(gifs == null || gifs.isEmpty()){
-                %>
-                  <p>Add some <a href="/gifs">gifs</a> to get started.</p>
+                   <% List<Gif> gifs = (List<Gif>) request.getAttribute("gifs");
+                      if(gifs == null || gifs.isEmpty()){
+                  %>
+                    <p>Add some <a href="/gifs">gifs</a> to get started.</p>
 
-                <% } else { %>
+                  <% } else { %>
 
-                     <%
-                        int numOfCols = 3;
-                        int rowCount = 0;
-                        int bootstrapColWidth = 12 / numOfCols;
-                        int fieldCount = -1;
+                       <%
+                          int numOfCols = 3;
+                          int rowCount = 0;
+                          int bootstrapColWidth = 12 / numOfCols;
+                          int fieldCount = -1;
 
-                        for(Gif gif : gifs){
-                            fieldCount++;
-                        }
+                          for(Gif gif : gifs){
+                              fieldCount++;
+                          }
 
-                        %>
-                        <div class="row">
-                            <% for(Gif gif2 : gifs){ %>
-                                <div class="col-sm-<%= bootstrapColWidth %> organization">
-                                    <div class="captioned-gif">
-                                       <h5><%= gif2.getTag() %></h5>
-                                        <img src="<%= gif2.getURL() %>" alt="<%= gif2.getTag() %>" width="100%">
-                                    </div>
-                                </div>
+                          %>
+                          <div class="row">
+                              <% for(Gif gif2 : gifs){ %>
+                                  <div class="col-sm-<%= bootstrapColWidth %> organization">
+                                      <div class="captioned-gif">
+                                         <h5><%= gif2.getTag() %></h5>
+                                          <img src="<%= gif2.getURL() %>" alt="<%= gif2.getTag() %>" width="100%">
+                                      </div>
+                                  </div>
 
-                                <% rowCount++;
-                                if(rowCount % numOfCols == 0) {  %>
-                                    </div><div class="row">
-                                <% } %>
-                            <% } %>
-                        </div>
-                <% }%>
-            </div>
-        </div>
+                                  <% rowCount++;
+                                  if(rowCount % numOfCols == 0) {  %>
+                                      </div><div class="row">
+                                  <% } %>
+                              <% } %>
+                          </div>
+                  <% }%>
+              </div>
+          </div>
 
-        <form action="/chat/<%= conversation.getTitle() %>" method="POST">
-            <textarea type="text" name="message" id="textarea"></textarea>
-            <br/>
-            <input type="text" name="type" id="type">
-            <div class="button-con">
-                <button type="submit" class="text-center" id="send">Send</button>
-                <button class="text-center gif" id="gif"  type="button">Gif</button>
-            </div>
-            <br/>
-        </form>
+          <form action="/chat/<%= conversation.getTitle() %>" method="POST">
+              <textarea type="text" name="message" id="textarea"></textarea>
+              <br/>
+              <input type="text" name="type" id="type">
+              <div class="button-con">
+                  <button type="submit" class="text-center" id="send">Send</button>
+                  <button class="text-center gif" id="gif"  type="button">Gif</button>
+              </div>
+              <br/>
+          </form>
         <% } else { %>
           <p class="text-center"><br><br><a href="/login" class="hover">Login</a> to send a message.<br><br></p>
         <% } %>
