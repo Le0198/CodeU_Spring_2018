@@ -102,10 +102,9 @@ public class ProfileServlet extends HttpServlet {
             String aboutMeDescrip = request.getParameter("aboutme");
             // removes HTML from the message content
             String cleanAboutMeDescrip = Jsoup.clean(aboutMeDescrip, Whitelist.none());
-
             user.setAboutMe(aboutMeDescrip);
-            userStore.updateUser(user);
         }
+      userStore.updateUser(user);
         if (username.equals(currentProfile)) {
             response.sendRedirect("/users/" + username);
         } else {
