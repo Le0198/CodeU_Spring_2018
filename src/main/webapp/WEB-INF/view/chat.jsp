@@ -72,7 +72,6 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
 
           <div class="gif-section">
               <div class="container-fluid">
-                   <input type="text" placeholder="Search for a gif...">
 
                    <% List<Gif> gifs = (List<Gif>) request.getAttribute("gifs");
                       if(gifs == null || gifs.isEmpty()){
@@ -111,8 +110,8 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
               </div>
           </div>
 
-          <form action="/chat/<%= conversation.getTitle() %>" method="POST">
-              <textarea type="text" name="message" id="textarea"></textarea>
+          <form action="/chat/<%= conversation.getTitle() %>" method="POST" id="chatForm">
+              <textarea type="text" name="message" id="textarea" placeholder="Type your message"></textarea>
               <br/>
               <input type="text" name="type" id="type">
               <div class="button-con">

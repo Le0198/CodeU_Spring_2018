@@ -7,6 +7,8 @@ $(document).ready(function(){
     $("#gif").click(function() {
         $(".gif-section").toggle();
         $("#textarea").toggle();
+        $("#textarea").val("");
+        $("#type").val("");
     });
 
     $(".captioned-gif").click(function() {

@@ -25,6 +25,7 @@ import codeu.model.store.basic.UserStore;
 import java.io.IOException;
 import java.time.Instant;
 import java.util.List;
+import java.util.Scanner;
 import java.util.UUID;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -169,7 +170,25 @@ public class ChatServlet extends HttpServlet {
 
     // this removes any HTML from the message content
     String cleanedMessageContent = clean(messageContent, Whitelist.simpleText());
-
+    
+    StringBuilder enhancedMessage = new StringBuilder();
+å    
+    if (type.equals("") || type.equals("text")) {
+    	Scanner sc = new Scanner(cleanedMessageContent);
+    	
+    	while (sc.hasNextLine()) {
+    		Scanner scanLine = new Scanner(sc.nextLine());
+    		while (scanLine.hasNext()) {
+    			String word = scanLine.next();
+    			if(word.length() > 8 && (word.substring(0,7).equals("http://") || word.substring(0,8).equals("https://"))) {
+    				word = "<a href=\"" + word + "\" target=\"_blank\">" + word + "</a>";
+    			}
+    		}
+    	}
+    	
+    	cleanedMessageContent = enhancedMessage.toString();
+    }
+    
     Message message =
         new Message(
             UUID.randomUUID(),
