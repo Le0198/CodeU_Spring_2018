@@ -1,11 +1,11 @@
   <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-  
+
    <%
    Object curUserName = request.getSession().getAttribute("user");
    %>
-   
-   
+
+
         <div id="dim-screen"></div>
 
 
@@ -14,7 +14,7 @@
                 <span>toggle menu</span>
             </button>
         </section><!-- nav -->
-        
+
         <section id="nav-expand">
             <ul class="nav-list">
                 <li class="nav-item"><p><a href="/">CodeU Chat App</a></p></li>
@@ -23,13 +23,18 @@
                         <h2 class="hover"><span class="nav-span-active">01.</span><a href="/conversations">Conversations</a></h2>
                     </div>
                 </li><!-- nav-item -->
-                
+
                 <% if(curUserName != null){ %>
                     <li class="nav-item">
                         <div class="nav-two scrollLink">
-                            <h2 class="hover"><span>02.</span><a href="/users/<%= curUserName %>"><%= curUserName %>'s Page</a></h2>
+                            <h2 class="hover"><span>02.</span><a href="/users/<%= curUserName %>"><%=curUserName%>'s Page</a></h2>
                         </div>
                     </li><!-- nav-item -->
+                    <li class="nav-item">
+                      <div class="nav-two scrollLink">
+                        <h2 class="hover"><span>02.</span><a href="/logout">Logout</a></h2>
+                      </div>
+                    </li>
                 <% } else{ %>
                     <li class="nav-item">
                     <div class="nav-two scrollLink">
@@ -48,7 +53,7 @@
                         <h2 class="hover"><span class="">04.</span>   <a href="/activity">Activity Feed</a></h2>
                     </div>
                 </li><!-- nav-item -->
-                
+
                 <% if(curUserName != null && curUserName.equals("leviv")) { %>
                     <li class="nav-item">
                         <div class="nav-five scrollLink">
@@ -58,8 +63,6 @@
                 <% } %>
 
             </ul><!-- nav-list -->
-            
-            
+
+
         </section><!-- nav-expand -->
-      
-   
