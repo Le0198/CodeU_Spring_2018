@@ -53,18 +53,28 @@
         <%--Friend Button--%>
         <div class="friend">
             <% if (currentUser != null) { %>
+
             <% if (!currentUsername.equals(profile) && !currentUser.getFriends().contains(profile)) { %>
-            <button type="submit" id="addfriend">Add Friend</button>
+            <form action="/users/<%= profile %>" method="POST">
+                <button type="submit" name="button" value="add">Add Friend</button>
+            </form>
             <% } else if (currentUser.getFriends().contains(profile)) { %>
-            <button type="submit" id="removefriend">Remove Friend</button>
+            <form action="/users/<%= profile %>" method="POST">
+                <button type="submit" name="button" value="remove" class="removefriend">Remove Friend</button>
+            </form>
             <% } %>
             <% } %>
         </div>
-
+        <br>
 
         <%--About Me--%>
         <% if (currentUser != null) { %>
-        <h2>About <%=profile%> <span class="friend-count">Friends: <%=currentUser.getFriends().size()%></span></h2>
+            <h2>About <%=profile%>
+            <% if (currentUsername.equals(profile)) { %>
+            <span class="friend-count">Friends: <%=currentUser.getFriends().size()%></span></h2>
+            <% } else { %>
+            <span class="friend-count">Friends: <%=username.getFriends().size()%></span></h2>
+            <% } %>
         <% } %>
         <p class="about-me"><%=username.getAboutMe() %></p>
         <% if (currentUser != null) { %>
@@ -73,11 +83,11 @@
         <form action="/users/<%= profile %>" method="POST">
             <textarea type="text" name="aboutme" id="aboutme"></textarea>
             <br/>
-            <button type="submit">Submit</button>
-
+            <button type="submit" name="button" value="submitaboutme">Submit</button>
         </form>
         <% } %>
         <% } %>
+
         <hr>
         <h2><%=profile%>'s Sent Messages</h2>
         <p class="about-me">
@@ -97,6 +107,5 @@
 </div>
 
 <%@ include file="footer.jsp" %>
-
 </body>
 </html>

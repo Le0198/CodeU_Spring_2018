@@ -46,6 +46,7 @@ public class ProfileServlet extends HttpServlet {
     this.userStore = userStore;
   }
 
+  private String currentProfile;
   /**
    * This function fires when a user navigates to the profile page.
    */
@@ -53,18 +54,18 @@ public class ProfileServlet extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
     String requestUrl = request.getRequestURI();
-    String username = requestUrl.substring("/users/".length());
+    currentProfile = requestUrl.substring("/users/".length());
 
-    User user = userStore.getUser(username);
+    User user = userStore.getUser(currentProfile);
     if (user == null) {
       // user not found, no profile page exists for them
-      System.out.println("User not found: " + username);
+      System.out.println("User not found: " + currentProfile);
       response.sendRedirect("/about.jsp");
       // there's probably a better link to redirect them to, but placeholder for now
       return;
     }
 
-    request.setAttribute("profile", username);
+    request.setAttribute("profile", currentProfile);
     request.setAttribute("id", user.getId());
     request.getRequestDispatcher("/WEB-INF/view/profile.jsp").forward(request, response);
   }
@@ -90,14 +91,25 @@ public class ProfileServlet extends HttpServlet {
           return;
         }
 
-        String requestUrl = request.getRequestURI();
-        String userUrl = requestUrl.substring("/users/".length());
-        String aboutMeDescrip = request.getParameter("aboutme");
-        // removes HTML from the message content
-        String cleanAboutMeDescrip = Jsoup.clean(aboutMeDescrip, Whitelist.none());
+        String button = request.getParameter("button");
+        if (button.equals("add")) {
+            user.addFriend(currentProfile);
+        } else if (button.equals("remove")) {
+            user.removeFriend(currentProfile);
+        } else if (button.equals("submitaboutme")) {
+            String requestUrl = request.getRequestURI();
+            String userUrl = requestUrl.substring("/users/".length());
+            String aboutMeDescrip = request.getParameter("aboutme");
+            // removes HTML from the message content
+            String cleanAboutMeDescrip = Jsoup.clean(aboutMeDescrip, Whitelist.none());
 
-        user.setAboutMe(aboutMeDescrip);
-        userStore.updateUser(user);
-        response.sendRedirect("/users/" + username);
+            user.setAboutMe(aboutMeDescrip);
+            userStore.updateUser(user);
+        }
+        if (username.equals(currentProfile)) {
+            response.sendRedirect("/users/" + username);
+        } else {
+            response.sendRedirect("/users/" + currentProfile);
+        }
   }
 }

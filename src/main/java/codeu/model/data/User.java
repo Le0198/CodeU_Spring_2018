@@ -79,4 +79,20 @@ public class User {
   public ArrayList<String> getFriends() {
     return friends;
   }
+
+  public boolean addFriend(String friendName) {
+    if (!friends.contains(friendName)) {
+      friends.add(friendName);
+      return true;
+    }
+    return false;
+  }
+
+  public boolean removeFriend(String friendName) {
+    if (friends.contains(friendName)) {
+      friends.remove(friendName);
+      return true;
+    }
+    return false;
+  }
 }

@@ -664,29 +664,16 @@ footer {
   text-align: center;
 }
 
-button, #removefriend {
-  background: #fff;
+.removefriend {
   color: #a56f75;
   border: 2px solid #a56f75;
-  cursor: pointer;
-  transition: all 1s;
-  -webkit-transition: all 1s;
-  -ms-transition: all 1s;
-  -moz-transition: all 1s;
-  -o-transition: all 1s;
 }
 
-button:hover, #removefriend:hover {
-  color: #fff;
+.removefriend:hover {
   background: #a56f75;
-  transition: all 1s;
-  -webkit-transition: all 1s;
-  -ms-transition: all 1s;
-  -moz-transition: all 1s;
-  -o-transition: all 1s;
 }
 
-#addfriend {
+.addfriend {
   margin: 0 auto;
 }
 
