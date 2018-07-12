@@ -172,7 +172,7 @@ public class ChatServlet extends HttpServlet {
     String cleanedMessageContent = clean(messageContent, Whitelist.simpleText());
     
     StringBuilder enhancedMessage = new StringBuilder();
-å    
+
     if (type.equals("") || type.equals("text")) {
     	Scanner sc = new Scanner(cleanedMessageContent);
     	
@@ -183,9 +183,12 @@ public class ChatServlet extends HttpServlet {
     			if(word.length() > 8 && (word.substring(0,7).equals("http://") || word.substring(0,8).equals("https://"))) {
     				word = "<a href=\"" + word + "\" target=\"_blank\">" + word + "</a>";
     			}
+    			enhancedMessage.append(word);
+    			enhancedMessage.append(" ");
     		}
+    		scanLine.close();
     	}
-    	
+    	sc.close();
     	cleanedMessageContent = enhancedMessage.toString();
     }
     
