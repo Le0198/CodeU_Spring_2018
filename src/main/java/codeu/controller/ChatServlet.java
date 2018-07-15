@@ -22,21 +22,33 @@ import codeu.model.store.basic.ConversationStore;
 import codeu.model.store.basic.GifStore;
 import codeu.model.store.basic.MessageStore;
 import codeu.model.store.basic.UserStore;
+
 import java.io.IOException;
 import java.time.Instant;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 import java.util.UUID;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+// Imports for sanitizing the message
 import org.jsoup.Jsoup;
-import org.jsoup.safety.Cleaner;
 import org.jsoup.safety.Whitelist;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.parser.Parser;
+import org.jsoup.nodes.Document.OutputSettings;
+
+// Imports for converting markdown to html
+import com.vladsch.flexmark.ast.Node;
+import com.vladsch.flexmark.ext.gfm.strikethrough.StrikethroughExtension;
+import com.vladsch.flexmark.ext.ins.InsExtension;
+import com.vladsch.flexmark.html.HtmlRenderer;
+import com.vladsch.flexmark.parser.Parser;
+import com.vladsch.flexmark.util.options.MutableDataSet;
+
+// Import for correctly parsing emojis
+import com.vdurmont.emoji.EmojiParser;
 
 /** Servlet class responsible for the chat page. */
 public class ChatServlet extends HttpServlet {
@@ -162,43 +174,21 @@ public class ChatServlet extends HttpServlet {
       return;
     }
 
-    // The original message with no changes
+    // Clean the original message
     String messageContent = request.getParameter("message");
+    messageContent = clean(messageContent);
     
     // The type of the message
     String type = request.getParameter("type");
-
-    // this removes any HTML from the message content
-    String cleanedMessageContent = clean(messageContent, Whitelist.simpleText());
-    
-    StringBuilder enhancedMessage = new StringBuilder();
-
-    if (type.equals("") || type.equals("text")) {
-    	Scanner sc = new Scanner(cleanedMessageContent);
-    	
-    	while (sc.hasNextLine()) {
-    		Scanner scanLine = new Scanner(sc.nextLine());
-    		while (scanLine.hasNext()) {
-    			String word = scanLine.next();
-    			if(word.length() > 8 && (word.substring(0,7).equals("http://") || word.substring(0,8).equals("https://"))) {
-    				word = "<a href=\"" + word + "\" target=\"_blank\">" + word + "</a>";
-    			}
-    			enhancedMessage.append(word);
-    			enhancedMessage.append(" ");
-    		}
-    		scanLine.close();
-    	}
-    	sc.close();
-    	cleanedMessageContent = enhancedMessage.toString();
-    }
-    
+   
+    // Build the message
     Message message =
         new Message(
             UUID.randomUUID(),
             conversation.getId(),
             user.getId(),
             type,
-            cleanedMessageContent,
+            messageContent,
             Instant.now());
 
     messageStore.addMessage(message);
@@ -206,16 +196,39 @@ public class ChatServlet extends HttpServlet {
     // redirect to a GET request
     response.sendRedirect("/chat/" + conversationTitle);
   }
-
-    /**
-     * Override the JSoup Clean method to avoid the newline character
-     * Thanks to Chineye for the advice
-     */
-    public static String clean(String messageToClean, Whitelist whitelist) {
-        Document dirty = Parser.parseBodyFragment(messageToClean, "");
-        Cleaner cleaner = new Cleaner(Whitelist.simpleText());
-        Document clean = cleaner.clean(dirty);
-        clean.outputSettings().prettyPrint(false);
-        return clean.body().html();
-    }
+  
+  /** 
+   * This method removes potentially harmful tags and converts
+   * Markdown and emojis to HTML
+   * Shout out to Rebecca Ruvalcaba for suggesting Flexmark
+  **/
+  private String clean(String originalMessage) {
+	
+	// Get rid of all HTML tags except the ones we wand
+	Whitelist allowedTags = Whitelist.none();
+	allowedTags.addTags("ins", "del", "strong", "em", "sub", "sup");
+	
+	// allow strikethrough and underline in markdown
+	MutableDataSet options = new MutableDataSet();	
+	options.set(Parser.EXTENSIONS, Arrays.asList(InsExtension.create(),
+	StrikethroughExtension.create()));
+	
+	// parse the markdown to html
+	Parser parser = Parser.builder(options).build();
+	HtmlRenderer renderer = HtmlRenderer.builder(options).build();	
+	Node document  = parser.parse(originalMessage);
+	String markdownContent = renderer.render(document);
+	markdownContent = markdownContent.replaceAll("\n", "");
+	OutputSettings settings = new OutputSettings();
+	settings.prettyPrint(false);
+	
+	// Sanitize using Jsoup
+	String finalMessageContent = Jsoup.clean(markdownContent, "", allowedTags, settings);
+	
+	// Make sure emojis end up being readable in  HTML
+	finalMessageContent = EmojiParser.parseToUnicode(finalMessageContent);
+	finalMessageContent = EmojiParser.parseToHtmlDecimal(finalMessageContent);
+	
+	return finalMessageContent;
+  }
 }
