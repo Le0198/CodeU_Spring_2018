@@ -86,6 +86,7 @@ public class ChatServletTest {
             UUID.randomUUID(),
             fakeConversationId,
             UUID.randomUUID(),
+            "text",
             "test message",
             Instant.now()));
     Mockito.when(mockMessageStore.getMessagesInConversation(fakeConversationId))
