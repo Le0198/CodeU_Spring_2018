@@ -291,15 +291,18 @@ button, .file-button {
   -webkit-transition: all 1s;
   -ms-transition: all 1s;
   -moz-transition: all 1s;
-  -o-transition: all 1s; }
-  button:hover, .file-button:hover {
-    color: #fff;
-    background: #7277A8;
-    transition: all 1s;
-    -webkit-transition: all 1s;
-    -ms-transition: all 1s;
-    -moz-transition: all 1s;
-    -o-transition: all 1s; }
+  -o-transition: all 1s;
+}
+
+button:hover, .file-button:hover {
+   color: #fff;
+   background: #7277A8;
+   transition: all 1s;
+   -webkit-transition: all 1s;
+   -ms-transition: all 1s;
+   -moz-transition: all 1s;
+   -o-transition: all 1s;
+}
 
 /* ===============================
  * Home Page
@@ -652,6 +655,27 @@ footer {
 .new-convo {
   text-align: center;
   margin: 0 auto; }
+
+.friend-count {
+  float: right;
+}
+
+.friend {
+  text-align: center;
+}
+
+.removefriend {
+  color: #a56f75;
+  border: 2px solid #a56f75;
+}
+
+.removefriend:hover {
+  background: #a56f75;
+}
+
+.addfriend {
+  margin: 0 auto;
+}
 
 #admin h2 {
   text-align: center; }

@@ -15,6 +15,8 @@
 package codeu.model.data;
 
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.UUID;
 
 /** Class representing a registered user. */
@@ -23,6 +25,7 @@ public class User {
   private final String name;
   private final String passwordHash;
   private final Instant creation;
+  private ArrayList<String> friends;
   private String aboutMe;
   private String pictureUrl;
 
@@ -40,7 +43,8 @@ public class User {
     this.passwordHash = passwordHash;
     this.creation = creation;
     this.aboutMe = "";
-    this.pictureUrl="https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png";
+    this.friends = new ArrayList<>();
+    this.pictureUrl= "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png";
   }
 
   /** Returns the ID of this User. */
@@ -78,6 +82,34 @@ public class User {
   /** Changes the about me content of the User. */
   public void setAboutMe(String aboutMe) {
     this.aboutMe = aboutMe;
+  }
+
+  public void setFriends(String friends) {
+    if (friends != null) {
+      friends = friends.replaceAll("\\[", "").replaceAll("\\]", "");
+      this.friends = new ArrayList<String>(Arrays.asList(friends.split(",")));
+    }
+  }
+
+  /** Get the list of friends the User has */
+  public ArrayList<String> getFriends() {
+    return friends;
+  }
+
+  public boolean addFriend(String friendName) {
+    if (!friends.contains(friendName)) {
+      friends.add(friendName);
+      return true;
+    }
+    return false;
+  }
+
+  public boolean removeFriend(String friendName) {
+    if (friends.contains(friendName)) {
+      friends.remove(friendName);
+      return true;
+    }
+    return false;
   }
 
   /** Changes the profile picture of the User. */
