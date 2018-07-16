@@ -27,6 +27,7 @@ public class User {
   private final Instant creation;
   private ArrayList<String> friends;
   private String aboutMe;
+  private String pictureUrl;
 
   /**
    * Constructs a new User.
@@ -43,6 +44,7 @@ public class User {
     this.creation = creation;
     this.aboutMe = "";
     this.friends = new ArrayList<>();
+    this.pictureUrl= "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png";
   }
 
   /** Returns the ID of this User. */
@@ -69,6 +71,12 @@ public class User {
   public String getAboutMe() {
     if (aboutMe == null) return "";
     else return aboutMe;
+  }
+
+  /** Returns the profile picture of the User. */
+  public String getPicture() {
+    if (pictureUrl == null) return "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png";
+    else return pictureUrl;
   }
 
   /** Changes the about me content of the User. */
@@ -102,5 +110,10 @@ public class User {
       return true;
     }
     return false;
+  }
+
+  /** Changes the profile picture of the User. */
+  public void setPicture(String url) {
+    this.pictureUrl = url;
   }
 }

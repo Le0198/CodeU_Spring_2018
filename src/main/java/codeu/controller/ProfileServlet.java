@@ -96,19 +96,36 @@ public class ProfileServlet extends HttpServlet {
             user.addFriend(currentProfile);
         } else if (button.equals("remove")) {
             user.removeFriend(currentProfile);
-        } else if (button.equals("submitaboutme")) {
+        } else {
             String requestUrl = request.getRequestURI();
             String userUrl = requestUrl.substring("/users/".length());
-            String aboutMeDescrip = request.getParameter("aboutme");
-            // removes HTML from the message content
-            String cleanAboutMeDescrip = Jsoup.clean(aboutMeDescrip, Whitelist.none());
-            user.setAboutMe(aboutMeDescrip);
+            if (request.getParameter("url") == null) {
+              String aboutMeDescrip = request.getParameter("aboutme");
+              // removes HTML from the message content
+              String cleanAboutMeDescrip = Jsoup.clean(aboutMeDescrip, Whitelist.none());
+              user.setAboutMe(aboutMeDescrip);
+            } else {
+              String url = request.getParameter("url");
+              if (url.length() < 4) {
+                request.getSession().setAttribute("error", "Not a valid url.");
+                response.sendRedirect("/users/" + username);
+                return;
+              } else {
+                String fileType = url.substring(url.length() - 4);
+                if ( !fileType.equals(".png") && !fileType.equals(".jpg") && !fileType.equals(".gif") ) {
+                  request.getSession().setAttribute("error", "Not a valid url.");
+                  response.sendRedirect("/users/" + username);
+                  return;
+                }
+              }
+              user.setPicture(url);
+            }
         }
-      userStore.updateUser(user);
+        userStore.updateUser(user);
         if (username.equals(currentProfile)) {
             response.sendRedirect("/users/" + username);
         } else {
             response.sendRedirect("/users/" + currentProfile);
         }
-  }
+      }
 }

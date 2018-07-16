@@ -71,6 +71,7 @@ public class PersistentDataStore {
         User user = new User(uuid, userName, passwordHash, creationTime);
         user.setAboutMe((String) entity.getProperty("content"));
         user.setFriends((String) entity.getProperty("friends"));
+        user.setPicture((String) entity.getProperty("picture"));
         users.add(user);
       } catch (Exception e) {
         // In a production environment, errors should be very rare. Errors which may
@@ -195,6 +196,7 @@ public class PersistentDataStore {
     userEntity.setProperty("creation_time", user.getCreationTime().toString());
     userEntity.setProperty("content", user.getAboutMe());
     userEntity.setProperty("friends", user.getFriends().toString());
+    userEntity.setProperty("picture", user.getPicture());
     datastore.put(userEntity);
   }
 
