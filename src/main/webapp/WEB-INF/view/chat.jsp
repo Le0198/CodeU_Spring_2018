@@ -46,9 +46,10 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
 
 <%@ include file="header.jsp" %>
 
-  <div class="convo-con">
-      <div class="container">
+<div class="row">
+    <%@ include file="convo-sidebar.jsp" %>
 
+  <div class="convo-con col-sm-9">
         <h1><%= conversation.getTitle() %>
           <a href="" style="float: right">&#8635;</a></h1>
 
@@ -124,9 +125,10 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
           <p class="text-center"><br><br><a href="/login" class="hover">Login</a> to send a message.<br><br></p>
         <% } %>
 
-      </div>
-  </div>
-  <%@ include file="footer.jsp" %>
+  </div><!-- col -->
+</div><!-- row -->
+
+  <%@ include file="footer-meta.jsp" %>
 
 </body>
 </html>

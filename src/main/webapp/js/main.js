@@ -20,6 +20,28 @@ $(document).ready(function(){
         $("#textarea").val(url);
         $("#type").val("image");
     });
+
+    $('#bold').click(function () {
+      var txtarea = document.getElementById("texta");
+      var start = txtarea.selectionStart;
+      var end = txtarea.selectionEnd;
+      var sel = txtarea.value.substring(start, end);
+      var finText = txtarea.value.substring(0, start) + '**' + sel + '**' + txtarea.value.substring(end);
+      txtarea.value = finText;
+      txtarea.focus();
+      txtarea.selectionEnd= end + 2;
+    });
+
+    $('#italics').click(function () {
+      var txtarea = document.getElementById("texta");
+      var start = txtarea.selectionStart;
+      var end = txtarea.selectionEnd;
+      var sel = txtarea.value.substring(start, end);
+      var finText = txtarea.value.substring(0, start) + '_' + sel + '_' + txtarea.value.substring(end);
+      txtarea.value = finText;
+      txtarea.focus();
+      txtarea.selectionEnd= end + 1;
+    });
 });
 
 /*
@@ -55,8 +77,6 @@ var inProgress = false;
 $("#nav").click(function () {
 
 	"use strict";
-
-	var width = $(window).width() - 68;
 
     if ($(".c-hamburger").hasClass("is-active")) {
 		inProgress = true;
