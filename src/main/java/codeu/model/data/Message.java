@@ -24,6 +24,7 @@ public class Message {
   private final UUID conversation;
   private final UUID author;
   private final String content;
+  private String type;
   private final Instant creation;
 
   /**
@@ -35,10 +36,11 @@ public class Message {
    * @param content the text content of this Message
    * @param creation the creation time of this Message
    */
-  public Message(UUID id, UUID conversation, UUID author, String content, Instant creation) {
+  public Message(UUID id, UUID conversation, UUID author, String type, String content, Instant creation) {
     this.id = id;
     this.conversation = conversation;
     this.author = author;
+    this.type = type;
     this.content = content;
     this.creation = creation;
   }
@@ -61,6 +63,11 @@ public class Message {
   /** Returns the text content of this Message. */
   public String getContent() {
     return content;
+  }
+  
+  /** Returns if the message is an image or not */
+  public String getType() {
+	  return type;
   }
 
   /** Returns the creation time of this Message. */

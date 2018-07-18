@@ -111,6 +111,20 @@
       <artifactId>commons-io</artifactId>
       <version>2.6</version>
     </dependency>
+    
+    <!-- Dependency for markdown -->
+    <dependency>
+    	<groupId>com.vladsch.flexmark</groupId>
+    	<artifactId>flexmark-all</artifactId>
+    	<version>0.34.8</version>
+	</dependency>
+	
+	<!-- Dependency for Emojis -->
+	<dependency>
+      <groupId>com.vdurmont</groupId>
+      <artifactId>emoji-java</artifactId>
+      <version>4.0.0</version>
+    </dependency>
 
   </dependencies>
 

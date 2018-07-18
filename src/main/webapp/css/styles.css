@@ -138,6 +138,7 @@ h1, h1 span {
 #nav-expand {
   background: #001219;
   position: fixed;
+  top: 0;
   background-attachment: fixed;
   background-size: cover;
   height: 100%;
@@ -278,6 +279,8 @@ h1, h1 span {
 footer {
   background: #7277A8;
   padding: 50px; }
+  footer .right-footer {
+    text-align: right !important; }
 
 button-con {
   width: 100%; }
@@ -624,7 +627,7 @@ footer {
 
 .convo-con {
   max-width: 500px;
-  margin: 25px auto;
+  margin: 50px auto;
   background: #fff;
   border-radius: 9px;
   -webkit-border-radius: 9px;
@@ -635,10 +638,13 @@ footer {
   padding: 15px; }
   .convo-con textarea {
     width: 100%; }
+  .convo-con .container {
+    overflow-wrap: break-word; }
 
 #convo-body {
   background: url("../img/bg.png");
   background-position: center center;
+  background-attachment: fixed;
   background-size: cover;
   min-height: 100%; }
 
@@ -686,5 +692,57 @@ footer {
   #admin .stat-row p {
     padding: 15px;
     background: #eee; }
+
+/* ===============================
+ * Chat
+ * =============================== */
+button.gif {
+  border-color: #2088e2;
+  color: #2088e2;
+  hover-color: #fff;
+  hover-background-color: #2088e2; }
+
+.gif-section {
+  height: 250px;
+  overflow: scroll;
+  background: #7277A8;
+  display: none;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -o-border-radius: 5px;
+  margin-bottom: 15px; }
+  .gif-section .captioned-gif {
+    cursor: pointer;
+    margin: 5px;
+    text-align: center;
+    background: #fff; }
+  .gif-section .captioned-gif.selected {
+    border: 3px solid #2088e2; }
+  .gif-section .col-sm-4 {
+    margin: 0;
+    padding: 0; }
+  .gif-section input {
+    width: 100%;
+    margin: 15px 0 10px 0; }
+  .gif-section img {
+    max-height: 100px; }
+
+textarea.hidden, input#type {
+  display: none; }
+
+#chat li p {
+  display: inline; }
+
+/* ===============================
+ * Gifs
+ * =============================== */
+.gif-form button {
+  text-align: center; }
+
+.chat-image {
+  max-width: 90%;
+  padding: 5px; }
 
 /*# sourceMappingURL=styles.css.map */

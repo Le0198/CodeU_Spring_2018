@@ -208,7 +208,7 @@ public class AdminServlet extends HttpServlet {
 				
 				// Create the message
 				 Message message = new Message(UUID.randomUUID(), conversation.getId(), 
-						 userStore.getUser(curName).getId(), sb.toString(), Instant.now());
+						 userStore.getUser(curName).getId(), "text", sb.toString(), Instant.now());
 				 
 				 // Add to the store of messages
 				 messageStore.addMessage(message);

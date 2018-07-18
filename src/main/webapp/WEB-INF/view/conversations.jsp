@@ -63,7 +63,6 @@
       
     <% } else { %>
         
-        
          <%
             int numOfCols = 3;
             int rowCount = 0;

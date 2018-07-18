@@ -23,6 +23,7 @@ public class MessageStoreTest {
           UUID.randomUUID(),
           CONVERSATION_ID_ONE,
           UUID.randomUUID(),
+          "text",
           "message one",
           Instant.ofEpochMilli(1000));
   private final Message MESSAGE_TWO =
@@ -30,6 +31,7 @@ public class MessageStoreTest {
           UUID.randomUUID(),
           CONVERSATION_ID_ONE,
           UUID.randomUUID(),
+          "text",
           "message two",
           Instant.ofEpochMilli(2000));
   private final Message MESSAGE_THREE =
@@ -37,6 +39,7 @@ public class MessageStoreTest {
           UUID.randomUUID(),
           UUID.randomUUID(),
           UUID.randomUUID(),
+          "text",
           "message three",
           Instant.ofEpochMilli(3000));
 
@@ -69,6 +72,7 @@ public class MessageStoreTest {
             UUID.randomUUID(),
             inputConversationId,
             UUID.randomUUID(),
+            "text",
             "test message",
             Instant.now());
 
@@ -83,6 +87,7 @@ public class MessageStoreTest {
     Assert.assertEquals(expectedMessage.getId(), actualMessage.getId());
     Assert.assertEquals(expectedMessage.getConversationId(), actualMessage.getConversationId());
     Assert.assertEquals(expectedMessage.getAuthorId(), actualMessage.getAuthorId());
+    Assert.assertEquals(expectedMessage.getType(), actualMessage.getType());
     Assert.assertEquals(expectedMessage.getContent(), actualMessage.getContent());
     Assert.assertEquals(expectedMessage.getCreationTime(), actualMessage.getCreationTime());
   }
