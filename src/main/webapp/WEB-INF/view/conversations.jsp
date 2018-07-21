@@ -27,9 +27,11 @@ limitations under the License.
 
 
 		<% if(request.getAttribute("error") != null){ %>
-			<div class="error-message">
-				<h2 style="color:red"><%= request.getAttribute("error") %></h2>
-			</div><!-- error-message -->
+			<div class="error-con">
+				<div class="error-message">
+					<h2 style="color:red"><%= request.getAttribute("error") %></h2>
+				</div><!-- error-message -->
+			</div>
 		<% } %>
 
 		<div id="chat-page">
@@ -37,45 +39,45 @@ limitations under the License.
 			<% List<Conversation> conversations = (List<Conversation>) request.getAttribute("conversations");
 
 			if(conversations == null || conversations.isEmpty()){%>
-				<div class="error-message">
-					<p>Create a conversation to get started.</p>
-				</div><!-- error-message -->
-			<% } else { %>
+				<p>Create a conversation to get started.</p>
+			<% }%>
 
-				<div class="container-fluid">
+			<div class="container-fluid">
 
-					<div class="row">
+				<div class="row">
 
+					<% if(conversations != null && !conversations.isEmpty()){%>
 						<%@ include file="convo-sidebar.jsp" %>
+					<% }%>
 
-						<div class="col-sm-9 chat-main-section">
-							<% if(request.getSession().getAttribute("user") != null){ %>
-								<h1><span>Create a new Conversation</span></h1>
-								<div class="new-convo contact-con">
-									<form action="/conversations" method="POST">
-										<span class="input input--hoshi">
-											<input class="input__field input__field--hoshi" type="text" id="input-4" name="conversationTitle" />
-											<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
-												<span class="input__label-content input__label-content--hoshi">Title</span>
-											</label>
-										</span>
+					<div class="col-sm-9 chat-main-section">
+						<% if(request.getSession().getAttribute("user") != null){ %>
+							<h1><span>Create a new Conversation</span></h1>
+							<div class="new-convo contact-con">
+								<form action="/conversations" method="POST">
+									<span class="input input--hoshi">
+										<input class="input__field input__field--hoshi" type="text" id="input-4" name="conversationTitle" />
+										<label class="input__label input__label--hoshi input__label--hoshi-color-1" for="input-4">
+											<span class="input__label-content input__label-content--hoshi">Title</span>
+										</label>
+									</span>
 
-										<div class="button-con">
-											<button type="submit">Create</button>
-										</div>
-									</form>
-								</div><!-- new convo -->
-							<% } else { %>
+									<div class="button-con">
+										<button type="submit">Create</button>
+									</div>
+								</form>
+							</div><!-- new convo -->
+						<% } else { %>
+							<div class="error-con">
 								<div class="error-message">
 									<p><a href="/login">Login</a> to create a conversation.</p>
 								</div><!-- error-message -->
-							<% } %>
-						</div><!-- col -->
+							</div>
+						<% } %>
+					</div><!-- col -->
 
-
-					</div><!-- row -->
-				</div><!-- container-fluid -->
-			<% }%>
+				</div><!-- row -->
+			</div><!-- container-fluid -->
 		</div>
 
 			<%@ include file="footer-meta.jsp" %>

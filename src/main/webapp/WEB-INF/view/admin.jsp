@@ -85,17 +85,22 @@
         </form>
     </div>
 
+    <br/>
+    <br/>
+
     <h2><span>Add gifs <a href="/gifs">here</a></span></h2>
 
     <% }  else {%>
-
-       <p>You do not have administrator privileges to access the page</p>
-      <p>Log in to an admin page <a href="/login">here</a>.</p>
+        <div class="error-con">
+            <div class="error-message">
+                <p>You do not have administrator privileges to access the page</p>
+                <p>Log in to an admin page <a href="/login">here</a>.</p>
+          </div><!-- error-message -->
+        </div>
 
     <% } %>
             <br/>
             <br/>
-
 
   </div>
   <%@ include file="footer.jsp" %>
