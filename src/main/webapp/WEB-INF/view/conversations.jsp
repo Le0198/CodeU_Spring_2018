@@ -47,7 +47,18 @@ limitations under the License.
 				<div class="row">
 
 					<% if(conversations != null && !conversations.isEmpty()){%>
-						<%@ include file="convo-sidebar.jsp" %>
+					<% List<Conversation> showConversations = (List<Conversation>) request.getAttribute("conversations"); %>
+
+					<div class="col-sm-3 convo-sidebar">
+					  <h2><span>Convos <a href="/conversations"><i class="fas fa-plus-circle"></i></a></span></h2>
+						<% for(Conversation conversation2 : showConversations){ %>
+						  <a href="/chat/<%= conversation2.getTitle() %>">
+							<div class="convo">
+								<%= conversation2.getTitle() %>
+							</div>
+						  </a>
+						<% } %>
+					</div><!-- col -->
 					<% }%>
 
 					<div class="col-sm-9 chat-main-section">
