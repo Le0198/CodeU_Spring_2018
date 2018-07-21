@@ -20,6 +20,9 @@ import codeu.model.data.User;
 import codeu.model.store.basic.ConversationStore;
 import codeu.model.store.basic.MessageStore;
 import codeu.model.store.basic.UserStore;
+import codeu.model.data.Gif;
+import codeu.model.store.basic.GifStore;
+
 import java.io.IOException;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -44,6 +47,7 @@ public class ChatServletTest {
   private HttpServletResponse mockResponse;
   private RequestDispatcher mockRequestDispatcher;
   private ConversationStore mockConversationStore;
+  private GifStore mockGifStore;
   private MessageStore mockMessageStore;
   private UserStore mockUserStore;
 
@@ -62,6 +66,9 @@ public class ChatServletTest {
 
     mockConversationStore = Mockito.mock(ConversationStore.class);
     chatServlet.setConversationStore(mockConversationStore);
+    
+    mockGifStore = Mockito.mock(GifStore.class);
+    chatServlet.setGifStore(mockGifStore);
 
     mockMessageStore = Mockito.mock(MessageStore.class);
     chatServlet.setMessageStore(mockMessageStore);
@@ -70,6 +77,34 @@ public class ChatServletTest {
     chatServlet.setUserStore(mockUserStore);
   }
 
+  @Test
+  public void testDoGet() throws IOException, ServletException {
+    Mockito.when(mockRequest.getRequestURI()).thenReturn("/chat/test_conversation");
+
+    UUID fakeConversationId = UUID.randomUUID();
+    Conversation fakeConversation =
+        new Conversation(fakeConversationId, UUID.randomUUID(), "test_conversation", Instant.now());
+    Mockito.when(mockConversationStore.getConversationWithTitle("test_conversation"))
+        .thenReturn(fakeConversation);
+
+    List<Message> fakeMessageList = new ArrayList<>();
+    fakeMessageList.add(
+        new Message(
+            UUID.randomUUID(),
+            fakeConversationId,
+            UUID.randomUUID(),
+            "text",
+            "test message",
+            Instant.now()));
+    Mockito.when(mockMessageStore.getMessagesInConversation(fakeConversationId))
+        .thenReturn(fakeMessageList);
+
+    chatServlet.doGet(mockRequest, mockResponse);
+
+    Mockito.verify(mockRequest).setAttribute("conversation", fakeConversation);
+    Mockito.verify(mockRequest).setAttribute("messages", fakeMessageList);
+    Mockito.verify(mockRequestDispatcher).forward(mockRequest, mockResponse);
+  }
 
   @Test
   public void testDoGet_badConversation() throws IOException, ServletException {
