@@ -554,6 +554,26 @@ i {
   background: #eee;
   padding: 8px; }
 
+.team {
+  text-align: center; }
+  .team img {
+    margin: 0 auto;
+    text-align: center;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 15px;
+    border: 2px solid #7277A8; }
+  .team h3 {
+    text-align: center; }
+
+#new-features .row {
+  margin: 20px 0; }
+#new-features h2 {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 50px;
+  border-bottom: 2px solid #7277A8; }
+
 /* ===============================
  * Chat page
  * =============================== */

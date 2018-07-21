@@ -23,52 +23,58 @@
 
 <%@ include file="WEB-INF/view/header.jsp" %>
 
-  <div class="container">
-
-      <h1><span>About the CodeU Chat App</span></h1>
-      <p>
-        This is an example chat application designed to be a starting point
-        for your CodeU project team work. Here's some stuff to think about:
-      </p>
-
-      <ul>
-        <li><strong>Algorithms and data structures:</strong> We've made the app
-            and the code as simple as possible. You will have to extend the
-            existing data structures to support your enhancements to the app,
-            and also make changes for performance and scalability as your app
-            increases in complexity.</li>
-        <li><strong>Look and feel:</strong> The focus of CodeU is on the Java
-          side of things, but if you're particularly interested you might use
-          HTML, CSS, and JavaScript to make the chat app prettier.</li>
-        <li><strong>Customization:</strong> Think about a group you care about.
-          What needs do they have? How could you help? Think about technical
-          requirements, privacy concerns, and accessibility and
-          internationalization.</li>
-      </ul>
+  <div class="container about">
 
       <h1><span>About Team 11</span></h1>
 
       <div class="row team">
           <div class="col-sm-4">
+              <img src="https://download200.com/wp-content/uploads/2017/12/League-of-Legends-Cover.jpg" alt="LoL picture" class="rounded-circle">
               <h3>Leonardo Lopez</h3>
               <p>A UIUC student who likes volleyball and League of Legends.</p>
           </div>
           <div class="col-sm-4">
+              <img src="https://archive.is/AXz9f/11d2d898ab06f601c27dc8ba0aad482bdf0d5309.jpg" alt="BOTW picture" class="rounded-circle">
               <h3>Levi Villarreal</h3>
               <p>A UTAustin student who likes ultimate frisbee and Breath of the Wild (BOTW is best).</p>
           </div>
           <div class="col-sm-4">
+              <img src="https://fire-emblem-heroes.com/common/img/pc/index/characterSlide/character_slide_13_c.png" alt="Fire emblem picture" class="rounded-circle">
               <h3>Jessica Zhu</h3>
               <p>A UMN student who likes Game of Thrones and Fire Emblem.</p>
           </div>
       </div>
 
 	  <h1><span>New Features and Improvements</span></h1>
-    <ul>
-      <li><strong>(In Progress)</strong> The ability to add friends and have a friend list featured on your page.</li>
-      <li><strong>(In Progress)</strong> Access to a gif library in the chat system - think twitter or discord's gifs (uploaded by admins)</li>
-      <li><strong>(In Progress)</strong> The ability to upload a profile picture, featured on your page.</li>
-    </ul>
+
+      <div id="new-features">
+          <div class="row">
+              <div class="col-sm-3">
+                  <h2>Add Friends</h2>
+              </div>
+              <div class="col-sm-9">
+                  <p>The ability to add friends and have a friend list featured on your page.</p>
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="col-sm-3">
+                  <h2>Profile Pictures</h2>
+              </div>
+              <div class="col-sm-9">
+                  <p>The ability to upload a profile picture, featured on your page.</p>
+              </div>
+          </div>
+
+          <div class="row">
+              <div class="col-sm-3">
+                  <h2>Reaction Gifs</h2>
+              </div>
+              <div class="col-sm-9">
+                  <p>Access to a gif library in the chat system - think twitter or discord's gifs (uploaded by admins)</p>
+              </div>
+          </div>
+      </div>
     </div>
   </div>
 
