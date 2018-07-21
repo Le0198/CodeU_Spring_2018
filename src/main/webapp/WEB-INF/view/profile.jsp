@@ -60,7 +60,7 @@
             <% /* reset so the user won't see it again since it is a session attribute, unless they try to input another bad URL */
             request.getSession().setAttribute("error", null); %>
         <% } %>
-  
+
         <center><img src="<%=username.getPicture() %>" alt="Profile picture" style="width:250px;">
           <% if (loggedIn) { %>
             <form action="/users/<%= profile %>" method="POST">
@@ -73,7 +73,7 @@
                     </label>
                   </span>
                   <div class="button-con">
-                    <button type="submit">Change Picture</button>
+                    <button type="submit" name="button" value="picture">Change Picture</button>
                   </div>
                 </div>
               </div>
@@ -113,7 +113,7 @@
             <form action="/users/<%= profile %>" method="POST">
               <textarea type="text" name="aboutme" id="aboutme"></textarea>
               <br/>
-              <button type="submit">Submit</button>
+              <button type="submit" name="button" value="aboutme">Submit</button>
             </form>
         <% } %>
         <hr>
@@ -130,7 +130,7 @@
               <% } %>
           </p>
           <br/>
-  
+
       </div>
   </div>
 

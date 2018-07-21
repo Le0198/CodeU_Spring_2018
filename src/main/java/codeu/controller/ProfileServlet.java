@@ -99,12 +99,12 @@ public class ProfileServlet extends HttpServlet {
         } else {
             String requestUrl = request.getRequestURI();
             String userUrl = requestUrl.substring("/users/".length());
-            if (request.getParameter("url") == null) {
+            if (button.equals("aboutme")) {
               String aboutMeDescrip = request.getParameter("aboutme");
               // removes HTML from the message content
               String cleanAboutMeDescrip = Jsoup.clean(aboutMeDescrip, Whitelist.none());
               user.setAboutMe(aboutMeDescrip);
-            } else {
+            } else { // button.equals("picture")
               String url = request.getParameter("url");
               if (url.length() < 4) {
                 request.getSession().setAttribute("error", "Not a valid url.");
@@ -113,9 +113,12 @@ public class ProfileServlet extends HttpServlet {
               } else {
                 String fileType = url.substring(url.length() - 4);
                 if ( !fileType.equals(".png") && !fileType.equals(".jpg") && !fileType.equals(".gif") ) {
-                  request.getSession().setAttribute("error", "Not a valid url.");
-                  response.sendRedirect("/users/" + username);
-                  return;
+                  fileType = url.substring(url.length() - 5);
+                  if (!fileType.equals(".jpeg")) {
+                    request.getSession().setAttribute("error", "Not a valid url.");
+                    response.sendRedirect("/users/" + username);
+                    return;
+                  }
                 }
               }
               user.setPicture(url);
