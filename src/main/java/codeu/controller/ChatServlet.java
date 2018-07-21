@@ -180,7 +180,7 @@ public class ChatServlet extends HttpServlet {
         // The type of the message
         String type = request.getParameter("type");
         
-        if (!type.equals("image")) {
+        if (type == null || !type.equals("image")) {
             // Clean the original message
             messageContent = clean(messageContent);
         }
