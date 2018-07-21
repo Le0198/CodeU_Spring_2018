@@ -70,34 +70,6 @@ public class ChatServletTest {
     chatServlet.setUserStore(mockUserStore);
   }
 
-  @Test
-  public void testDoGet() throws IOException, ServletException {
-    Mockito.when(mockRequest.getRequestURI()).thenReturn("/chat/test_conversation");
-
-    UUID fakeConversationId = UUID.randomUUID();
-    Conversation fakeConversation =
-        new Conversation(fakeConversationId, UUID.randomUUID(), "test_conversation", Instant.now());
-    Mockito.when(mockConversationStore.getConversationWithTitle("test_conversation"))
-        .thenReturn(fakeConversation);
-
-    List<Message> fakeMessageList = new ArrayList<>();
-    fakeMessageList.add(
-        new Message(
-            UUID.randomUUID(),
-            fakeConversationId,
-            UUID.randomUUID(),
-            "text",
-            "test message",
-            Instant.now()));
-    Mockito.when(mockMessageStore.getMessagesInConversation(fakeConversationId))
-        .thenReturn(fakeMessageList);
-
-    chatServlet.doGet(mockRequest, mockResponse);
-
-    Mockito.verify(mockRequest).setAttribute("conversation", fakeConversation);
-    Mockito.verify(mockRequest).setAttribute("messages", fakeMessageList);
-    Mockito.verify(mockRequestDispatcher).forward(mockRequest, mockResponse);
-  }
 
   @Test
   public void testDoGet_badConversation() throws IOException, ServletException {
@@ -206,7 +178,7 @@ public class ChatServletTest {
 
     ArgumentCaptor<Message> messageArgumentCaptor = ArgumentCaptor.forClass(Message.class);
     Mockito.verify(mockMessageStore).addMessage(messageArgumentCaptor.capture());
-   Assert.assertEquals("Contains <b>html</b> and  content.", messageArgumentCaptor.getValue().getContent());
+   Assert.assertEquals("Contains html and  content.", messageArgumentCaptor.getValue().getContent());
 
     Mockito.verify(mockResponse).sendRedirect("/chat/test_conversation");
   }

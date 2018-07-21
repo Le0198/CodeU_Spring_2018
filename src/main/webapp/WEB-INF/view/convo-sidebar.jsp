@@ -4,7 +4,7 @@
   <% List<Conversation> showConversations = (List<Conversation>) request.getAttribute("conversations"); %>
 
   <div class="col-sm-3 convo-sidebar">
-    <h2><span>Conversations</span></h2>
+    <h2><span>Convos <a href="/conversations"><i class="fas fa-plus-circle"></i></a></span></h2>
       <% for(Conversation conversation2 : showConversations){ %>
         <a href="/chat/<%= conversation2.getTitle() %>">
           <div class="convo">

@@ -20,7 +20,7 @@
                 <li class="nav-item"><p><a href="/">CodeU Chat App</a></p></li>
                 <li class="nav-item">
                     <div class="nav-one scrollLink">
-                        <h2 class="hover"><span class="nav-span-active">01.</span><a href="/conversations">Conversations</a></h2>
+                        <h2 class="hover"><span class="nav-span-active"><i class="fas fa-comments"></i></span><a href="/conversations">Conversations</a></h2>
                     </div>
                 </li><!-- nav-item -->
 

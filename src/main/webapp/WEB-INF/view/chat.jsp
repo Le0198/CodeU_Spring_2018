@@ -52,100 +52,117 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
 
             <div class="convo-con col-sm-9">
 
-                <div class="chat-title">
-                    <h1><%= conversation.getTitle() %>
-                    <a href="">&#8635;</a></h1>
-                </div>
+                <div id="non-chat-actions">
+                    <div class="chat-title">
+                        <h1><%= conversation.getTitle() %>
+                        <a href="">&#8635;</a></h1>
+                    </div>
 
-                <div id="chat">
-                    <ul>
-                        <% for (Message message : messages) {
-                            User userAuthor = UserStore.getInstance().getUser(message.getAuthorId());
-                            String currentUser = (String) request.getSession().getAttribute("user");
-                            String author = userAuthor.getName();
-                            String ownerClass = "";
+                    <div id="chat">
+                        <ul>
+                            <% for (Message message : messages) {
+                                User userAuthor = UserStore.getInstance().getUser(message.getAuthorId());
+                                String currentUser = (String) request.getSession().getAttribute("user");
+                                String author = userAuthor.getName();
+                                String ownerClass = "";
 
-                            if (author.equals(currentUser)) {
-                                ownerClass = "my-message";
-                            }
-                            %>
-                            <li class="<%= ownerClass %>">
-                                <% if (!author.equals(currentUser)) { %>
-                                    <div class="author-content">
-                                        <img src="<%= userAuthor.getPicture()%>" alt="User profile picture" class="profile">
-                                        <strong class="author"><%= author %></strong>
-                                    </div>
-                                <% } %>
-                                <div class="message-content">
-                                    <% if (message.getType().equals("image")) { %>
-                                         <img src="<%= message.getContent() %>" alt="Reaction gif" class="chat-image">
-                                    <% } else { %>
-                                        <%= message.getContent() %>
-                                    <% } %>
-                                </div>
-                                <% if (author.equals(currentUser)) { %>
-                                    <div class="author-content">
-                                        <strong class="author"><%= author %></strong>
-                                        <img src="<%= userAuthor.getPicture()%>" alt="User profile picture" class="profile">
-                                    </div>
-                                <% } %>
-                            </li>
-                        <% } %>
-                    </ul>
-                </div>
-
-                    <div id="chat-actions">
-                        <% if (request.getSession().getAttribute("user") != null) { %>
-
-                            <div class="gif-section">
-                                <div class="container-fluid">
-
-                                    <% List<Gif> gifs = (List<Gif>) request.getAttribute("gifs");
-                                    if(gifs == null || gifs.isEmpty()){
-                                        %>
-                                        <p>Add some <a href="/gifs">gifs</a> to get started.</p>
-
-                                        <% } else { %>
-
-                                        <%
-                                        int numOfCols = 3;
-                                        int rowCount = 0;
-                                        int bootstrapColWidth = 12 / numOfCols;
-                                        int fieldCount = -1;
-
-                                        for(Gif gif : gifs){
-                                            fieldCount++;
-                                        }
-
-                                        %>
-                                        <div class="row">
-                                            <% for(Gif gif2 : gifs){ %>
-                                                <div class="col-sm-<%= bootstrapColWidth %> organization">
-                                                    <div class="captioned-gif">
-                                                        <h5><%= gif2.getTag() %></h5>
-                                                        <img src="<%= gif2.getURL() %>" alt="<%= gif2.getTag() %>" width="100%">
-                                                    </div>
-                                                </div>
-
-                                                <% rowCount++;
-                                                if(rowCount % numOfCols == 0) {  %>
-                                                    </div><div class="row">
-                                                <% } %>
-                                            <% } %>
+                                if (author.equals(currentUser)) {
+                                    ownerClass = "my-message";
+                                }
+                                %>
+                                <li class="<%= ownerClass %>">
+                                    <% if (!author.equals(currentUser)) { %>
+                                        <div class="author-content">
+                                            <img src="<%= userAuthor.getPicture()%>" alt="User profile picture" class="profile">
+                                            <strong class="author"><%= author %></strong>
                                         </div>
+                                    <% } %>
+                                    <div class="message-content">
+                                        <% if (message.getType().equals("image")) { %>
+                                             <img src="<%= message.getContent() %>" alt="Reaction gif" class="chat-image">
+                                        <% } else { %>
+                                            <%= message.getContent() %>
+                                        <% } %>
+                                    </div>
+                                    <% if (author.equals(currentUser)) { %>
+                                        <div class="author-content">
+                                            <strong class="author"><%= author %></strong>
+                                            <img src="<%= userAuthor.getPicture()%>" alt="User profile picture" class="profile">
+                                        </div>
+                                    <% } %>
+                                </li>
+                            <% } %>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="chat-actions">
+                    <% if (request.getSession().getAttribute("user") != null) { %>
+
+                        <div class="gif-section">
+                            <div class="container-fluid">
+
+                                <% List<Gif> gifs = (List<Gif>) request.getAttribute("gifs");
+                                if(gifs == null || gifs.isEmpty()){
+                                    %>
+                                    <p>Add some <a href="/gifs">gifs</a> to get started.</p>
+
+                                    <% } else { %>
+
+                                    <%
+                                    int numOfCols = 3;
+                                    int rowCount = 0;
+                                    int bootstrapColWidth = 12 / numOfCols;
+                                    int fieldCount = -1;
+
+                                    for(Gif gif : gifs){
+                                        fieldCount++;
+                                    }
+
+                                    %>
+                                    <div class="row">
+                                        <% for(Gif gif2 : gifs){ %>
+                                            <div class="col-sm-<%= bootstrapColWidth %> organization">
+                                                <div class="captioned-gif">
+                                                    <h5><%= gif2.getTag() %></h5>
+                                                    <img src="<%= gif2.getURL() %>" alt="<%= gif2.getTag() %>" width="100%">
+                                                </div>
+                                            </div>
+
+                                            <% rowCount++;
+                                            if(rowCount % numOfCols == 0) {  %>
+                                                </div><div class="row">
+                                            <% } %>
+                                        <% } %>
+                                    </div>
                                 <% }%>
                             </div>
                         </div>
 
                         <form action="/chat/<%= conversation.getTitle() %>" method="POST" id="chatForm">
-                            <textarea type="text" name="message" id="textarea" placeholder="Type your message"></textarea>
-                            <br/>
-                            <input type="text" name="type" id="type">
-                                <div class="button-con">
-                                    <button type="submit" class="text-center" id="send">Send</button>
-                                    <button class="text-center gif" id="gif"  type="button">Gif</button>
-                                </div>
-                                <br/>
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-sm-9" id="chat-textarea">
+                                        <div class="">
+                                            <div class="row" id="edit-buttons">
+                                                <div class="col-sm-2 edit-button" id="bold"><i class="fas fa-bold"></i></div>
+                                                <div class="col-sm-2 edit-button" id="italics"><i class="fas fa-italic"></i></div>
+                                                <div class="col-sm-2 edit-button" id="link"><i class="fas fa-link"></i></div>
+                                                <div class="col-sm-2 edit-button" id="sup"><i class="fas fa-superscript"></i></div>
+                                                <div class="col-sm-2 edit-button" id="sub"><i class="fas fa-subscript"></i></div>
+                                                <div class="col-sm-2 edit-button" id="strike"><i class="fas fa-strikethrough"></i></div>
+                                            </div><!-- row -->
+                                        </div>
+                                        <textarea type="text" name="message" id="textarea" placeholder="Type your message"></textarea>
+                                        <input type="text" name="type" id="type">
+                                    </div><!-- chat-textarea -->
+
+                                    <div class="button-con col-sm-3">
+                                        <button type="submit" class="text-center" id="send"><i class="far fa-paper-plane"></i></button>
+                                        <button class="text-center gif" id="gif"  type="button"><i class="fas fa-images"></i></button>
+                                    </div><!-- button-con -->
+                                </div><!-- row -->
+                            </div><!-- container-fluid -->
                         </form>
                     <% } else { %>
                         <p class="text-center"><br><br><a href="/login" class="hover">Login</a> to send a message.<br><br></p>

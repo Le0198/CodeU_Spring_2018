@@ -6,7 +6,7 @@ $(document).ready(function(){
 
     $("#gif").click(function() {
         $(".gif-section").toggle();
-        $("#textarea").toggle();
+        $("#chatForm").toggle();
         $("#textarea").val("");
         $("#type").val("");
     });
@@ -22,7 +22,7 @@ $(document).ready(function(){
     });
 
     $('#bold').click(function () {
-      var txtarea = document.getElementById("texta");
+      var txtarea = document.getElementById("textarea");
       var start = txtarea.selectionStart;
       var end = txtarea.selectionEnd;
       var sel = txtarea.value.substring(start, end);
@@ -33,7 +33,7 @@ $(document).ready(function(){
     });
 
     $('#italics').click(function () {
-      var txtarea = document.getElementById("texta");
+      var txtarea = document.getElementById("textarea");
       var start = txtarea.selectionStart;
       var end = txtarea.selectionEnd;
       var sel = txtarea.value.substring(start, end);
@@ -41,6 +41,50 @@ $(document).ready(function(){
       txtarea.value = finText;
       txtarea.focus();
       txtarea.selectionEnd= end + 1;
+    });
+
+    $('#link').click(function () {
+      var txtarea = document.getElementById("textarea");
+      var start = txtarea.selectionStart;
+      var end = txtarea.selectionEnd;
+      var sel = txtarea.value.substring(start, end);
+      var finText = txtarea.value.substring(0, start) + '<a href="' + sel + '"></a>' + txtarea.value.substring(end);
+      txtarea.value = finText;
+      txtarea.focus();
+      txtarea.selectionEnd= end + 9;
+    });
+
+    $('#sup').click(function () {
+      var txtarea = document.getElementById("textarea");
+      var start = txtarea.selectionStart;
+      var end = txtarea.selectionEnd;
+      var sel = txtarea.value.substring(start, end);
+      var finText = txtarea.value.substring(0, start) + '<sup>' + sel + '</sup>' + txtarea.value.substring(end);
+      txtarea.value = finText;
+      txtarea.focus();
+      txtarea.selectionEnd= end + 5;
+    });
+
+    $('#sub').click(function () {
+      var txtarea = document.getElementById("textarea");
+      var start = txtarea.selectionStart;
+      var end = txtarea.selectionEnd;
+      var sel = txtarea.value.substring(start, end);
+      var finText = txtarea.value.substring(0, start) + '<sub>' + sel + '</sub>' + txtarea.value.substring(end);
+      txtarea.value = finText;
+      txtarea.focus();
+      txtarea.selectionEnd= end + 5;
+    });
+
+    $('#strike').click(function () {
+      var txtarea = document.getElementById("textarea");
+      var start = txtarea.selectionStart;
+      var end = txtarea.selectionEnd;
+      var sel = txtarea.value.substring(start, end);
+      var finText = txtarea.value.substring(0, start) + '<del>' + sel + '</del>' + txtarea.value.substring(end);
+      txtarea.value = finText;
+      txtarea.focus();
+      txtarea.selectionEnd= end + 5;
     });
 });
 

@@ -207,7 +207,7 @@ public class ChatServlet extends HttpServlet {
 
         // Get rid of all HTML tags except the ones we wand
         Whitelist allowedTags = Whitelist.none();
-        allowedTags.addTags("ins", "del", "strong", "em", "sub", "sup");
+        allowedTags.addTags("ins", "del", "strong", "em", "sub", "sup", "a");
 
         // allow strikethrough and underline in markdown
         MutableDataSet options = new MutableDataSet();

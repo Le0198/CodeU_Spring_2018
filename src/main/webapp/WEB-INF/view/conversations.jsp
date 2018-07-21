@@ -27,7 +27,9 @@ limitations under the License.
 
 
 		<% if(request.getAttribute("error") != null){ %>
-		<h2 style="color:red"><%= request.getAttribute("error") %></h2>
+			<div class="error-message">
+				<h2 style="color:red"><%= request.getAttribute("error") %></h2>
+			</div><!-- error-message -->
 		<% } %>
 
 		<div id="chat-page">
@@ -75,8 +77,6 @@ limitations under the License.
 				</div><!-- container-fluid -->
 			<% }%>
 		</div>
-
-			<br/><br/>
 
 			<%@ include file="footer-meta.jsp" %>
 		</body>
