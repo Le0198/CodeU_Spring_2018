@@ -29,7 +29,7 @@
 
     <%
 
-    if(curUserName != null && curUserName.equals("leviv")) { %>
+    if(curUserName != null) { %>
 
       <h2><span>Site Stats</span></h2>
       <br/>

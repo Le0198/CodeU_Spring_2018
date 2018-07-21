@@ -54,7 +54,7 @@
                     </div>
                 </li><!-- nav-item -->
 
-                <% if(curUserName != null && curUserName.equals("leviv")) { %>
+                <% if(curUserName != null)) { %>
                     <li class="nav-item">
                         <div class="nav-five scrollLink">
                             <h2 class="hover"><span class=""><i class="fas fa-unlock"></i></span><a href="/admin">Admin</a></h2>
