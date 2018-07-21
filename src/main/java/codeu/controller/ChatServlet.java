@@ -176,12 +176,14 @@ public class ChatServlet extends HttpServlet {
             return;
         }
 
-        // Clean the original message
         String messageContent = request.getParameter("message");
-        messageContent = clean(messageContent);
-
         // The type of the message
         String type = request.getParameter("type");
+        
+        if (!type.equals("image")) {
+            // Clean the original message
+            messageContent = clean(messageContent);
+        }
 
         // Build the message
         Message message =
@@ -235,8 +237,10 @@ public class ChatServlet extends HttpServlet {
         
     	Scanner sc = new Scanner(finalMessageContent);
     	
+    	// Go through the message looking for links bc JSoup refuses to cooperate
     	while (sc.hasNextLine()) {
     		Scanner scanLine = new Scanner(sc.nextLine());
+    		// Scan each line
     		while (scanLine.hasNext()) {
     			String word = scanLine.next();
     			if(word.length() > 8 && (word.substring(0,7).equals("http://") || word.substring(0,8).equals("https://"))) {
@@ -248,7 +252,7 @@ public class ChatServlet extends HttpServlet {
         		}
     		}
     		if (sc.hasNextLine()) {
-    			enhancedMessage.append("\n");
+    			enhancedMessage.append(" ");
     		}
     		scanLine.close();
     	}

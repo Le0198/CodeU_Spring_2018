@@ -6,7 +6,7 @@ $(document).ready(function(){
 
     $("#gif").click(function() {
         $(".gif-section").toggle();
-        $("#chatForm").toggle();
+        $("#chat-textarea").toggle();
         $("#textarea").val("");
         $("#type").val("");
     });

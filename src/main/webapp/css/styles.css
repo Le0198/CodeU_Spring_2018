@@ -562,7 +562,15 @@ i {
   background: #eee;
   padding: 15px;
   text-align: center;
-  width: 100%; }
+  width: 100%;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s; }
+  .convo:hover {
+    color: #fff;
+    background: #7277A8; }
 
 .convo-sidebar {
   background: #00171F;
@@ -644,7 +652,8 @@ button.gif {
     width: 100%;
     margin: 15px 0 10px 0; }
   .gif-section img {
-    max-height: 100px; }
+    max-height: 100px;
+    width: auto; }
 
 textarea.hidden, input#type {
   display: none; }
@@ -709,8 +718,7 @@ textarea.hidden, input#type {
   min-height: 100%; }
 
 #non-chat-actions {
-  min-height: 100vh;
-  margin-bottom: -145px; }
+  min-height: 100vh; }
 
 #chat-actions {
   padding: 15px;
