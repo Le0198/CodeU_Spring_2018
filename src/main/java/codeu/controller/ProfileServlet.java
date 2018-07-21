@@ -46,6 +46,7 @@ public class ProfileServlet extends HttpServlet {
     this.userStore = userStore;
   }
 
+  private String currentProfile;
   /**
    * This function fires when a user navigates to the profile page.
    */
@@ -53,18 +54,18 @@ public class ProfileServlet extends HttpServlet {
   public void doGet(HttpServletRequest request, HttpServletResponse response)
       throws IOException, ServletException {
     String requestUrl = request.getRequestURI();
-    String username = requestUrl.substring("/users/".length());
+    currentProfile = requestUrl.substring("/users/".length());
 
-    User user = userStore.getUser(username);
+    User user = userStore.getUser(currentProfile);
     if (user == null) {
       // user not found, no profile page exists for them
-      System.out.println("User not found: " + username);
+      System.out.println("User not found: " + currentProfile);
       response.sendRedirect("/about.jsp");
       // there's probably a better link to redirect them to, but placeholder for now
       return;
     }
 
-    request.setAttribute("profile", username);
+    request.setAttribute("profile", currentProfile);
     request.setAttribute("id", user.getId());
     request.getRequestDispatcher("/WEB-INF/view/profile.jsp").forward(request, response);
   }
@@ -90,32 +91,41 @@ public class ProfileServlet extends HttpServlet {
           return;
         }
 
-        String requestUrl = request.getRequestURI();
-        String userUrl = requestUrl.substring("/users/".length());
-
-        if (request.getParameter("url") == null) {
-          String aboutMeDescrip = request.getParameter("aboutme");
-          // removes HTML from the message content
-          String cleanAboutMeDescrip = Jsoup.clean(aboutMeDescrip, Whitelist.none());
-
-          user.setAboutMe(aboutMeDescrip);
+        String button = request.getParameter("button");
+        if (button.equals("add")) {
+            user.addFriend(currentProfile);
+        } else if (button.equals("remove")) {
+            user.removeFriend(currentProfile);
         } else {
-          String url = request.getParameter("url");
-          if (url.length() < 4) {
-            request.getSession().setAttribute("error", "Not a valid url.");
-            response.sendRedirect("/users/" + username);
-            return;
-          } else {
-            String fileType = url.substring(url.length() - 4);
-            if ( !fileType.equals(".png") && !fileType.equals(".jpg") && !fileType.equals(".gif") ) {
-              request.getSession().setAttribute("error", "Not a valid url.");
-              response.sendRedirect("/users/" + username);
-              return;
+            String requestUrl = request.getRequestURI();
+            String userUrl = requestUrl.substring("/users/".length());
+            if (request.getParameter("url") == null) {
+              String aboutMeDescrip = request.getParameter("aboutme");
+              // removes HTML from the message content
+              String cleanAboutMeDescrip = Jsoup.clean(aboutMeDescrip, Whitelist.none());
+              user.setAboutMe(aboutMeDescrip);
+            } else {
+              String url = request.getParameter("url");
+              if (url.length() < 4) {
+                request.getSession().setAttribute("error", "Not a valid url.");
+                response.sendRedirect("/users/" + username);
+                return;
+              } else {
+                String fileType = url.substring(url.length() - 4);
+                if ( !fileType.equals(".png") && !fileType.equals(".jpg") && !fileType.equals(".gif") ) {
+                  request.getSession().setAttribute("error", "Not a valid url.");
+                  response.sendRedirect("/users/" + username);
+                  return;
+                }
+              }
+              user.setPicture(url);
             }
-          }
-          user.setPicture(url);
         }
         userStore.updateUser(user);
-        response.sendRedirect("/users/" + username);
-  }
+        if (username.equals(currentProfile)) {
+            response.sendRedirect("/users/" + username);
+        } else {
+            response.sendRedirect("/users/" + currentProfile);
+        }
+      }
 }
