@@ -1,251 +1,421 @@
 /* ===============================
-    Custom Sass
-    By: Levi Villarreal
-    For: CodeU
-    Completed: IN PROGRESS
-    =============================== */
+		Custom Sass
+		By: Levi Villarreal
+		For: CodeU
+		Completed: IN PROGRESS
+		=============================== */
 
 /* ===============================
-    General
-    =============================== */
+		General
+		=============================== */
 
 body
-    -webkit-font-smoothing: antialiased
-    text-rendering: optimizelegibility
-    font-family: 'Dosis', sans-serif
-    
-body, html, .row 
-    height: 100%
-    
+	-webkit-font-smoothing: antialiased
+	text-rendering: optimizelegibility
+	font-family: 'Dosis', sans-serif
+
+body, html, .row
+	height: 100%
+	padding: 0
+	margin: 0
+
 a:hover
-    text-decoration: none
+	text-decoration: none
 
 ul
-    list-style: none
+	list-style: none
 
 hr
-    border-width : 2px
-    border-color: $secondary-color
-    
+	border-width : 2px
+	border-color: $secondary-color
+
 /* ===============================
-    Typography
-    =============================== */
+	Typography
+	=============================== */
 
 h1, h1 span
-    font-family: 'Yeseva One', cursive
-    
+	font-family: 'Yeseva One', cursive
+
 #home .hover
-    color: #a0c0db !important
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 50%, #a0c0db 50%) !important
-    
+	color: #a0c0db !important
+	background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 50%, #a0c0db 50%) !important
+
 .hover
-    background-size: 100% 200%
-    background-position: 0% 0%
-    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 50%, $third-color 50%)
-    +transition(all, .5s)
-    text-decoration: none
-    overflow: hidden
-    color: $third-color
+	background-size: 100% 200%
+	background-position: 0% 0%
+	background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 50%, $third-color 50%)
+	+transition(all, .5s)
+	text-decoration: none
+	overflow: hidden
+	color: $third-color
+	&:hover
+		color: $primary-color
+		background-position: 0% -195%
+		text-decoration: none
+		background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 50%, $primary-color 50%)
 
-    &:hover
-        color: $primary-color
-        background-position: 0% -195%
-        text-decoration: none
-        background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 50%, $primary-color 50%)
+.btn-empty
+	background: rgba(250, 250, 250, 0)
+	border: 1px solid #000
+	+transition(all, .5s)
+	&:hover
+		background: rgba(0, 0, 0, 0.2) !important
 
-.btn-empty 
-    background: rgba(250, 250, 250, 0)
-    border: 1px solid #000
-    +transition(all, .5s)
-    &:hover
-        background: rgba(0, 0, 0, 0.2) !important
-        
 .container h1
-    text-align: center
-    padding: 60px 0
-    span
-        border-bottom: 2px solid $primary-color
+	text-align: center
+	padding: 60px 0
+	span
+		border-bottom: 2px solid $primary-color
 
 
 /* ===============================
-    Navbar
-    =============================== */
+	Navbar
+	=============================== */
 
 #dim-screen
-    background: rgba(0, 0, 0, 0.5)
-    display: none
-    height: 100%
-    left: 0
-    position: fixed
-    top: 0
-    width: 100%
-    z-index: 5
+	background: rgba(0, 0, 0, 0.5)
+	display: none
+	height: 100%
+	left: 0
+	position: fixed
+	top: 0
+	width: 100%
+	z-index: 5
 
 @media (max-width: 768px)
-    .nav-list
-        top: 30% !important
-        left: -100%
+	.nav-list
+		top: 30% !important
+		left: -100%
 
 
 .nav-list
-    text-align: left
-    position: fixed
-    display: block
-    top: 40%
-    left: -100%
-    transform: translateY(-50%)
-    -webkit-transform: translateY(-50%)
-    -moz-transform: translateY(-50%)
-    -o-transform: translateY(-50%)
-    padding: 0 0 0 4%
-    +transition(all, 1.2s)
-    h2
-        text-align: left !important
-        font-size: 15px
-    img
-        width: 200px
-        
+	text-align: left
+	position: fixed
+	display: block
+	top: 40%
+	left: -100%
+	transform: translateY(-50%)
+	-webkit-transform: translateY(-50%)
+	-moz-transform: translateY(-50%)
+	-o-transform: translateY(-50%)
+	padding: 0 0 0 4%
+	+transition(all, 1.2s)
+	h2
+		text-align: left !important
+		font-size: 15px
+	img
+		width: 200px
+
 .nav-item
-    font-size: 50px
-    line-height: 70px
-    font-weight: 800
-    text-transform: uppercase
-    letter-spacing: 1px
-    margin-top: 20px
-    a
-        color: $secondary-color
-    p
-        font-size: 25px
-        margin-bottom: 20px
-        text-transform: none
-        border-bottom: 2px solid $primary-color
-        span
-            font-weight: 100
-            color: $primary-color
-            font-size: 45px
-    h2
-        color: $primary-color
-        span
-            font-weight: 100
-            margin-right: 20px
-            color: $primary-color
-            border-bottom: 2px solid $primary-color
-        
+	font-size: 50px
+	line-height: 70px
+	font-weight: 800
+	text-transform: uppercase
+	letter-spacing: 1px
+	margin-top: 20px
+	a
+		color: #fff
+	p
+		font-size: 25px
+		margin-bottom: 20px
+		text-transform: none
+		border-bottom: 2px solid $primary-color
+		span
+			font-weight: 100
+			color: $primary-color
+			font-size: 45px
+	h2
+		color: $primary-color
+		span
+			font-weight: 100
+			margin-right: 20px
+			color: $primary-color
+			border-bottom: 2px solid $primary-color
+
 #nav-expand
-    background: shade($secondary-color, 20%)
-    position: fixed
-    top: 0
-    background-attachment: fixed
-    background-size: cover
-    height: 100%
-    color: $primary-color
-    display: inherit
-    z-index: 99999999
-    +transition(background, .5s)
+	background: shade($secondary-color, 20%)
+	position: fixed
+	top: 0
+	background-attachment: fixed
+	background-size: cover
+	height: 100%
+	color: $primary-color
+	display: inherit
+	z-index: 99999999
+	+transition(background, .5s)
 
 .c-hamburger
-    display: block
-    z-index: 9999999999
-    position: fixed
-    width: 48px
-    height: 48px
-    text-indent: -999999px
-    border: none
-    cursor: pointer
-    top: 20px
-    right: calc(100% - 68px)
-    +transform(0deg)
-    +transition(background, .3s)
-    +transition(all, 1.2s)
-    +border-radius(50%)
-    &:focus
-        outline: none
-    span
-        display: block
-        position: absolute
-        top: 22px
-        left: 9px
-        right: 9px
-        height: 3px
-        background: $primary-color
-        &::before, &::after
-            content: ""
-            position: absolute
-            display: block
-            left: 0
-            width: 100%
-            height: 3px
-            background-color: $primary-color
-        &::before
-            top: -10px
-        &::after
-            bottom: -10px
-        
-.c-hamburger--htx 
-    background-color: $secondary-color
-    span
-        +transition(background, .3s)
-        &::before
-            transition-property: top, transform 
-        &::after
-            transition-property: bottom, transform
-    &:hover
-        background-color: shade($secondary-color, 60%) 
-        span
-            background: $primary-color
-    &.is-active
-        span
-            background: none
-            transition-delay: 0s, .3s
-            &::before, &::after
-                transition-delay: 0s, .3s
-            &::before
-                top: 0
-                +rotate(45deg)
-            &::after
-                bottom: 0
-                +rotate(-45deg) 
+	display: block
+	z-index: 9999999999
+	position: fixed
+	width: 48px
+	height: 48px
+	text-indent: -999999px
+	border: none
+	cursor: pointer
+	top: 20px
+	right: calc(100% - 68px)
+	+transform(0deg)
+	+transition(background, .3s)
+	+transition(all, 1.2s)
+	+border-radius(50%)
+	&:focus
+		outline: none
+	span
+		display: block
+		position: absolute
+		top: 22px
+		left: 9px
+		right: 9px
+		height: 3px
+		background: $primary-color
+		&::before, &::after
+			content: ""
+			position: absolute
+			display: block
+			left: 0
+			width: 100%
+			height: 3px
+			background-color: $primary-color
+		&::before
+			top: -10px
+		&::after
+			bottom: -10px
+
+.c-hamburger--htx
+	background-color: $secondary-color
+	span
+		+transition(background, .3s)
+		&::before
+			transition-property: top, transform
+		&::after
+			transition-property: bottom, transform
+	&:hover
+		background-color: shade($secondary-color, 60%)
+		span
+			background: $primary-color
+	&.is-active
+		span
+			background: none
+			transition-delay: 0s, .3s
+			&::before, &::after
+				transition-delay: 0s, .3s
+			&::before
+				top: 0
+				+rotate(45deg)
+			&::after
+				bottom: 0
+				+rotate(-45deg)
 
 .c-hamburger--htra
-    span
-        +transition(all, .2s)
-        +rotate(180deg)
-        &::before, &::after
-            +transition(all, .2s)
-    &:hover
-        span
-            background: $primary-color
-            &::before
-                transform-origin: top left !important
-                top: 0 !important
-                transform: translateX(-3px) translateY(1.5px) rotate(-45deg) !important
-            &::after
-                transform-origin: bottom left !important
-                bottom: 0 !important
-                transform: translateX(-3px) translateY(-1.5px) rotate(45deg) !important
-            &::before, &::after
-                width: 50%
-                +transition(all, .3s)
+	span
+		+transition(all, .2s)
+		+rotate(180deg)
+		&::before, &::after
+			+transition(all, .2s)
+	&:hover
+		span
+			background: $primary-color
+			&::before
+				transform-origin: top left !important
+				top: 0 !important
+				transform: translateX(-3px) translateY(1.5px) rotate(-45deg) !important
+			&::after
+				transform-origin: bottom left !important
+				bottom: 0 !important
+				transform: translateX(-3px) translateY(-1.5px) rotate(45deg) !important
+			&::before, &::after
+				width: 50%
+				+transition(all, .3s)
 
+/* ===============================
+	Input
+	=============================== */
+.input
+	position: relative
+	z-index: 1
+	display: inline-block
+	margin: 1em
+	max-width: 350px
+	width: calc(100% - 2em)
+	vertical-align: top
+
+.input__field
+	position: relative
+	display: block
+	float: right
+	padding: 0.8em
+	width: 60%
+	border: none
+	border-radius: 0
+	background: #fff
+	color: #aaa
+	font-weight: bold
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+	-webkit-appearance: none
+	/* for box shadows to show on iOS
+	&:focus
+		outline: none
+
+.input__label
+	display: inline-block
+	float: right
+	padding: 0 1em
+	width: 40%
+	color: #000
+	font-weight: bold
+	font-size: 70.25%
+	-webkit-font-smoothing: antialiased
+	-moz-osx-font-smoothing: grayscale
+	-webkit-touch-callout: none
+	-webkit-user-select: none
+	-khtml-user-select: none
+	-moz-user-select: none
+	-ms-user-select: none
+	user-select: none
+
+.input__label-content
+	position: relative
+	display: block
+	padding: 1.6em 0
+	width: 100%
+
+/* Hoshi
+
+.input--hoshi
+	overflow: hidden
+
+.input__field--hoshi
+	margin-top: 1em
+	padding: 25px 5px
+	width: 100%
+	background: transparent
+	color: #000
+
+.input__label--hoshi
+	position: absolute
+	bottom: 0
+	left: 0
+	padding: 0 5px
+	width: 100%
+	height: calc(100% - 1em)
+	text-align: left
+	pointer-events: none
+
+.input__label-content--hoshi
+	position: absolute
+
+.input__label--hoshi
+	&::before
+		content: ''
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: calc(100% - 10px)
+		border-bottom: 1px solid #000
+	&::after
+		content: ''
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: calc(100% - 10px)
+		border-bottom: 1px solid #000
+		margin-top: 2px
+		border-bottom: 4px solid red
+		-webkit-transform: translate3d(-100%, 0, 0)
+		transform: translate3d(-100%, 0, 0)
+		-webkit-transition: -webkit-transform 0.3s
+		transition: transform 0.3s
+		border-color: $primary-color
+
+.input__field--hoshi:focus + .input__label--hoshi::after, .input--filled .input__label--hoshi::after
+	-webkit-transform: translate3d(0, 0, 0)
+	transform: translate3d(0, 0, 0)
+
+.input__field--hoshi:focus + .input__label--hoshi .input__label-content--hoshi, .input--filled .input__label-content--hoshi
+	-webkit-animation: anim-1 0.3s forwards
+	animation: anim-1 0.3s forwards
+
+@-webkit-keyframes anim-1
+	50%
+		opacity: 0
+		-webkit-transform: translate3d(1em, 0, 0)
+		transform: translate3d(1em, 0, 0)
+
+	51%
+		opacity: 0
+		-webkit-transform: translate3d(-1em, -40%, 0)
+		transform: translate3d(-1em, -40%, 0)
+
+	100%
+		opacity: 1
+		-webkit-transform: translate3d(0, -40%, 0)
+		transform: translate3d(0, -40%, 0)
+
+
+@keyframes anim-1
+	50%
+		opacity: 0
+		-webkit-transform: translate3d(1em, 0, 0)
+		transform: translate3d(1em, 0, 0)
+
+	51%
+		opacity: 0
+		-webkit-transform: translate3d(-1em, -40%, 0)
+		transform: translate3d(-1em, -40%, 0)
+
+	100%
+		opacity: 1
+		-webkit-transform: translate3d(0, -40%, 0)
+		transform: translate3d(0, -40%, 0)
+
+button, .file-button
+	background: #fff
+	color: $primary-color
+	border: 2px solid $primary-color
+	cursor: pointer
+	+transition(all, 1s)
+	&:hover
+		color: #fff
+		background: $primary-color
+		+transition(all, 1s)
+
+/* ===============================
+	Sections
+	=============================== */
+
+.section-info
+	padding: 30px 0 !important
+	h2.section-lead
+		text-transform: uppercase
+		padding-bottom: 5px
+		font-size: 40px
+		max-width: 50px
+		border-bottom: 2px solid $primary-color
+		margin-bottom: 30px
+
+.contact-con
+	position: relative
+	padding: 20px
+	text-align: center
+	background: #fff
+	width: 50%
+	z-index: 999999
+	+border-radius(9px)
+	box-shadow: 10px 10px 100px #868686
+	margin: 20px auto
+	iframe
+		width: 100%
+
+/* ===============================
+	Footer
+	=============================== */
 
 footer
-    background: $primary-color
-    padding: 50px
-    .right-footer
-        text-align: right !important
-    
-button-con
-    width: 100%
-    
-button, .file-button
-    background: #fff
-    color: $primary-color
-    border: 2px solid $primary-color
-    cursor: pointer
-    +transition(all, 1s)
-    &:hover
-        color: #fff
-        background: $primary-color
-        +transition(all, 1s)
-    
-
+	background: $secondary-color
+	padding: 25px 0
+	color: #fff
+	.footer-right
+			text-align: right

@@ -20,6 +20,9 @@ import codeu.model.data.User;
 import codeu.model.store.basic.ConversationStore;
 import codeu.model.store.basic.MessageStore;
 import codeu.model.store.basic.UserStore;
+import codeu.model.data.Gif;
+import codeu.model.store.basic.GifStore;
+
 import java.io.IOException;
 import java.time.Instant;
 import java.util.ArrayList;
@@ -44,6 +47,7 @@ public class ChatServletTest {
   private HttpServletResponse mockResponse;
   private RequestDispatcher mockRequestDispatcher;
   private ConversationStore mockConversationStore;
+  private GifStore mockGifStore;
   private MessageStore mockMessageStore;
   private UserStore mockUserStore;
 
@@ -62,6 +66,9 @@ public class ChatServletTest {
 
     mockConversationStore = Mockito.mock(ConversationStore.class);
     chatServlet.setConversationStore(mockConversationStore);
+    
+    mockGifStore = Mockito.mock(GifStore.class);
+    chatServlet.setGifStore(mockGifStore);
 
     mockMessageStore = Mockito.mock(MessageStore.class);
     chatServlet.setMessageStore(mockMessageStore);
@@ -206,7 +213,7 @@ public class ChatServletTest {
 
     ArgumentCaptor<Message> messageArgumentCaptor = ArgumentCaptor.forClass(Message.class);
     Mockito.verify(mockMessageStore).addMessage(messageArgumentCaptor.capture());
-   Assert.assertEquals("Contains <b>html</b> and  content.", messageArgumentCaptor.getValue().getContent());
+   Assert.assertEquals("Contains html and  content.", messageArgumentCaptor.getValue().getContent());
 
     Mockito.verify(mockResponse).sendRedirect("/chat/test_conversation");
   }

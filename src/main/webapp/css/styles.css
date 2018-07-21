@@ -13,7 +13,9 @@ body {
   font-family: "Dosis", sans-serif; }
 
 body, html, .row {
-  height: 100%; }
+  height: 100%;
+  padding: 0;
+  margin: 0; }
 
 a:hover {
   text-decoration: none; }
@@ -117,7 +119,7 @@ h1, h1 span {
   letter-spacing: 1px;
   margin-top: 20px; }
   .nav-item a {
-    color: #00171F; }
+    color: #fff; }
   .nav-item p {
     font-size: 25px;
     margin-bottom: 20px;
@@ -276,155 +278,6 @@ h1, h1 span {
     -moz-transition: all 0.3s;
     -o-transition: all 0.3s; }
 
-footer {
-  background: #7277A8;
-  padding: 50px; }
-  footer .right-footer {
-    text-align: right !important; }
-
-button-con {
-  width: 100%; }
-
-button, .file-button {
-  background: #fff;
-  color: #7277A8;
-  border: 2px solid #7277A8;
-  cursor: pointer;
-  transition: all 1s;
-  -webkit-transition: all 1s;
-  -ms-transition: all 1s;
-  -moz-transition: all 1s;
-  -o-transition: all 1s;
-}
-
-button:hover, .file-button:hover {
-   color: #fff;
-   background: #7277A8;
-   transition: all 1s;
-   -webkit-transition: all 1s;
-   -ms-transition: all 1s;
-   -moz-transition: all 1s;
-   -o-transition: all 1s;
-}
-
-/* ===============================
- * Home Page
- * =============================== */
-figure {
-  height: 100vh; }
-
-html {
-  padding: 0px !important;
-  margin: 0px !important; }
-
-/* ===============================
- * Hero
- * =============================== */
-#home {
-  height: 100vh; }
-
-.container-hero {
-  position: absolute;
-  height: 100%;
-  display: block;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  overflow: hidden;
-  background: url("../img/bg.png");
-  background-position: center center;
-  background-size: cover;
-  align-items: center; }
-
-.log-con {
-  background: url("../img/bg.png");
-  background-position: center center;
-  background-size: cover;
-  height: 100%; }
-
-.container-hero h1 {
-  position: absolute;
-  bottom: 45px;
-  font-size: 10vw;
-  display: block;
-  z-index: 999;
-  font-style: italic;
-  color: #fff;
-  text-shadow: -4px 0 #7277A8, 0px 0 #7277A8, -2px 2px 0 #7277A8, 2px 2px 0 #7277A8;
-  padding: 0px 15px; }
-
-@-moz-keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    -moz-transform: translateY(0);
-    transform: translateY(0); }
-  40% {
-    -moz-transform: translateY(-30px);
-    transform: translateY(-30px); }
-  60% {
-    -moz-transform: translateY(-15px);
-    transform: translateY(-15px); } }
-@-webkit-keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    -webkit-transform: translateY(0);
-    transform: translateY(0); }
-  40% {
-    -webkit-transform: translateY(-30px);
-    transform: translateY(-30px); }
-  60% {
-    -webkit-transform: translateY(-15px);
-    transform: translateY(-15px); } }
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    -moz-transform: translateY(0);
-    -ms-transform: translateY(0);
-    -webkit-transform: translateY(0);
-    transform: translateY(0); }
-  40% {
-    -moz-transform: translateY(-30px);
-    -ms-transform: translateY(-30px);
-    -webkit-transform: translateY(-30px);
-    transform: translateY(-30px); }
-  60% {
-    -moz-transform: translateY(-15px);
-    -ms-transform: translateY(-15px);
-    -webkit-transform: translateY(-15px);
-    transform: translateY(-15px); } }
-i {
-  display: block;
-  color: #fff; }
-
-.arrow {
-  color: #00171F;
-  position: absolute;
-  bottom: 5px;
-  left: 50%;
-  margin-left: -20px;
-  width: 40px;
-  height: 60px;
-  /*change with size of arrow to make sit on bottom */
-  /*   background-image: url(); */
-  /*   background-size: contain; */ }
-
-.bounce {
-  -moz-animation: bounce 2s infinite;
-  -webkit-animation: bounce 2s infinite;
-  animation: bounce 2s infinite; }
-
-.container-details {
-  padding: 20px;
-  z-index: 999999; }
-  .container-details p {
-    font-size: 14px;
-    z-index: 2;
-    margin-left: -50%;
-    color: #fff; }
-    .container-details p span {
-      background: #7277A8;
-      padding: 3px 8px; }
-
-@media (max-width: 768px) {
-  .container-details p {
-    margin-left: 0%; } }
 /* ===============================
  * Input
  * =============================== */
@@ -559,12 +412,28 @@ i {
     opacity: 1;
     -webkit-transform: translate3d(0, -40%, 0);
     transform: translate3d(0, -40%, 0); } }
+button, .file-button {
+  background: #fff;
+  color: #7277A8;
+  border: 2px solid #7277A8;
+  cursor: pointer;
+  transition: all 1s;
+  -webkit-transition: all 1s;
+  -ms-transition: all 1s;
+  -moz-transition: all 1s;
+  -o-transition: all 1s; }
+  button:hover, .file-button:hover {
+    color: #fff;
+    background: #7277A8;
+    transition: all 1s;
+    -webkit-transition: all 1s;
+    -ms-transition: all 1s;
+    -moz-transition: all 1s;
+    -o-transition: all 1s; }
+
 /* ===============================
  * Sections
  * =============================== */
-.nav-item, .nav-item a, .nav-item a h2, .nav-item a {
-  color: #fff !important; }
-
 .section-info {
   padding: 30px 0 !important; }
   .section-info h2.section-lead {
@@ -574,18 +443,6 @@ i {
     max-width: 50px;
     border-bottom: 2px solid #7277A8;
     margin-bottom: 30px; }
-
-#faq, #video {
-  background: #00171F;
-  color: #fff; }
-
-#faq .row {
-  padding: 20px 0; }
-  #faq .row .col-sm-6, #faq .row .col-sm-4, #faq .row .col-sm-3 {
-    padding: 0 25px; }
-  #faq .row h2 {
-    color: #b1b4cf !important;
-    font-size: 23px; }
 
 .contact-con {
   position: relative;
@@ -604,6 +461,81 @@ i {
   .contact-con iframe {
     width: 100%; }
 
+/* ===============================
+ * Footer
+ * =============================== */
+footer {
+  background: #00171F;
+  padding: 25px 0;
+  color: #fff; }
+  footer .footer-right {
+    text-align: right; }
+
+/* ===============================
+ * Home Page
+ * =============================== */
+figure {
+  height: 100vh; }
+
+html {
+  padding: 0px !important;
+  margin: 0px !important; }
+
+/* ===============================
+ * Landing page
+ * =============================== */
+#home {
+  height: 100vh; }
+
+.container-hero {
+  position: absolute;
+  height: 100%;
+  display: block;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  background: url("../img/bg.png");
+  background-position: center center;
+  background-size: cover;
+  align-items: center; }
+
+.log-con {
+  background: url("../img/bg.png");
+  background-position: center center;
+  background-size: cover;
+  height: 100%; }
+
+.container-hero h1 {
+  position: absolute;
+  bottom: 45px;
+  font-size: 10vw;
+  display: block;
+  z-index: 999;
+  font-style: italic;
+  color: #fff;
+  text-shadow: -4px 0 #7277A8, 0px 0 #7277A8, -2px 2px 0 #7277A8, 2px 2px 0 #7277A8;
+  padding: 0px 15px; }
+
+i {
+  display: block;
+  color: #fff; }
+
+.container-details {
+  padding: 20px;
+  z-index: 999999; }
+  .container-details p {
+    font-size: 14px;
+    z-index: 2;
+    margin-left: -50%;
+    color: #fff; }
+    .container-details p span {
+      background: #7277A8;
+      padding: 3px 8px; }
+
+@media (max-width: 768px) {
+  .container-details p {
+    margin-left: 0%; } }
 @media (max-width: 768px) {
   .contact-con {
     width: 95% !important; }
@@ -616,47 +548,62 @@ i {
     .bottom-footer .footer-right {
       text-align: center !important; } }
 /* ===============================
- * Sections
+ * About Page
  * =============================== */
-footer {
-  background: #00171F;
-  padding: 25px 0;
-  color: #fff; }
-  footer .footer-right {
-    text-align: right; }
-
-.convo-con {
-  max-width: 500px;
-  margin: 50px auto;
-  background: #fff;
-  border-radius: 9px;
-  -webkit-border-radius: 9px;
-  -ms-border-radius: 9px;
-  -moz-border-radius: 9px;
-  -o-border-radius: 9px;
-  box-shadow: 10px 10px 100px #868686;
-  padding: 15px; }
-  .convo-con textarea {
-    width: 100%; }
-  .convo-con .container {
-    overflow-wrap: break-word; }
-
-#convo-body {
-  background: url("../img/bg.png");
-  background-position: center center;
-  background-attachment: fixed;
-  background-size: cover;
-  min-height: 100%; }
-
 .about-me {
   background: #eee;
   padding: 8px; }
 
+.team {
+  text-align: center; }
+  .team img {
+    margin: 0 auto;
+    text-align: center;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 15px;
+    border: 2px solid #7277A8; }
+  .team h3 {
+    text-align: center; }
+
+#new-features .row {
+  margin: 20px 0; }
+#new-features h2 {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 50px;
+  border-bottom: 2px solid #7277A8; }
+
+/* ===============================
+ * Chat page
+ * =============================== */
 .convo {
-  margin: 20px;
+  border-bottom: 2px solid #00171F;
   background: #eee;
   padding: 15px;
-  text-align: center; }
+  text-align: center;
+  width: 100%;
+  transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  -ms-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s; }
+  .convo:hover {
+    color: #fff;
+    background: #7277A8; }
+
+.convo-sidebar {
+  background: #00171F;
+  color: #fff;
+  height: 100vh;
+  overflow: scroll;
+  text-align: center;
+  padding-top: 96px;
+  padding-left: 0;
+  padding-right: 0; }
+  .convo-sidebar a i {
+    text-align: right;
+    font-size: 25px; }
 
 .new-convo {
   text-align: center;
@@ -693,9 +640,28 @@ footer {
     padding: 15px;
     background: #eee; }
 
-/* ===============================
- * Chat
- * =============================== */
+#chat-page {
+  position: absolute;
+  height: 100%;
+  display: block;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  align-items: center; }
+  #chat-page .container-fluid {
+    padding: 0 !important; }
+
+.chat-main-section {
+  background: url("../img/bg.png");
+  background-position: center center;
+  background-size: cover; }
+  .chat-main-section h1 {
+    text-align: center;
+    padding: 70px 0; }
+    .chat-main-section h1 span {
+      border-bottom: 2px solid #7277A8; }
+
 button.gif {
   border-color: #2088e2;
   color: #2088e2;
@@ -727,13 +693,147 @@ button.gif {
     width: 100%;
     margin: 15px 0 10px 0; }
   .gif-section img {
-    max-height: 100px; }
+    max-height: 100px;
+    width: auto; }
 
 textarea.hidden, input#type {
   display: none; }
 
-#chat li p {
-  display: inline; }
+.chat-title {
+  background: #7277A8;
+  color: #fff;
+  text-align: center;
+  padding: 15px 0; }
+  .chat-title a {
+    color: #96beff; }
+
+#chat ul {
+  padding: 0 40px; }
+
+#chat li {
+  margin: 30px 0; }
+  #chat li .message-content {
+    background: #eee;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -o-border-radius: 15px;
+    display: inline-block;
+    padding: 8px 15px; }
+    #chat li .message-content strong.author {
+      padding: 0 10px; }
+  #chat li img.profile {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -o-border-radius: 50%; }
+  #chat li p {
+    display: inline; }
+
+#chat li.my-message {
+  text-align: right; }
+  #chat li.my-message .message-content {
+    background: #7277A8;
+    color: #fff; }
+    #chat li.my-message .message-content a {
+      color: #96beff; }
+
+.convo-con {
+  overflow: scroll;
+  background: #fff;
+  padding: 0; }
+  .convo-con textarea {
+    width: 100%; }
+  .convo-con .container {
+    overflow-wrap: break-word; }
+
+#convo-body {
+  background: url("../img/bg.png");
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+  min-height: 100%; }
+
+#non-chat-actions {
+  min-height: 100vh; }
+
+#chat-actions {
+  padding: 15px;
+  width: 100%;
+  border-top: 2px solid #00171F;
+  position: sticky;
+  bottom: 0;
+  background: #fff; }
+  #chat-actions .button-con {
+    padding: 0;
+    width: 100%;
+    display: flex;
+    align-items: center; }
+    #chat-actions .button-con button {
+      border-radius: 25px;
+      -webkit-border-radius: 25px;
+      -ms-border-radius: 25px;
+      -moz-border-radius: 25px;
+      -o-border-radius: 25px;
+      margin: 5px 0;
+      width: 100%;
+      border: 1px solid #7277A8;
+      transition: all 0.5s;
+      -webkit-transition: all 0.5s;
+      -ms-transition: all 0.5s;
+      -moz-transition: all 0.5s;
+      -o-transition: all 0.5s;
+      display: block;
+      background: #7277A8; }
+      #chat-actions .button-con button:hover {
+        background: #fff; }
+        #chat-actions .button-con button:hover i {
+          color: #7277A8; }
+      #chat-actions .button-con button i {
+        color: #fff; }
+  #chat-actions #edit-buttons {
+    background: #eee;
+    border: solid 1px #7277A8; }
+    #chat-actions #edit-buttons .edit-button {
+      border: solid 1px #7277A8;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.5s;
+      -webkit-transition: all 0.5s;
+      -ms-transition: all 0.5s;
+      -moz-transition: all 0.5s;
+      -o-transition: all 0.5s; }
+      #chat-actions #edit-buttons .edit-button:hover {
+        background: #7277A8; }
+        #chat-actions #edit-buttons .edit-button:hover i {
+          color: #fff; }
+      #chat-actions #edit-buttons .edit-button i {
+        color: #7277A8; }
+
+.error-con {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; }
+  .error-con .error-message {
+    padding: 15px 15px 1px 15px;
+    width: 200px;
+    background: #fff;
+    position: relative;
+    text-align: center;
+    border-radius: 9px;
+    -webkit-border-radius: 9px;
+    -ms-border-radius: 9px;
+    -moz-border-radius: 9px;
+    -o-border-radius: 9px;
+    box-shadow: 10px 10px 100px #868686; }
+
+.author-content {
+  display: inline-block; }
 
 /* ===============================
  * Gifs
@@ -744,5 +844,23 @@ textarea.hidden, input#type {
 .chat-image {
   max-width: 90%;
   padding: 5px; }
+
+/* ===============================
+ * Friends
+ * =============================== */
+.friend-count {
+  float: right; }
+
+.friend {
+  text-align: center; }
+
+.removefriend {
+  color: #a56f75;
+  border: 2px solid #a56f75; }
+  .removefriend:hover {
+    background: #a56f75; }
+
+.addfriend {
+  margin: 0 auto; }
 
 /*# sourceMappingURL=styles.css.map */

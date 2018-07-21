@@ -1,434 +1,347 @@
 /* ===============================
-    Home Page
-    =============================== */
+	Home Page
+	=============================== */
 figure
-    height: 100vh
+	height: 100vh
 
 html
-    padding: 0px !important
-    margin: 0px !important
+	padding: 0px !important
+	margin: 0px !important
 
 /* ===============================
-    Hero
-    =============================== */
+	Landing page
+	=============================== */
 #home
-    height: 100vh
+	height: 100vh
 
 .container-hero
-    position: absolute
-    height: 100%
-    display: block
-    width: 100%
-    display: flex
-    justify-content: center
-    overflow: hidden
-    background: url('../img/bg.png')
-    background-position: center center
-    background-size: cover
-    align-items: center
+	position: absolute
+	height: 100%
+	display: block
+	width: 100%
+	display: flex
+	justify-content: center
+	overflow: hidden
+	background: url('../img/bg.png')
+	background-position: center center
+	background-size: cover
+	align-items: center
 
 .log-con
-    background: url('../img/bg.png')
-    background-position: center center
-    background-size: cover
-    height: 100%
+	background: url('../img/bg.png')
+	background-position: center center
+	background-size: cover
+	height: 100%
 
 .container-hero h1
-    position: absolute
-    bottom: 45px
-    font-size: 10vw
-    display: block
-    z-index: 999
-    font-style: italic
-    color: #fff
-    +outlined-text(2px, $primary-color)
-    padding: 0px 15px
-
-@-moz-keyframes bounce
-    0%, 20%, 50%, 80%, 100%
-        -moz-transform: translateY(0)
-        transform: translateY(0)
-
-    40%
-        -moz-transform: translateY(-30px)
-        transform: translateY(-30px)
-
-    60%
-        -moz-transform: translateY(-15px)
-        transform: translateY(-15px)
-
-
-@-webkit-keyframes bounce
-    0%, 20%, 50%, 80%, 100%
-        -webkit-transform: translateY(0)
-        transform: translateY(0)
-
-    40%
-        -webkit-transform: translateY(-30px)
-        transform: translateY(-30px)
-
-    60%
-        -webkit-transform: translateY(-15px)
-        transform: translateY(-15px)
-
-
-@keyframes bounce
-    0%, 20%, 50%, 80%, 100%
-        -moz-transform: translateY(0)
-        -ms-transform: translateY(0)
-        -webkit-transform: translateY(0)
-        transform: translateY(0)
-
-    40%
-        -moz-transform: translateY(-30px)
-        -ms-transform: translateY(-30px)
-        -webkit-transform: translateY(-30px)
-        transform: translateY(-30px)
-
-    60%
-        -moz-transform: translateY(-15px)
-        -ms-transform: translateY(-15px)
-        -webkit-transform: translateY(-15px)
-        transform: translateY(-15px)
+	position: absolute
+	bottom: 45px
+	font-size: 10vw
+	display: block
+	z-index: 999
+	font-style: italic
+	color: #fff
+	+outlined-text(2px, $primary-color)
+	padding: 0px 15px
 
 i
-    display: block
-    color: #fff
-
-.arrow
-    color: $secondary-color
-    position: absolute
-    bottom: 5px
-    left: 50%
-    margin-left: -20px
-    width: 40px
-    height: 60px
-    /*change with size of arrow to make sit on bottom
-    /*   background-image: url();
-    /*   background-size: contain;
-
-.bounce
-    -moz-animation: bounce 2s infinite
-    -webkit-animation: bounce 2s infinite
-    animation: bounce 2s infinite
+	display: block
+	color: #fff
 
 .container-details
-    padding: 20px
-    z-index: 999999
-    p
-        font-size: 14px
-        z-index: 2
-        margin-left: -50%
-        color: #fff
-        span
-            background: $primary-color
-            padding: 3px 8px
+	padding: 20px
+	z-index: 999999
+	p
+		font-size: 14px
+		z-index: 2
+		margin-left: -50%
+		color: #fff
+		span
+			background: $primary-color
+			padding: 3px 8px
 
 @media (max-width: 768px)
-    .container-details
-        p
-            margin-left: 0%
-/* ===============================
-    Input
-    =============================== */
-.input
-    position: relative
-    z-index: 1
-    display: inline-block
-    margin: 1em
-    max-width: 350px
-    width: calc(100% - 2em)
-    vertical-align: top
-
-.input__field
-    position: relative
-    display: block
-    float: right
-    padding: 0.8em
-    width: 60%
-    border: none
-    border-radius: 0
-    background: #fff
-    color: #aaa
-    font-weight: bold
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
-    -webkit-appearance: none
-    /* for box shadows to show on iOS
-    &:focus
-        outline: none
-
-.input__label
-    display: inline-block
-    float: right
-    padding: 0 1em
-    width: 40%
-    color: #000
-    font-weight: bold
-    font-size: 70.25%
-    -webkit-font-smoothing: antialiased
-    -moz-osx-font-smoothing: grayscale
-    -webkit-touch-callout: none
-    -webkit-user-select: none
-    -khtml-user-select: none
-    -moz-user-select: none
-    -ms-user-select: none
-    user-select: none
-
-.input__label-content
-    position: relative
-    display: block
-    padding: 1.6em 0
-    width: 100%
-
-/* Hoshi
-
-.input--hoshi
-    overflow: hidden
-
-.input__field--hoshi
-    margin-top: 1em
-    padding: 25px 5px
-    width: 100%
-    background: transparent
-    color: #000
-
-.input__label--hoshi
-    position: absolute
-    bottom: 0
-    left: 0
-    padding: 0 5px
-    width: 100%
-    height: calc(100% - 1em)
-    text-align: left
-    pointer-events: none
-
-.input__label-content--hoshi
-    position: absolute
-
-.input__label--hoshi
-    &::before
-        content: ''
-        position: absolute
-        top: 0
-        left: 0
-        width: 100%
-        height: calc(100% - 10px)
-        border-bottom: 1px solid #000
-    &::after
-        content: ''
-        position: absolute
-        top: 0
-        left: 0
-        width: 100%
-        height: calc(100% - 10px)
-        border-bottom: 1px solid #000
-        margin-top: 2px
-        border-bottom: 4px solid red
-        -webkit-transform: translate3d(-100%, 0, 0)
-        transform: translate3d(-100%, 0, 0)
-        -webkit-transition: -webkit-transform 0.3s
-        transition: transform 0.3s
-        border-color: $primary-color
-
-.input__field--hoshi:focus + .input__label--hoshi::after, .input--filled .input__label--hoshi::after
-    -webkit-transform: translate3d(0, 0, 0)
-    transform: translate3d(0, 0, 0)
-
-.input__field--hoshi:focus + .input__label--hoshi .input__label-content--hoshi, .input--filled .input__label-content--hoshi
-    -webkit-animation: anim-1 0.3s forwards
-    animation: anim-1 0.3s forwards
-
-@-webkit-keyframes anim-1
-    50%
-        opacity: 0
-        -webkit-transform: translate3d(1em, 0, 0)
-        transform: translate3d(1em, 0, 0)
-
-    51%
-        opacity: 0
-        -webkit-transform: translate3d(-1em, -40%, 0)
-        transform: translate3d(-1em, -40%, 0)
-
-    100%
-        opacity: 1
-        -webkit-transform: translate3d(0, -40%, 0)
-        transform: translate3d(0, -40%, 0)
-
-
-@keyframes anim-1
-    50%
-        opacity: 0
-        -webkit-transform: translate3d(1em, 0, 0)
-        transform: translate3d(1em, 0, 0)
-
-    51%
-        opacity: 0
-        -webkit-transform: translate3d(-1em, -40%, 0)
-        transform: translate3d(-1em, -40%, 0)
-
-    100%
-        opacity: 1
-        -webkit-transform: translate3d(0, -40%, 0)
-        transform: translate3d(0, -40%, 0)
-
-/* ===============================
-    Sections
-    =============================== */
-
-.nav-item, .nav-item a, .nav-item a h2, .nav-item a
-    color: #fff !important
-
-
-.section-info
-    padding: 30px 0 !important
-    h2.section-lead
-        text-transform: uppercase
-        padding-bottom: 5px
-        font-size: 40px
-        max-width: 50px
-        border-bottom: 2px solid $primary-color
-        margin-bottom: 30px
-
-#faq, #video
-    background: $secondary-color
-    color: #fff
-
-#faq
-    .row
-        padding: 20px 0
-        .col-sm-6, .col-sm-4, .col-sm-3
-            padding: 0 25px
-        h2
-            color: lighten($primary-color, 20%) !important
-            font-size: 23px
-
-.contact-con
-    position: relative
-    padding: 20px
-    text-align: center
-    background: #fff
-    width: 50%
-    z-index: 999999
-    +border-radius(9px)
-    box-shadow: 10px 10px 100px #868686
-    margin: 20px auto
-    iframe
-        width: 100%
+	.container-details
+		p
+			margin-left: 0%
 
 @media (max-width: 768px)
-    .contact-con
-        width: 95% !important
-    #video iframe
-        height: 350px
-    .bottom-footer
-        text-align: center !important
-        .footer-right
-            text-align: center !important
+	.contact-con
+		width: 95% !important
+	#video iframe
+		height: 350px
+	.bottom-footer
+		text-align: center !important
+		.footer-right
+			text-align: center !important
 
 /* ===============================
-    Sections
-    =============================== */
-
-footer
-    background: $secondary-color
-    padding: 25px 0
-    color: #fff
-    .footer-right
-        text-align: right
-
-.convo-con
-    max-width: 500px
-    margin: 50px auto
-    background: #fff
-    +border-radius(9px)
-    box-shadow: 10px 10px 100px #868686
-    padding: 15px
-    textarea
-        width: 100%
-    .container
-        overflow-wrap: break-word
-
-#convo-body
-    background: url('../img/bg.png')
-    background-position: center center
-    background-attachment: fixed
-    background-size: cover
-    min-height: 100%
+	About Page
+	=============================== */
 
 .about-me
-    background: #eee
-    padding: 8px
+	background: #eee
+	padding: 8px
+
+.team
+	text-align: center
+	img
+		margin: 0 auto
+		text-align: center
+		width: 150px
+		height: 150px
+		margin-bottom: 15px
+		border: 2px solid $primary-color
+	h3
+		text-align: center
+
+#new-features
+	.row
+		margin: 20px 0
+	h2
+		text-transform: uppercase
+		font-weight: bold
+		font-size: 50px
+		border-bottom: 2px solid $primary-color
+
+/* ===============================
+	Chat page
+	=============================== */
 
 .convo
-    margin: 20px
-    background: #eee
-    padding: 15px
-    text-align: center
+	border-bottom: 2px solid $secondary-color
+	background: #eee
+	padding: 15px
+	text-align: center
+	width: 100%
+	+transition(all, .5s)
+	&:hover
+		color: #fff
+		background: $primary-color
+
+.convo-sidebar
+	background: $secondary-color
+	color: #fff
+	height: 100vh
+	overflow: scroll
+	text-align: center
+	padding-top: 96px
+	padding-left: 0
+	padding-right: 0
+	a i
+		text-align: right
+		font-size: 25px
 
 .new-convo
-    text-align: center
-    margin: 0 auto
+	text-align: center
+	margin: 0 auto
 
 #admin
-    h2
-        text-align: center
-        span
-            border-bottom: 2px solid $primary-color
-    .stat-row
-        margin: 15px
-        p
-            padding: 15px
-            background: #eee
+	h2
+		text-align: center
+		span
+			border-bottom: 2px solid $primary-color
+	.stat-row
+		margin: 15px
+		p
+			padding: 15px
+			background: #eee
 
+#chat-page
+	position: absolute
+	height: 100%
+	display: block
+	width: 100%
+	display: flex
+	justify-content: center
+	overflow: hidden
+	align-items: center
+	.container-fluid
+		padding: 0 !important
 
-/* ===============================
-    Chat
-    =============================== */
+.chat-main-section
+	background: url('../img/bg.png')
+	background-position: center center
+	background-size: cover
+	h1
+		text-align: center
+		padding: 70px 0
+		span
+			border-bottom: 2px solid $primary-color
 
 button.gif
-    border-color: $third-color
-    color: $third-color
-    :hover
-        color: #fff
-        background-color: $third-color
+	border-color: $third-color
+	color: $third-color
+	:hover
+		color: #fff
+		background-color: $third-color
 
 .gif-section
-    height: 250px
-    overflow: scroll
-    background: $primary-color
-    display: none
-    +border-radius(5px)
-    margin-bottom: 15px
-    .captioned-gif
-        cursor: pointer
-        margin: 5px
-        text-align: center
-        background: #fff
-    .captioned-gif.selected
-        border: 3px solid $third-color
-    .col-sm-4
-        margin: 0
-        padding: 0
-    input
-        width: 100%
-        margin: 15px 0 10px 0
-    img
-        max-height: 100px
+	height: 250px
+	overflow: scroll
+	background: $primary-color
+	display: none
+	+border-radius(5px)
+	margin-bottom: 15px
+	.captioned-gif
+		cursor: pointer
+		margin: 5px
+		text-align: center
+		background: #fff
+	.captioned-gif.selected
+		border: 3px solid $third-color
+	.col-sm-4
+		margin: 0
+		padding: 0
+	input
+		width: 100%
+		margin: 15px 0 10px 0
+	img
+		max-height: 100px
+		width: auto
 
 textarea.hidden, input#type
-    display: none
+	display: none
 
-#chat li p
-    display: inline
+.chat-title
+	background: $primary-color
+	color: #fff
+	text-align: center
+	padding: 15px 0
+	a
+		color: #96beff
+
+#chat ul
+	padding: 0 40px
+
+#chat li
+	margin: 30px 0
+	.message-content
+		background: #eee
+		+border-radius(15px)
+		display: inline-block
+		padding: 8px 15px
+		strong.author
+			padding: 0 10px
+	img.profile
+		width: 40px
+		height: 40px
+		+border-radius(50%)
+	p
+		display: inline
+
+#chat li.my-message
+	.message-content
+		background: $primary-color
+		color: #fff
+		a
+			color: #96beff
+	text-align: right
+
+.convo-con
+	overflow: scroll
+	background: #fff
+	padding: 0
+	textarea
+		width: 100%
+	.container
+		overflow-wrap: break-word
+
+#convo-body
+	background: url('../img/bg.png')
+	background-position: center center
+	background-attachment: fixed
+	background-size: cover
+	min-height: 100%
+
+#non-chat-actions
+	min-height: 100vh
+
+#chat-actions
+	padding: 15px
+	width: 100%
+	border-top: 2px solid $secondary-color
+	position: sticky
+	bottom: 0
+	background: #fff
+	.button-con
+		padding: 0
+		width: 100%
+		display: flex
+		align-items: center
+		button
+			+border-radius(25px)
+			margin: 5px 0
+			width: 100%
+			border: 1px solid $primary-color
+			+transition(all, .5s)
+			display: block
+			background: $primary-color
+			&:hover
+				background: #fff
+				i
+					color: $primary-color
+			i
+				color: #fff
+	#edit-buttons
+		background: #eee
+		border: solid 1px $primary-color
+		.edit-button
+			border: solid 1px $primary-color
+			cursor: pointer
+			text-align: center
+			+transition(all, .5s)
+			&:hover
+				background: $primary-color
+				i
+					color: #fff
+			i
+				color: $primary-color
+
+
+.error-con
+	display: flex
+	justify-content: center
+	align-items: center
+	height: 100%
+	.error-message
+		padding: 15px 15px 1px 15px
+		width: 200px
+		background: #fff
+		position: relative
+		text-align: center
+		+border-radius(9px)
+		box-shadow: 10px 10px 100px #868686
+
+.author-content
+	display: inline-block
 
 /* ===============================
-    Gifs
-    =============================== */
+	Gifs
+	=============================== */
 
 .gif-form
-    button
-        text-align: center
+	button
+		text-align: center
 
 .chat-image
-    max-width: 90%
-    padding: 5px
+	max-width: 90%
+	padding: 5px
+
+/* ===============================
+	Friends
+	=============================== */
+.friend-count
+	float: right
+
+.friend
+	text-align: center
+
+.removefriend
+	color: #a56f75
+	border: 2px solid #a56f75
+	&:hover
+		background: #a56f75
+
+.addfriend
+	margin: 0 auto
