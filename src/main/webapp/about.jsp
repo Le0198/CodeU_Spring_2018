@@ -34,12 +34,12 @@
               <p>A UIUC student who likes volleyball and League of Legends.</p>
           </div>
           <div class="col-sm-4">
-              <img src="https://archive.is/AXz9f/11d2d898ab06f601c27dc8ba0aad482bdf0d5309.jpg" alt="BOTW picture" class="rounded-circle">
+              <img src="http://images6.fanpop.com/image/photos/40300000/tumblr-inline-o8vkcf0VS31s3mkdf-250-legend-of-zelda-breath-of-the-wild-40377420-200-200.png" alt="BOTW picture" class="rounded-circle">
               <h3>Levi Villarreal</h3>
               <p>A UTAustin student who likes ultimate frisbee and Breath of the Wild (BOTW is best).</p>
           </div>
           <div class="col-sm-4">
-              <img src="https://fire-emblem-heroes.com/common/img/pc/index/characterSlide/character_slide_13_c.png" alt="Fire emblem picture" class="rounded-circle">
+              <img src="https://78.media.tumblr.com/bc06a97b34562093b9ddaa63240bc422/tumblr_onn2kpg6p61r4l7oro7_250.png" alt="FE picture" class="rounded-circle">
               <h3>Jessica Zhu</h3>
               <p>A UMN student who likes Game of Thrones and Fire Emblem.</p>
           </div>
@@ -53,7 +53,7 @@
                   <h2>Add Friends</h2>
               </div>
               <div class="col-sm-9">
-                  <p>The ability to add friends and have a friend list featured on your page.</p>
+                  <p>The ability to add and remove friends.</p>
               </div>
           </div>
 

@@ -106,18 +106,24 @@ public class ProfileServlet extends HttpServlet {
               user.setAboutMe(aboutMeDescrip);
             } else { // button.equals("picture")
               String url = request.getParameter("url");
-              if (url.length() < 4) {
+              if (url.length() < 4) { // if we don't check string length first, we'll get a substring error
                 request.getSession().setAttribute("error", "Not a valid url.");
                 response.sendRedirect("/users/" + username);
                 return;
               } else {
                 String fileType = url.substring(url.length() - 4);
                 if ( !fileType.equals(".png") && !fileType.equals(".jpg") && !fileType.equals(".gif") ) {
-                  fileType = url.substring(url.length() - 5);
-                  if (!fileType.equals(".jpeg")) {
+                  if (url.length() < 5) {
                     request.getSession().setAttribute("error", "Not a valid url.");
                     response.sendRedirect("/users/" + username);
                     return;
+                  } else {
+                    fileType = url.substring(url.length() - 5);
+                    if (!fileType.equals(".jpeg")) {
+                      request.getSession().setAttribute("error", "Not a valid url.");
+                      response.sendRedirect("/users/" + username);
+                      return;
+                    }
                   }
                 }
               }
