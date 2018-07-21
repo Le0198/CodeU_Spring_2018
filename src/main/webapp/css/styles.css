@@ -609,27 +609,6 @@ i {
   text-align: center;
   margin: 0 auto; }
 
-.friend-count {
-  float: right;
-}
-
-.friend {
-  text-align: center;
-}
-
-.removefriend {
-  color: #a56f75;
-  border: 2px solid #a56f75;
-}
-
-.removefriend:hover {
-  background: #a56f75;
-}
-
-.addfriend {
-  margin: 0 auto;
-}
-
 #admin h2 {
   text-align: center; }
   #admin h2 span {
@@ -833,7 +812,8 @@ textarea.hidden, input#type {
     box-shadow: 10px 10px 100px #868686; }
 
 .author-content {
-  display: inline-block; }
+  display: inline-block;
+  color: #000; }
 
 /* ===============================
  * Gifs

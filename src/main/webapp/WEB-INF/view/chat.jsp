@@ -83,10 +83,10 @@ List<Message> messages = (List<Message>) request.getAttribute("messages");
                                 %>
                                 <li class="<%= ownerClass %>">
                                     <% if (!author.equals(currentUser)) { %>
-                                        <div class="author-content">
+                                        <a href="/users/<%= author %>"><div class="author-content">
                                             <img src="<%= userAuthor.getPicture()%>" alt="User profile picture" class="profile">
                                             <strong class="author"><%= author %></strong>
-                                        </div>
+                                        </div></a>
                                     <% } %>
                                     <div class="message-content">
                                         <% if (message.getType().equals("image")) { %>
