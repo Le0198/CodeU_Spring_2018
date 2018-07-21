@@ -27,6 +27,7 @@ import java.io.IOException;
 import java.time.Instant;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Scanner;
 import java.util.UUID;
 
 import javax.servlet.ServletException;
@@ -205,7 +206,6 @@ public class ChatServlet extends HttpServlet {
     **/
     private String clean(String originalMessage) {
 
-
         // Get rid of all HTML tags except the ones we want
         Whitelist allowedTags = Whitelist.none();
         allowedTags.addTags("ins", "del", "strong", "em", "sub", "sup", "a", "href");
@@ -230,7 +230,30 @@ public class ChatServlet extends HttpServlet {
         // Make sure emojis end up being readable in  HTML
         finalMessageContent = EmojiParser.parseToUnicode(finalMessageContent);
         finalMessageContent = EmojiParser.parseToHtmlDecimal(finalMessageContent);
-
-        return finalMessageContent;
+        
+        StringBuilder enhancedMessage = new StringBuilder();
+        
+    	Scanner sc = new Scanner(finalMessageContent);
+    	
+    	while (sc.hasNextLine()) {
+    		Scanner scanLine = new Scanner(sc.nextLine());
+    		while (scanLine.hasNext()) {
+    			String word = scanLine.next();
+    			if(word.length() > 8 && (word.substring(0,7).equals("http://") || word.substring(0,8).equals("https://"))) {
+    				word = "<a href=\"" + word + "\" target=\"_blank\">" + word + "</a>";
+    			}
+    			enhancedMessage.append(word);
+    			if (scanLine.hasNext()) {
+    				enhancedMessage.append(" ");
+        		}
+    		}
+    		if (sc.hasNextLine()) {
+    			enhancedMessage.append("\n");
+    		}
+    		scanLine.close();
+    	}
+    	sc.close();
+    	
+        return enhancedMessage.toString();
     }
 }
